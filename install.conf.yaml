@@ -15,5 +15,6 @@
     ~/.emacs:
     ~/.emacs.d:
     ~/.xprofile:
+    ~/.gitignore_global:
 
 - shell: []
