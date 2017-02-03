@@ -12,5 +12,8 @@
     ~/.dotfiles: ''
     ~/.bashrc:
     ~/.bash_profile:
+    ~/.emacs:
+    ~/.emacs.d:
+    ~/.xprofile:
 
 - shell: []

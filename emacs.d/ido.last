@@ -1,0 +1,83 @@
+;;; -*- coding: utf-8 -*-
+
+;; ----- ido-last-directory-list -----
+(
+ ("/home/z/dropbox/src/rust/pistongame/" . "src/")
+ ("/home/z/dropbox/src/rust/mines-rs/" . "src/")
+ ("/home/z/dropbox/src/rust/" . "pistongame/")
+ ("/home/z/dropbox/src/" . "rust/")
+ ("/home/z/dropbox/" . "src/")
+ ("/home/z/tmp/" . "android_device_htc_a3-common/")
+ ("/home/z/" . ".bash_it/")
+ ("/home/z/.config/" . "i3/")
+)
+
+;; ----- ido-work-directory-list -----
+(
+ "/home/z/dotfiles/"
+ "/home/z/.bash_it/"
+ "/home/z/"
+ "/home/z/dropbox/src/rust/pistongame/src/"
+ "/home/z/dropbox/src/rust/pistongame/"
+ "/home/z/dropbox/src/rust/mines-rs/src/"
+ "/home/z/tmp/android_device_htc_a3/"
+ "/home/z/tmp/android_device_htc_a3-common/"
+ "/home/z/.config/i3/"
+ "/home/z/dropbox/"
+ "/home/z/bin/"
+ "/home/z/.config/polybar/"
+)
+
+;; ----- ido-work-file-list -----
+(
+ "install.conf.yaml"
+ ".gitignore"
+ "bash_it.sh"
+ ".bashrc"
+ ".bash_profile"
+ "main.rs"
+ "Cargo.toml"
+ "tile.rs"
+ "board.rs"
+ "lib.rs"
+)
+
+;; ----- ido-dir-file-cache -----
+(
+ ("/home/z/dotfiles/" (22676 46065 242909 275000) ".gitmodules" ".gitignore" "LICENSE" "./" "dotbot/" "install.conf.yaml" "../" ".git/" "install")
+
+ ("/home/z/" (22676 45885 362079 988000) ".xsession-errors" ".icons/" ".ssh/" ".bashrc~" ".bash_history" ".mozilla/" ".Xauthority" ".gtkrc-2.0" "music/" ".gnupg/" ".desktop/" ".gitconfig" ".cargo/" ".publicshare/" "tmp/" ".Xresources" "pictures/" ".bashrc" ".xinitrc~" ".emacs" ".dirs" ".templates/" ".xprofile~" ".xinitrc" "./" ".emacs~" ".cache/" ".local/" ".bash_profile" ".emacs.d/" ".pki/" "documents/" ".fehbg" "../" ".bash_logout" ".java/" ".Xresources~" "bin/" "downloads/" ".config/" ".xprofile" ".dropbox-dist/" "videos/" ".dropboxfolder/" ".rustup/" "dotfiles/" ".dropbox/" "dropbox/")
+
+ ("/home/z/.bash_it/" (22676 44738 928632 123000) ".editorconfig" "plugins/" "CONTRIBUTING.md" "completion/" "custom/" "README.md" ".gitignore" "themes/" "./" "template/" ".travis.yml" "uninstall.sh" "lib/" "../" ".ackrc" "install.sh" "bash_it.sh" ".git/" "test/" "aliases/")
+
+ ("/home/z/dropbox/src/rust/pistongame/" (22676 36733 718976 835000) "Cargo.lock" ".gitignore" "./" "../" "src/" "Cargo.toml" "target/" ".git/")
+
+ ("/home/z/dropbox/src/rust/pistongame/src/" (22676 36728 482338 538000) "main.rs" "./" "../")
+
+ ("/home/z/dropbox/src/rust/" (22676 36557 699930 412000) "./" "pistongame/" "../" "mines-rs/" "cite/")
+
+ ("/home/z/dropbox/" (22676 36329 269562 433000) "doc/" "etc/" ".dropbox.cache/" "sayings.txt" "romhacking.org" "pic/" "quotes.txt" "./" "vpn" "../" "todo.txt" "src/" "copa.txt" "ideas_for_ifgame.txt" "humangeoflashcards.txt" ".dropbox")
+
+ ("/home/z/dropbox/src/rust/mines-rs/src/" (22675 18018 216682 822000) "./" "../" "board.rs" "lib.rs")
+
+ ("/home/z/dropbox/src/rust/mines-rs/" (22675 17921 594830 251000) ".gitignore" "./" "../" "src/" "Cargo.toml" ".git/")
+
+ ("/home/z/dropbox/src/" (22669 56807 995312 653000) "go/" "godot/" "rust/" "./" "bash/" "../" "web/")
+
+ ("/home/z/tmp/android_device_htc_a3/" (22674 7786 624128 42000) ".gitignore" "./" "dtb" "AndroidBoard.mk" "AndroidProducts.mk" "kernel" "lineage.dependencies" "system.prop" "BoardConfig.mk" "../" "lineage.mk" "recovery.fstab" ".git/" "device_a3.mk")
+
+ ("/home/z/tmp/android_device_htc_a3-common/" (22674 7918 688374 546000) ".gitignore" "./" "lineage.dependencies" "../" ".git/")
+
+ ("/home/z/tmp/" (22674 7807 823772 743000) "./" "../" "android_device_htc_a3/" "android_device_htc_a3-common/")
+
+ ("/home/z/.config/" (22672 51860 399692 210000) "qt5ct/" "i3/" "termite/" "chromium/" "volumeicon/" "dconf/" "autostart/" "xarchiver/" "./" "polybar/" "gtk-3.0/" "mimeapps.list" "gconf/" "libreoffice/" "Trolltech.conf" "QtProject.conf" "../" "fontconfig/" "keepassx/" "neofetch/" "compton.conf~" "xfce4/" "Thunar/" "user-dirs.dirs" "compton.conf")
+
+ ("/home/z/bin/" (22671 31531 927656 845000) "bash-powerline.sh" "launch_polybar.sh" "./" "i3lock.sh" "battery-notify.sh" "vpn" "../" "launch_polybar.sh~" "#i3lock.sh#")
+
+ ("/home/z/.config/i3/" (22671 31207 481294 884000) "config~" "./" "../" "config")
+
+ ("/home/z/.config/polybar/" (22671 28428 819169 398000) "config~" "./" "../" "config")
+)
+
+;; ----- ido-unc-hosts-cache -----
+t
