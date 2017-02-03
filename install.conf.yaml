@@ -7,3 +7,9 @@
 
 # Directories to be checked for broken symlinks
 - clean: ['~', '~/.config']
+      
+- link:
+    ~/.dotfiles: ''
+    ~/.bashrc:
+
+- shell: []
