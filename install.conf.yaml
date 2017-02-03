@@ -1,0 +1,9 @@
+- defaults:
+    link:
+      # Create new symlinks when they do not exist
+      create: true
+      # Relink old symlinks when they are changed
+      relink: true
+
+# Directories to be checked for broken symlinks
+- clean: ['~', '~/.config']
