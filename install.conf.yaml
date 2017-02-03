@@ -11,5 +11,6 @@
 - link:
     ~/.dotfiles: ''
     ~/.bashrc:
+    ~/.bash_profile:
 
 - shell: []

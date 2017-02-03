@@ -12,9 +12,9 @@ alias ga='git add .'
 alias gc='git commit -m'
 alias gp='git push'
 
-# PS1='[\u@\h \W]\$ '
+PS1='[\u@\h \W]\$ '
 
 BROWSER=/usr/bin/firefox
 EDITOR=/usr/bin/emacs
 
-source "$HOME/bin/bash-powerline.sh"
+[ -e "$HOME/bin/bash-powerline.sh" ] && source "$HOME/bin/bash-powerline.sh"
