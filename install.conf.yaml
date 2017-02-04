@@ -10,7 +10,6 @@
 
 # <destination>: <source (relative to root dotfiles directory)>
 - link:
-    ~/.dotfiles: ''
     ~/.bashrc:
     ~/.bash_profile:
     ~/.emacs:
