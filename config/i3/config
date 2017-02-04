@@ -1,0 +1,178 @@
+# i3 config file
+#
+# Please see http://i3wm.org/docs/userguide.html for a complete reference!
+
+# Variable declarations
+set $mod Mod4
+
+set $left f
+set $right b
+set $up p
+set $down n
+
+set $ws1 1
+set $ws2 2
+set $ws3 3
+set $ws4 4
+set $ws5 5
+set $ws6 6
+set $ws7 7
+set $ws8 8
+set $ws9 9
+set $ws10 0
+
+set $wallpaper ~/pictures/wallpapers/foggy_landscape.jpg
+
+# Font for window titles. Will also be used by the bar unless a different font
+# is used in the bar {} block below.
+font pango:monospace 8
+
+# Use Mouse+$mod to drag floating windows to their wanted position
+floating_modifier $mod
+
+# start a terminal
+# bindsym $mod+Return exec i3-sensible-terminal
+bindsym $mod+Return exec termite
+
+# kill focused window
+bindsym $mod+Shift+q kill
+
+# start dmenu (a program launcher)
+# bindsym $mod+d exec dmenu_run
+# bindsym $mod+d exec --no-startup-id i3-dmenu-desktop
+bindsym $mod+d exec --no-startup-id rofi -show drun
+
+# change focus
+bindsym $mod+$left focus left
+bindsym $mod+$down focus down
+bindsym $mod+$up focus up
+bindsym $mod+$right focus right
+
+# alternatively, you can use the cursor keys:
+bindsym $mod+Left focus left
+bindsym $mod+Down focus down
+bindsym $mod+Up focus up
+bindsym $mod+Right focus right
+
+# move focused window
+bindsym $mod+Shift+$left move left
+bindsym $mod+Shift+$down move down
+bindsym $mod+Shift+$up move up
+bindsym $mod+Shift+$right move right
+
+# alternatively, you can use the cursor keys:
+bindsym $mod+Shift+Left move left
+bindsym $mod+Shift+Down move down
+bindsym $mod+Shift+Up move up
+bindsym $mod+Shift+Right move right
+
+# split in horizontal orientation
+bindsym $mod+h split h
+
+# split in vertical orientation
+bindsym $mod+v split v
+
+# enter fullscreen mode for the focused container
+bindsym $mod+g fullscreen toggle
+
+# change container layout (stacked, tabbed, toggle split)
+bindsym $mod+s layout stacking
+bindsym $mod+t layout tabbed
+bindsym $mod+e layout toggle split
+
+# toggle tiling / floating
+bindsym $mod+Shift+space floating toggle
+
+# change focus between tiling / floating windows
+bindsym $mod+space focus mode_toggle
+
+# focus the parent container
+# bindsym $mod+a focus parent
+
+# focus the child container
+#bindsym $mod+d focus child
+
+# switch to workspace
+bindsym $mod+$ws1 workspace 1
+bindsym $mod+$ws2 workspace 2
+bindsym $mod+$ws3 workspace 3
+bindsym $mod+$ws4 workspace 4
+bindsym $mod+$ws5 workspace 5
+bindsym $mod+$ws6 workspace 6
+bindsym $mod+$ws7 workspace 7
+bindsym $mod+$ws8 workspace 8
+bindsym $mod+$ws9 workspace 9
+bindsym $mod+$ws10 workspace 10
+
+# move focused container to workspace
+bindsym $mod+Shift+$ws1 move container to workspace 1
+bindsym $mod+Shift+$ws2 move container to workspace 2
+bindsym $mod+Shift+$ws3 move container to workspace 3
+bindsym $mod+Shift+$ws4 move container to workspace 4
+bindsym $mod+Shift+$ws5 move container to workspace 5
+bindsym $mod+Shift+$ws6 move container to workspace 6
+bindsym $mod+Shift+$ws7 move container to workspace 7
+bindsym $mod+Shift+$ws8 move container to workspace 8
+bindsym $mod+Shift+$ws9 move container to workspace 9
+bindsym $mod+Shift+$ws10 move container to workspace 10
+
+# reload the configuration file
+# bindsym $mod+Shift+j reload
+# restart i3 inplace (preserves your layout/session, can be used to upgrade i3)
+bindsym $mod+Shift+r restart
+# exit i3 (logs you out of your X session)
+bindsym $mod+Shift+e exec "i3-nagbar -t warning -m 'You pressed the exit shortcut. Do you really want to exit i3? This will end your X session.' -b 'Yes, exit i3' 'i3-msg exit'"
+
+# resize window (you can also use the mouse for that)
+mode "resize" {
+        # These bindings trigger as soon as you enter the resize mode
+
+        # Pressing left will shrink the window’s width.
+        # Pressing right will grow the window’s width.
+        # Pressing up will shrink the window’s height.
+        # Pressing down will grow the window’s height.
+        bindsym $left resize shrink width 10 px or 10 ppt
+        bindsym $right resize grow height 10 px or 10 ppt
+        bindsym $up resize shrink height 10 px or 10 ppt
+        bindsym $down resize grow width 10 px or 10 ppt
+
+        # same bindings, but for the arrow keys
+        bindsym Left resize shrink width 10 px or 10 ppt
+        bindsym Down resize grow height 10 px or 10 ppt
+        bindsym Up resize shrink height 10 px or 10 ppt
+        bindsym Right resize grow width 10 px or 10 ppt
+
+        # back to normal: Enter or Escape
+        bindsym Return mode "default"
+        bindsym Escape mode "default"
+}
+
+bindsym $mod+r mode "resize"
+
+bindsym $mod+l exec --no-startup-id ~/bin/i3lock.sh
+
+for_window [class="^.*"] border pixel 4
+
+exec --no-startup-id compton -b --config ~/.config/compton.conf
+exec_always --no-startup-id feh --bg-fill $wallpaper
+
+# Start i3bar to display a workspace bar (plus the system information i3status
+# finds out, if available)
+# bar {
+#         status_command i3status
+# }
+
+exec_always --no-startup-id ~/bin/launch_polybar.sh
+
+exec --no-startup-id xbacklight -set 80
+
+# Start the polkit authenticator
+exec --no-startup-id /usr/lib/polkit-gnome/polkit-gnome-authentication-agent-1
+
+# Start the file manager in daemon mode
+exec --no-startup-id thunar --daemon
+
+# Start default programs
+exec --no-startup-id dropbox
+exec --no-startup-id nm-applet
+exec --no-startup-id volumeicon

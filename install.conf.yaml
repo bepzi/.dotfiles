@@ -16,5 +16,6 @@
     ~/.emacs.d:
     ~/.xprofile:
     ~/.gitignore_global:
+    ~/.config/i3: 'config/i3'
 
 - shell: []
