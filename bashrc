@@ -22,6 +22,7 @@ alias ga='git add .'
 alias gc='git commit -m'
 alias gp='git push'
 alias mkdir='mkdir -p'
+alias cp='cp -r'
 
 PS1='[\u@\h \W]\$ '
 
