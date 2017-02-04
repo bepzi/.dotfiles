@@ -29,6 +29,7 @@
   (load-file (expand-file-name file "~/.emacs.d/")))
 
 ;; Load individual configuration files
+(load-user-file "behavior.el")
 (load-user-file "appearance.el")
 (load-user-file "company.el")
 (load-user-file "rust.el")
