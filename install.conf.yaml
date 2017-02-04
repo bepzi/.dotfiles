@@ -7,7 +7,8 @@
 
 # Directories to be checked for broken symlinks
 - clean: ['~', '~/.config']
-      
+
+# <destination>: <source (relative to root dotfiles directory)>
 - link:
     ~/.dotfiles: ''
     ~/.bashrc:
@@ -18,4 +19,6 @@
     ~/.gitignore_global:
     ~/.config/i3: 'config/i3'
 
-- shell: []
+- shell:
+  - [git submodule update --init --recursive, Installing submodules]
+  - [git config --global core.excludesfile ~/.gitignore_global, Updating global gitignore]
