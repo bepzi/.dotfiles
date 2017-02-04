@@ -15,7 +15,7 @@ alias gp='git push'
 
 PS1='[\u@\h \W]\$ '
 
-BROWSER=$(which firefox)
-EDITOR=$(which emacs)
+BROWSER=$(which firefox || which chromium)
+EDITOR=$(which emacs || which nvim || which vim)
 
 [ -e "$HOME/bin/bash-powerline.sh" ] && source "$HOME/bin/bash-powerline.sh"
