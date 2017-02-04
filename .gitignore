@@ -3,3 +3,5 @@
 \.#*
 emacs.d/ido.last
 emacs.d/elpa
+emacs.d/auto-save-list
+emacs.d/backups
