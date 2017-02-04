@@ -6,6 +6,7 @@
 [[ $- != *i* ]] && return
 
 alias ls='ls --color=auto'
+alias grep='grep --color'
 alias shutdown='sync && shutdown -h now'
 alias reboot='sync && reboot'
 alias ga='git add .'
