@@ -1,12 +1,23 @@
 #!/bin/sh
+# ~/.xprofile -- Intended to be sourced a single time when the computer starts
 
-export PATH="$PATH:$HOME/bin/"
+# PATH-related variables
+[ -e "$HOME/bin" ] && export PATH="$PATH:$HOME/bin"
+[ -e "$HOME/bin/scripts" ] && export PATH="$PATH:$HOME/bin/scripts"
+[ -e "$HOME/.cargo/bin" ] && export PATH="$PATH:$HOME/.cargo/bin"
+
+# For Ruby stuff:
+[ -e "/usr/lib/ruby/gems/2.3.0" ] && export GEM_PATH="$GEM_PATH:/usr/lib/ruby/gems/2.3.0"
 
 # Fix font rendering in Java applications
 export _JAVA_OPTIONS='-Dawt.useSystemAAFontSettings=on -Dswing.aatext=true'
 
-# For Racer-Rust
-export RUST_SRC_PATH="$HOME/.rustup/toolchains/stable-x86_64-unknown-linux-gnu/lib/rustlib/src/rust/src"
+# For Racer-Rust, the location of the Rust source code
+if [ -e "$HOME/.rustup/toolchains/stable-x86_64-unknown-linux-gnu/lib/rustlib/src/rust/src" ]; then
+    export RUST_SRC_PATH="$HOME/.rustup/toolchains/stable-x86_64-unknown-linux-gnu/lib/rustlib/src/rust/src"
+elif [ -e "$HOME/.rustup/toolchains/nightly-x86_64-unknown-linux-gnu/lib/rustlib/src/rust/src" ]; then
+    export RUST_SRC_PATH="$HOME/.rustup/toolchains/nightly-x86_64-unknown-linux-gnu/lib/rustlib/src/rust/src"
+fi
 
 # Start the gnome-keyring-daemon
 eval $(/usr/bin/gnome-keyring-daemon --start --components=pkcs11,secrets,ssh)
