@@ -12,6 +12,7 @@
 - link:
     ~/.bashrc:
     ~/.bash_profile:
+    ~/.bash_logout:
     ~/.emacs:
     ~/.emacs.d:
     ~/.xprofile:
