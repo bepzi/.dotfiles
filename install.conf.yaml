@@ -13,15 +13,16 @@
     ~/.bashrc:
     ~/.bash_profile:
     ~/.bash_logout:
-    ~/.emacs:
-    ~/.emacs.d:
-    ~/.xprofile:
-    ~/.Xresources:
-    ~/.xinitrc:
-    ~/.gitignore_global:
     ~/.config/user-dirs.dirs: 'config/user-dirs.dirs'
     ~/.config/i3: 'config/i3'
     ~/.config/compton.conf: 'config/compton.conf'
+    ~/.emacs:
+    ~/.emacs.d:
+    ~/.gitignore_global:
+    ~/bin/scripts: 'scripts'
+    ~/.xprofile:
+    ~/.Xresources:
+    ~/.xinitrc:
 
 - shell:
   - [git submodule update --init --recursive, Installing submodules]
