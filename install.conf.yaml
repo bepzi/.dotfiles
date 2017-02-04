@@ -20,6 +20,7 @@
     ~/.gitignore_global:
     ~/.config/user-dirs.dirs: 'config/user-dirs.dirs'
     ~/.config/i3: 'config/i3'
+    ~/.config/compton.conf: 'config/compton.conf'
 
 - shell:
   - [git submodule update --init --recursive, Installing submodules]
