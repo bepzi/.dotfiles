@@ -2,7 +2,6 @@
 ;; Configuration file for how Emacs handles Rust code
 
 ;; Racer is a program that uses the Rust source code to complete snippets
-
 ;; Set the rust-src variable for Racer
 (setq
 racer-rust-src-path "~/.rustup/toolchains/stable-x86_64-unknown-linux-gnu/lib/rustlib/src/rust/src")
@@ -10,7 +9,7 @@ racer-rust-src-path "~/.rustup/toolchains/stable-x86_64-unknown-linux-gnu/lib/ru
 ;; Make it so that saving files while in Rust-mode
 ;; applies rustfmt and C-c C-c compiles/tests the code
 (defun rust-mode-setup ()
-  (setq compile-command "cargo test")
+  (setq compile-command "cargo test && cargo build")
   (define-key (current-local-map) "\C-c\C-c" 'compile)
   (add-hook 'before-save-hook 'rust-format-buffer))
 
