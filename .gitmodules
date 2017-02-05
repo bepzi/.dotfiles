@@ -4,3 +4,6 @@
 [submodule "scripts"]
 	path = scripts
 	url = https://github.com/ben01189998819991197253/scripts
+[submodule "bash-powerline"]
+	path = bash-powerline
+	url = https://github.com/riobard/bash-powerline
