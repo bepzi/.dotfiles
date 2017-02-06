@@ -14,7 +14,7 @@
  ;; If there is more than one, they won't work right.
 
  ;; Uncomment if you are unable to see your selections when highlighting text
- ;; '(region ((t (:background "#181818" :distant-foreground "gtk_selection_fg_color"))))
+ ;; '(region ((t (:background "#d3d3d3" :distant-foreground "gtk_selection_fg_color"))))
  )
 
 (when (>= emacs-major-version 24)

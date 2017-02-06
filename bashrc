@@ -25,11 +25,11 @@ unset MAILCHECK
 # history.
 HISTCONTROL=ignoreboth
 
-[ -f "$HOME/.bash_aliases" ] && source "$HOME/.bash_aliases"
+[ -f "$HOME/.bash_aliases" ] && . "$HOME/.bash_aliases"
 
 PS1='[\u@\h \W]\$ '
 
 BROWSER=$(which firefox || which chromium)
 EDITOR=$(which emacs || which nvim || which vim)
 
-[ -f "$HOME/bin/bash-powerline.sh" ] && source "$HOME/bin/bash-powerline.sh"
+[ -f "$HOME/bin/bash-powerline.sh" ] && . "$HOME/bin/bash-powerline.sh"
