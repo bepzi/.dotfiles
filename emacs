@@ -12,6 +12,9 @@
  ;; If you edit it by hand, you could mess it up, so be careful.
  ;; Your init file should contain only one such instance.
  ;; If there is more than one, they won't work right.
+
+ ;; Uncomment if you are unable to see what your selections when highlighting text
+ ;; '(region ((t (:background "#181818" :distant-foreground "gtk_selection_fg_color"))))
  )
 
 (when (>= emacs-major-version 24)
