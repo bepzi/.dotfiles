@@ -13,7 +13,7 @@
  ;; Your init file should contain only one such instance.
  ;; If there is more than one, they won't work right.
 
- ;; Uncomment if you are unable to see what your selections when highlighting text
+ ;; Uncomment if you are unable to see your selections when highlighting text
  ;; '(region ((t (:background "#181818" :distant-foreground "gtk_selection_fg_color"))))
  )
 

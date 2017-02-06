@@ -11,6 +11,7 @@
 # <destination>: <source (relative to root dotfiles directory)>
 - link:
     ~/.bashrc:
+    ~/.bash_aliases:
     ~/.bash_profile:
     ~/.bash_logout:
     ~/.config/user-dirs.dirs: 'config/user-dirs.dirs'
