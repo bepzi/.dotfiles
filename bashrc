@@ -30,6 +30,7 @@ HISTCONTROL=ignoreboth
 PS1='[\u@\h \W]\$ '
 
 BROWSER=$(which firefox || which chromium)
-EDITOR=$(which emacs || which nvim || which vim)
+EDITOR=$(which emacs || which nvim || which vim || which nano)
+VISUAL="$EDITOR"; export VISUAL
 
 [ -f "$HOME/bin/bash-powerline.sh" ] && . "$HOME/bin/bash-powerline.sh"
