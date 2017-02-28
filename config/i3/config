@@ -178,4 +178,4 @@ exec --no-startup-id nm-applet
 exec --no-startup-id volumeicon
 
 # Open Org-Agenda
-exec --no-startup-id emacs ~/documents/tasks.org
+exec --no-startup-id emacs --eval "(org-agenda-list)" --eval "(next-multiframe-window)" --eval "(kill-buffer-and-window)"
