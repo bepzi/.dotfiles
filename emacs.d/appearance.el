@@ -10,3 +10,7 @@
 
 ;; Enable line numbers
 (global-linum-mode t)
+
+;; Custom font size
+;; Height value is in 1/10pt, so 100=10pt
+;; (set-face-attribute 'default nil :height 110)
