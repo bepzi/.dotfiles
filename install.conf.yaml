@@ -16,6 +16,7 @@
     ~/.bash_logout:
     ~/.config/user-dirs.dirs: 'config/user-dirs.dirs'
     ~/.config/i3: 'config/i3'
+    ~/.config/termite/config: 'config/termite'
     ~/.config/compton.conf: 'config/compton.conf'
     ~/.emacs:
     ~/.emacs.d:
