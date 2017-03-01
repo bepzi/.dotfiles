@@ -18,6 +18,7 @@
     ~/.config/i3: 'config/i3'
     ~/.config/termite: 'config/termite'
     ~/.config/twmn: 'config/twmn'
+    ~/.config/polybar: 'config/polybar'
     ~/.config/compton.conf: 'config/compton.conf'
     ~/.emacs:
     ~/.emacs.d:
