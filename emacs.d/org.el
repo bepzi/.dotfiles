@@ -26,6 +26,17 @@ SCHEDULED: %t DEADLINE: %t")
 ;; Always open Agenda to replace the current window
 (setq org-agenda-window-setup (quote current-window))
 
+;; Don't show tasks as scheduled if they are already shown as a deadline
+(setq org-agenda-skip-scheduled-if-deadline-is-shown t)
+
+;; Sort tasks in order of when they are due and then by priority
+(setq org-agenda-sorting-strategy
+  (quote
+   ((agenda deadline-up priority-down)
+    (todo priority-down category-keep)
+    (tags priority-down category-keep)
+    (search category-keep))))
+
 ;; Global keybindings
 (global-set-key "\C-cl" 'org-store-link)
 (global-set-key "\C-ca" 'org-agenda)
