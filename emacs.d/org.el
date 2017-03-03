@@ -4,19 +4,27 @@
 ;; Include general recurring info (holidays, etc.) in Agenda
 (setq org-agenda-include-diary t)
 
-;; Some capture templates
+;; Capture templates
 (setq org-capture-templates
       '(("t" "Add a task to the TODO list." entry
-         (file "~/documents/tasks.org")
+         (file+headline "~/documents/agenda.org" "Tasks")
          "* TODO [#A] %?
 SCHEDULED: %t DEADLINE: %t")
         ("a" "Add an upcoming date to the calendar." entry
-         (file "~/documents/dates.org")
-         "* %? %t")))
+         (file+headline "~/documents/agenda.org" "Calendar")
+         "* %? %t")
+        ("s" "Add an entry to the \"Some Day\" category." entry
+         (file+headline "~/documents/agenda.org" "Some Day")
+         "* %?")))
 
 ;; Default task sequence
 (setq org-todo-keywords
       '((sequence "TODO" "IN-PROGRESS" "WAITING" "|" "DONE" "CANCELED")))
+
+;; Set priority range from A to C with default A
+(setq org-highest-priority ?A)
+(setq org-lowest-priority ?C)
+(setq org-default-priority ?A)
 
 ;; Set colors for priorities
 (setq org-priority-faces '((?A . (:foreground "#F0DFAF" :weight bold))
