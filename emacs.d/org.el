@@ -8,7 +8,7 @@
 (setq org-capture-templates
       '(("t" "Add a task to the TODO list." entry
          (file+headline "~/documents/agenda.org" "Tasks")
-         "* TODO [#A] %?
+         "* TODO %?
 SCHEDULED: %t DEADLINE: %t")
         ("a" "Add an upcoming date to the calendar." entry
          (file+headline "~/documents/agenda.org" "Calendar")
@@ -19,7 +19,7 @@ SCHEDULED: %t DEADLINE: %t")
 
 ;; Default task sequence
 (setq org-todo-keywords
-      '((sequence "TODO" "IN-PROGRESS" "WAITING" "|" "DONE" "CANCELED")))
+      '((sequence "TODO" "|" "DONE" "CANCELED")))
 
 ;; Set priority range from A to C with default A
 (setq org-highest-priority ?A)
