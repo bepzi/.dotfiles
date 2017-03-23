@@ -33,4 +33,10 @@ BROWSER=$(which firefox || which chromium)
 EDITOR=$(which emacs || which nvim || which vim || which nano)
 VISUAL="$EDITOR"; export VISUAL
 
-[ -f "$HOME/bin/bash-powerline.sh" ] && . "$HOME/bin/bash-powerline.sh"
+# [ -f "$HOME/bin/bash-powerline.sh" ] && . "$HOME/bin/bash-powerline.sh"
+
+ps1() {
+    PS1="$(contrail -e $? -c $HOME/documents/config.toml) "
+}
+
+PROMPT_COMMAND="ps1; $PROMPT_COMMAND"
