@@ -1,0 +1,21 @@
+[global]
+modules = ["directory", "git", "prompt"]
+# separator = ""
+
+[modules.directory]
+max_depth = 3
+background = "bright_blue"
+# foreground = "black"
+hide_followed_symlinks = true
+
+[modules.exit_code]
+# bg_success = "bright_black"
+
+[modules.git]
+background = "bright_cyan"
+# foreground = "black"
+# show_diff_stats = true
+
+[modules.prompt]
+# bg_success = "bright_black"
+style = "bold"

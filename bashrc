@@ -36,7 +36,7 @@ VISUAL="$EDITOR"; export VISUAL
 # [ -f "$HOME/bin/bash-powerline.sh" ] && . "$HOME/bin/bash-powerline.sh"
 
 ps1() {
-    PS1="$(contrail -e $? -c $HOME/documents/config.toml) "
+    PS1="$(contrail -e $? -c $HOME/.config/contrail.toml) "
 }
 
 PROMPT_COMMAND="ps1; $PROMPT_COMMAND"

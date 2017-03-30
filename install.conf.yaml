@@ -20,6 +20,7 @@
     ~/.config/twmn: 'config/twmn'
     ~/.config/polybar: 'config/polybar'
     ~/.config/compton.conf: 'config/compton.conf'
+    ~/.config/contrail.toml: 'config/contrail.toml'
     ~/.emacs:
     ~/.emacs.d:
     ~/.gitignore_global:
