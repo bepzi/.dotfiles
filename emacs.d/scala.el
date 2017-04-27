@@ -13,6 +13,8 @@
 
 ;; Make it so that saving files while in Scala-mode
 ;; C-c C-c compiles/tests the code
-(defun rust-mode-setup ()
+(defun scala-mode-setup ()
   (setq compile-command "sbt test && sbt compile")
   (define-key (current-local-map) "\C-c\C-c" 'compile))
+
+(add-hook 'scala-mode-hook 'scala-mode-setup)

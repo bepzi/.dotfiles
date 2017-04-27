@@ -20,6 +20,7 @@ shopt -s checkwinsize
 
 # This hasn't been necessary for over a decade
 unset MAILCHECK
+unset MAIL
 
 # Don't put duplicate lines or lines starting with a space in the
 # history.
