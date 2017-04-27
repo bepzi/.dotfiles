@@ -6,7 +6,7 @@
  '(inhibit-startup-screen t)
  '(package-selected-packages
    (quote
-    (use-package toml-mode tidy racer company cargo rust-mode powerline better-defaults))))
+    (ensime use-package toml-mode tidy racer company cargo rust-mode powerline better-defaults))))
 (custom-set-faces
  ;; custom-set-faces was added by Custom.
  ;; If you edit it by hand, you could mess it up, so be careful.
@@ -34,3 +34,4 @@
 (load-user-file "org.el")
 (load-user-file "company.el")
 (load-user-file "rust.el")
+(load-user-file "scala.el")
