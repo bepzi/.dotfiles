@@ -1,21 +1,29 @@
 [global]
-modules = ["directory", "git", "prompt"]
-# separator = ""
+modules = ["cwd", "git", "prompt"]
 
-[modules.directory]
-max_depth = 3
-background = "bright_blue"
-# foreground = "black"
-hide_followed_symlinks = true
+[modules]
 
-[modules.exit_code]
-# bg_success = "bright_black"
+    [modules.cwd]
 
-[modules.git]
-background = "bright_cyan"
-# foreground = "black"
-# show_diff_stats = true
+        [modules.cwd.style]
+        foreground = 15
+        background = "blue"
+        text_properties = "italic"
 
-[modules.prompt]
-# bg_success = "bright_black"
-style = "bold"
+    [modules.git]
+
+        [modules.git.style]
+        foreground = 15
+        background = "cyan"
+
+    [modules.prompt]
+
+        [modules.prompt.style_success]
+        foreground = 15
+        background = "green"
+        text_properties = "bold"
+
+        [modules.prompt.style_error]
+        foreground = 15
+        background = "red"
+        text_properties = "bold"
