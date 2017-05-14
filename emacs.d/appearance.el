@@ -4,8 +4,10 @@
 ;; Uncomment if you are unable to see your selections when highlighting text
 ;; '(region ((t (:background "#d3d3d3" :distant-foreground "gtk_selection_fg_color"))))
 
+(use-package powerline
+  :ensure t)
+
 ;; Start Powerline
-(require 'powerline)
 (powerline-default-theme)
 
 ;; Enable line numbers
