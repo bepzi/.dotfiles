@@ -1,6 +1,9 @@
 ;; ~/.emacs.d/behavior.el
 ;; Configuration settings for how Emacs should behave
 
+(use-package better-defaults
+  :ensure t)
+
 ;; Always follow symlinks, do not prompt
 (setq vc-follow-symlinks t)
 
