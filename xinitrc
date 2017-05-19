@@ -31,4 +31,8 @@ if [ -d /etc/X11/xinit/xinitrc.d ] ; then
  unset f
 fi
 
+# Reapply theme
+wal -i "$(< "${HOME}/.cache/wal/wal")"
+
+# Start window manager
 exec i3

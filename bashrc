@@ -43,3 +43,6 @@ ps1() {
 }
 
 PROMPT_COMMAND="ps1; $PROMPT_COMMAND"
+
+# Import colorscheme from 'wal'
+(wal -r &)

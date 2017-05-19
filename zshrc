@@ -1,3 +1,5 @@
+#!/bin/zsh
+
 #
 # ~/.zshrc
 #
@@ -7,3 +9,6 @@
 precmd() {
     PS1="$(contrail -e $? -z -c $HOME/documents/config.toml) "
 }
+
+# Import colorscheme from 'wal'
+(wal -r &)
