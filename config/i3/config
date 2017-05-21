@@ -2,7 +2,8 @@
 #
 # Please see http://i3wm.org/docs/userguide.html for a complete reference!
 
-exec --no-startup-id wal -t -i "$(< "${HOME}/.cache/wal/wal")"
+# Set the color scheme and bar
+exec_always --no-startup-id wal -t -i "$(< "${HOME}/.cache/wal/wal")" -o ~/bin/scripts/wal-set
 
 # Variable declarations
 set $mod Mod4
@@ -177,8 +178,6 @@ client.background       $bg
 
 # Compositor
 exec --no-startup-id compton -b --config ~/.config/compton.conf
-
-exec_always --no-startup-id ~/bin/launch_polybar.sh
 
 exec --no-startup-id xbacklight -set 70
 
