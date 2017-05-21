@@ -6,7 +6,7 @@
       relink: true
 
 # Directories to be checked for broken symlinks
-- clean: ['~', '~/.config']
+- clean: ['~', '~/.config', '~/bin']
 
 # <destination>: <source (relative to root dotfiles directory)>
 - link:
