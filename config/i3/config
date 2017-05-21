@@ -2,7 +2,7 @@
 #
 # Please see http://i3wm.org/docs/userguide.html for a complete reference!
 
-# Set the color scheme and bar
+# Set the color scheme and bar, start notification daemon
 exec_always --no-startup-id wal -t -i "$(< "${HOME}/.cache/wal/wal")" -o ~/bin/scripts/wal-set
 
 # Variable declarations
