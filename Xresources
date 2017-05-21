@@ -1,3 +1,12 @@
+! macOS-like fonts (also in ~/.config/fontconfig/fonts.conf)
+Xft.dpi: 96
+Xft.antialias: true      
+Xft.hinting: false
+Xft.rgba: rgb 
+Xft.autohint: false
+Xft.hintstyle: hintslight
+Xft.lcdfilter: lcddefault
+
 ! Settings for rofi
 rofi.color-enabled: true
 rofi.separator-style: none
