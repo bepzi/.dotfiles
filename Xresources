@@ -1,1 +1,3 @@
-
+! Settings for rofi
+rofi.color-enabled: true
+rofi.separator-style: none
