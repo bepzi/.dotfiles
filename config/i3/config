@@ -173,7 +173,7 @@ client.background       $bg
 # }
 
 # Start the notification daemon (twmnd-git)
-exec --no-startup-id twmnd
+# exec --no-startup-id twmnd
 
 # Compositor
 exec --no-startup-id compton -b --config ~/.config/compton.conf
