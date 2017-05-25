@@ -6,7 +6,7 @@
  '(inhibit-startup-screen t)
  '(package-selected-packages
    (quote
-    (ensime use-package toml-mode tidy racer company cargo rust-mode powerline better-defaults))))
+    (flycheck flycheck-rust ensime use-package toml-mode tidy racer company cargo rust-mode powerline better-defaults))))
 (custom-set-faces
  ;; custom-set-faces was added by Custom.
  ;; If you edit it by hand, you could mess it up, so be careful.
@@ -27,6 +27,9 @@
   (interactive "f")
   "Load a file in current user's configuration directory"
   (load-file (expand-file-name file "~/.emacs.d/")))
+
+;; (use-package flycheck
+;;   :ensure t)
 
 ;; Load individual configuration files
 (load-user-file "behavior.el")
