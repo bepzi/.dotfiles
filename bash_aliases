@@ -4,6 +4,9 @@
 
 alias ls='ls --color=auto'
 
+# Prefer exa to ls if it's installed
+command -v exa >/dev/null 2>&1 && alias ls='exa'
+
 alias diff='diff --color=auto'
 
 alias grep='grep --color=auto'
