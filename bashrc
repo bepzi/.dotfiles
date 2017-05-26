@@ -30,19 +30,24 @@ HISTCONTROL=ignoreboth
 
 [ -f "$HOME/.bash_aliases" ] && . "$HOME/.bash_aliases"
 
-PS1='[\u@\h \W]\$ '
-
 BROWSER=$(which firefox || which chromium)
 EDITOR=$(which emacs || which nvim || which vim || which nano)
 VISUAL="$EDITOR"; export VISUAL
 
-# [ -f "$HOME/bin/bash-powerline.sh" ] && . "$HOME/bin/bash-powerline.sh"
+# Shell prompt - use contrail and bash-powerline where possible
+if command -v contrail >/dev/null 2>&1; then    
+    ps1() {
+        PS1="$(contrail -e $? -c $HOME/.config/contrail.toml) "
+    }
 
-ps1() {
-    PS1="$(contrail -e $? -c $HOME/.config/contrail.toml) "
-}
+    PROMPT_COMMAND="ps1; $PROMPT_COMMAND"
+else
+    PS1='[\u@\h \W]\$ '
+    [ -f "$HOME/bin/bash-powerline.sh" ] && . "$HOME/bin/bash-powerline.sh"
+fi
 
-PROMPT_COMMAND="ps1; $PROMPT_COMMAND"
+# Import colorscheme from wal, if installed
+if command -v wal >/dev/null 2>&1; then
+    (wal -t -r &)
+fi
 
-# Import colorscheme from 'wal'
-(wal -t -r &)

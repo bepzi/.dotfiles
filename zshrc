@@ -6,9 +6,14 @@
 
 [[ -f ~/.bash_aliases ]] && emulate sh -c 'source ~/.bash_aliases'
 
-precmd() {
-    PS1="$(contrail -e $? -z -c $HOME/documents/config.toml) "
-}
+# Shell prompt - use contrail and bash-powerline where possible
+if command -v contrail >/dev/null 2>&1; then    
+    precmd() {
+        PS1="$(contrail --shell "zsh" -e $? -c $HOME/.config/contrail.toml) "
+    }
+fi
 
-# Import colorscheme from 'wal'
-(wal -r &)
+# Import colorscheme from wal, if installed
+if command -v wal >/dev/null 2>&1; then
+    (wal -t -r &)
+fi
