@@ -6,7 +6,7 @@
 
 [[ -f ~/.bash_aliases ]] && emulate sh -c 'source ~/.bash_aliases'
 
-# Shell prompt - use contrail and bash-powerline where possible
+# Shell prompt - use contrail where possible
 if command -v contrail >/dev/null 2>&1; then    
     precmd() {
         PS1="$(contrail --shell "zsh" -e $? -c $HOME/.config/contrail.toml) "

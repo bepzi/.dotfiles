@@ -30,9 +30,32 @@ HISTCONTROL=ignoreboth
 
 [ -f "$HOME/.bash_aliases" ] && . "$HOME/.bash_aliases"
 
-BROWSER=$(which firefox || which chromium)
-EDITOR=$(which emacs || which nvim || which vim || which nano)
-VISUAL="$EDITOR"; export VISUAL
+if command -v firefox >/dev/null 2>&1; then
+    BROWSER="$(which firefox)"
+elif command -v chromium >/dev/null 2>&1; then
+    BROWSER="$(which chromium)"
+else
+    echo "Neither Firefox nor Chromium are installed on this system! BROWSER will not be explicitly set!"
+fi
+
+if command -v emacs >/dev/null 2>&1; then
+    EDITOR="$(which emacs) -nw"
+elif command -v nvim >/dev/null 2>&1; then
+    EDITOR="$(which nvim)"
+elif command -v vim >/dev/null 2>&1; then
+    EDITOR="$(which vim)"
+elif command -v nano >/dev/null 2>&1; then
+    EDITOR="$(which nano)"
+else
+    echo "No reasonable text editor is installed on this system! EDITOR will not be explicitly set!"
+fi
+
+# Emacs has to be treated a little differently here
+if command -v emacs >/dev/null 2>&1; then
+    VISUAL="$(which emacs)"; export VISUAL
+else
+    VISUAL="$EDITOR"; export VISUAL
+fi
 
 # Shell prompt - use contrail and bash-powerline where possible
 if command -v contrail >/dev/null 2>&1; then    
