@@ -1,4 +1,5 @@
 #!/bin/bash
+
 #
 # ~/.bash_aliases
 #
@@ -20,11 +21,13 @@ alias vdir='vdir --color=auto'
 alias shutdown='sync && shutdown -h now'
 alias reboot='sync && reboot'
 
-alias ga='git add .'
-alias gc='git commit -m'
-alias gp='git push'
-# Jump to the git root
-alias groot='cd "$(git rev-parse --show-toplevel)"'
+if command -v git >/dev/null 2>&1; then
+    alias ga='git add .'
+    alias gc='git commit -m'
+    alias gp='git push'
+    # Jump to the git repository root
+    alias groot='cd "$(git rev-parse --show-toplevel)"'
+fi
 
 alias mkdir='mkdir -p'
 
