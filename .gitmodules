@@ -7,3 +7,6 @@
 [submodule "bash-powerline"]
 	path = bash-powerline
 	url = https://github.com/riobard/bash-powerline
+[submodule "emacs.d/xresources-theme"]
+	path = emacs.d/xresources-theme
+	url = https://github.com/cqql/xresources-theme

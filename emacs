@@ -38,3 +38,5 @@
 (load-user-file "company.el")
 (load-user-file "rust.el")
 (load-user-file "scala.el")
+
+(load-user-file "xresources-theme/xresources-theme.el")
