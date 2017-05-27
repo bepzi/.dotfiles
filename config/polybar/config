@@ -87,7 +87,7 @@ label-maxlen = 40
 type = internal/date
 ; Seconds to sleep between updates
 interval = 5.0
-date = %Y-%m-%d  %l:%M %p
+date = %l:%M %p (%Y-%m-%d) 
 
 [module/battery]
 type = internal/battery
