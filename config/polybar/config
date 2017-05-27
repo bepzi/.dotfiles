@@ -20,7 +20,7 @@ foreground = ${colors.fg}
 ;   font-3 = FontAwesome:size=10
 ; See the Fonts wiki page for more details
 font-0 = monospace:size=11;2
-font-1 = FontAwesome:size=11
+font-1 = FontAwesome:size=11;2
 
 ; line-size = 2
 ; line-color = ${colors.black}
