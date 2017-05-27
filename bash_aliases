@@ -23,6 +23,8 @@ alias reboot='sync && reboot'
 alias ga='git add .'
 alias gc='git commit -m'
 alias gp='git push'
+# Jump to the git root
+alias groot='cd "$(git rev-parse --show-toplevel)"'
 
 alias mkdir='mkdir -p'
 
