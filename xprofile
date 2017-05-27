@@ -9,22 +9,26 @@
 # For Ruby stuff:
 [ -d "/usr/lib/ruby/gems/2.3.0" ] && export GEM_PATH="$GEM_PATH:/usr/lib/ruby/gems/2.3.0"
 
-# Fix font rendering in Java applications, but make it so that "Picked
-# up _JAVA_OPTIONS" isn't shown
-_SILENT_JAVA_OPTIONS='-Dawt.useSystemAAFontSettings=on -Dswing.aatext=true'
-unset _JAVA_OPTIONS
-alias java='java "$_SILENT_JAVA_OPTIONS"'
+if command -v java >/dev/null 2>&1; then
+    # Fix font rendering in Java applications, but make it so that
+    # "Picked up _JAVA_OPTIONS" isn't shown
+    _SILENT_JAVA_OPTIONS='-Dawt.useSystemAAFontSettings=on -Dswing.aatext=true'
+    unset _JAVA_OPTIONS
+    alias java='java "$_SILENT_JAVA_OPTIONS"'
 
-# For ENSIME, tool for helping with JVM languages
-[ -f "/usr/lib/jvm/java-8-openjdk/lib/tools.jar" ] && export JDK_HOME="/usr/lib/jvm/java-8-openjdk"
-[ -f "/usr/lib/jvm/java-7-openjdk/lib/tools.jar" ] && export JDK_HOME="/usr/lib/jvm/java-7-openjdk"
-[ -d "/usr/lib/jvm/default" ] && export JAVA_HOME="/usr/lib/jvm/default"
+    # For ENSIME, tool for helping with JVM languages
+    [ -f "/usr/lib/jvm/java-7-openjdk/lib/tools.jar" ] && export JDK_HOME="/usr/lib/jvm/java-7-openjdk"
+    [ -f "/usr/lib/jvm/java-8-openjdk/lib/tools.jar" ] && export JDK_HOME="/usr/lib/jvm/java-8-openjdk"
+    [ -d "/usr/lib/jvm/default" ] && export JAVA_HOME="/usr/lib/jvm/default"
+fi
 
 # For Racer-Rust, the location of the Rust source code
-if [ -d "$HOME/.rustup/toolchains/stable-x86_64-unknown-linux-gnu/lib/rustlib/src/rust/src" ]; then
-    export RUST_SRC_PATH="$HOME/.rustup/toolchains/stable-x86_64-unknown-linux-gnu/lib/rustlib/src/rust/src"
-elif [ -d "$HOME/.rustup/toolchains/nightly-x86_64-unknown-linux-gnu/lib/rustlib/src/rust/src" ]; then
-    export RUST_SRC_PATH="$HOME/.rustup/toolchains/nightly-x86_64-unknown-linux-gnu/lib/rustlib/src/rust/src"
+if command -v cargo >/dev/null 2>&1; then
+    if [ -d "$HOME/.rustup/toolchains/stable-x86_64-unknown-linux-gnu/lib/rustlib/src/rust/src" ]; then
+        export RUST_SRC_PATH="$HOME/.rustup/toolchains/stable-x86_64-unknown-linux-gnu/lib/rustlib/src/rust/src"
+    elif [ -d "$HOME/.rustup/toolchains/nightly-x86_64-unknown-linux-gnu/lib/rustlib/src/rust/src" ]; then
+        export RUST_SRC_PATH="$HOME/.rustup/toolchains/nightly-x86_64-unknown-linux-gnu/lib/rustlib/src/rust/src"
+    fi
 fi
 
 # Start the gnome-keyring-daemon, if installed
