@@ -1,6 +1,10 @@
 ;; ~/.emacs.d/org.el
 ;; Configuration for Emacs Org-mode
 
+;; We might as well add support for Markdown
+(use-package markdown-mode
+  :ensure t)
+
 ;; Include general recurring info (holidays, etc.) in Agenda
 (setq org-agenda-include-diary t)
 
