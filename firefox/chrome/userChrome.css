@@ -7,13 +7,13 @@
 }
 
 /* The currently selected tab */
-.tabbrowser-tab[selected=true] {
+.tabbrowser-tab[selected] {
     background-color: var(--color2) !important;
     color: var(--color7) !important;
 }
 
 /* When hovering over an available tab */
-.tabbrowser-tab[beforeselected=true]:hover {
+.tabbrowser-tab:not([selected]):hover {
     background-color: var(--color7) !important;
     color: var(--color0) !important;
 }
@@ -21,12 +21,6 @@
 /* The section right below the tabs, contains the URL entry and search
    bar, bookmarks, etc. */
 #nav-bar {
-    background-color: var(--color7) !important;
-    color: var(--color0) !important;
-}
-
-/* When hovering over the button to create a new tab */
-#new-tab-button {
     background-color: var(--color7) !important;
     color: var(--color0) !important;
 }
