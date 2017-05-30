@@ -173,22 +173,18 @@ client.background       $bg
 #         status_command i3status
 # }
 
-# Start the notification daemon (twmnd-git)
-# exec --no-startup-id twmnd
-
 # Compositor
 exec --no-startup-id compton -b --config ~/.config/compton.conf
 
-exec --no-startup-id xbacklight -set 70
+exec --no-startup-id xbacklight -set 100
 
 # Start the polkit authenticator
 exec --no-startup-id /usr/lib/polkit-gnome/polkit-gnome-authentication-agent-1
 
 # Start the file manager in daemon mode
-exec --no-startup-id thunar --daemon
+exec --no-startup-id pcmanfm -d
 
 # Start default programs
-exec --no-startup-id syncthing-gtk -m
 exec --no-startup-id nm-applet
 exec --no-startup-id volumeicon
 
