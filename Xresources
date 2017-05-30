@@ -1,4 +1,4 @@
-! Fallback colors (in case wal isn't installed)
+! Fallback colors (in case wal not installed)
 *color0:	#241535
 *color1:	#DD2825
 *color10:	#E15A16
@@ -28,15 +28,6 @@ rofi.color-active:	argb:FF241535, #F4C587, #241535, #E15A16, #241535
 rofi.color-normal:	argb:FF241535, #F4C587, #241535, #E15A16, #241535
 rofi.color-urgent:	argb:FF241535, #DD2825, #241535, #DD2825, #F4C587
 rofi.color-window:	argb:FF241535, #241535, #E15A16
-
-! macOS-like fonts (also in ~/.config/fontconfig/fonts.conf)
-Xft.dpi: 96
-Xft.antialias: true      
-Xft.hinting: false
-Xft.rgba: rgb 
-Xft.autohint: false
-Xft.hintstyle: hintslight
-Xft.lcdfilter: lcddefault
 
 ! Settings for rofi
 rofi.color-enabled: true
