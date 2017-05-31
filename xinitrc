@@ -31,6 +31,10 @@ if [ -d /etc/X11/xinit/xinitrc.d ] ; then
     unset f
 fi
 
+# Source ~/.xprofile so that PATH, EDITOR, etc. are set
+[ -f /etc/xprofile ] && . /etc/xprofile
+[ -f ~/.xprofile ] && . ~/.xprofile
+
 # Reapply theme with wal, if installed
 if command -v wal >/dev/null 2>&1; then
     wal -i "$(< "${HOME}/.cache/wal/wal")"
