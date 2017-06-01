@@ -103,11 +103,11 @@ Install `xorg-server`, `xorg-xinit`, `xlogin-git`, and
 `xorg-xbacklight` (optional). Also install: `gnome-keyring`, for
 managing Wi-Fi passwords and whatnot.
 
-I use `xlogin` to automatically source my `~/.xinitrc` and log in,
-but if that's not something you want, don't install `xlogin` and
-install the display manager of your choice. *Otherwise*, do `sudo
-systemctl enable xlogin@yourusernamegoeshere.service`. Just make sure
-whatever you use sources `~/.xinitrc`, failing that, `~/.xprofile`.
+I use `xlogin` to automatically source my `~/.xinitrc` and log in, but
+if that's not something you want, don't install `xlogin` and install
+the display manager of your choice. *Otherwise*, do `sudo systemctl
+enable xlogin@yourusernamegoeshere.service`. Just make sure whatever
+you use sources `~/.xinitrc`, and failing that, `~/.xprofile`.
 
 My config files are set up to use `i3`, a tiling window
 manager. Install `i3-gaps`, `polybar`, `rofi-git`, and
@@ -128,29 +128,21 @@ git submodule update --init --recursive && \
 
 When you run `./install`, it's certain that it'll complain about files
 already existing (like `~/.bash_profile`, `~/.bashrc`, etc.) Delete
-all the conflicts, and run `./install` again.
+all conflicts, and run `./install` again.
 
 **Important note:** I type in
 the [Dvorak](https://en.wikipedia.org/wiki/Dvorak_Simplified_Keyboard)
 keyboard layout. You probably do not. Comment out this line near the
-bottom of `~/.xprofile`:
+bottom of `~/.xinitrc`:
 
 ```
 setxkbmap dvorak
 ```
 
-And in `~/.xinitrc`:
-
-```
-setxkbmap dvorak &
-```
-
-(I do it twice because some systems only source one or the other.)
-
 Now when you restart, you should have a working (if bland) i3 session,
 bar, program launcher, notification daemon, and some other goodies.
 
-7. Install some neat programs
+7. Install some neat programs, and CONFIGURATION
 
 First, let's fix those colors, and set a wallpaper. Install `feh`,
 `scrot`, `neofetch`, `wal-git`, `lxappearance`, and possibly `arandr`
@@ -161,11 +153,32 @@ in hand, run:
 wal -t -o ~/bin/scripts/wal-set -i pathtowallpaperhere
 ```
 
-We need the `-t` flag because we're using termite as the terminal
+We need the `-t` flag because we're using `termite` as the terminal
 emulator.
 
+Install `paper-icon-theme-git` and `osx-arc-darker`. Use
+`lxappearance` to set the GTK and Icon themes to these.
+
+Install `fonts-meta-base`, `fonts-meta-extended-lt`,
+`adobe-source-code-pro-fonts`, `adobe-source-sans-pro-fonts`, and
+`adobe-source-serif-pro-fonts`.
+
+Follow
+[this guide](https://gist.github.com/cryzed/e002e7057435f02cc7894b9e748c5671). Skip
+the instructions about removing Infinality packages, we never
+installed them, and you don't need to create an
+`/etc/fonts/local.conf`. My font configuration is already set up to
+provide an Infinality-like experience. In particular, you just need to
+do:
+
+```bash
+ln -s /etc/fonts/conf.avail/11-lcdfilter-default.conf /etc/fonts/conf.d
+ln -s /etc/fonts/conf.avail/10-sub-pixel-rgb.conf /etc/fonts/conf.d
+ln -s /etc/fonts/conf.avail/30-infinality-aliases.conf /etc/fonts/conf.d
+```
+
 Now open Emacs. The first time you run it, it'll complain about
-missing packages - that's O.K. Just do `M-x install-package
+missing packages - that's O.K. Just do `M-x package-install
 use-package`, then restart Emacs. It'll download everything else it
 needs. If you don't
 use [Org-agenda](http://orgmode.org/manual/Agenda-Views.html) (and you
@@ -182,18 +195,145 @@ Install: `firefox`, `vlc`, `qt4`, `audacity`, `gimp`,
 If you do not use `keepassxc` (it's a password manager), don't install
 the PassIFox Firefox extension.
 
-Open Firefox. Go to Preferences, and set the default search engine to
-DuckDuckGo. Disable Search suggestions. While you're at it, delete all
-the other search engines. In the Privacy section, click "manage your
-Do Not Track settings", and always apply Do Not Track. "Use custom
-settings for history". Tick "Always use private browsing mode", and
-set "Accept third-party cookies" to "Never". If it's enabled, disable
-the offer to save passwords in the Security section.
+Open Firefox. Go to **Preferences**: in the **Search** tab, set the
+default search engine to DuckDuckGo. Disable Search suggestions. While
+you're at it, delete all the other search engines. In the **Privacy**
+section, click "manage your Do Not Track settings", and always apply
+Do Not Track. "Use custom settings for history". Tick "Always use
+private browsing mode", and set "Accept third-party cookies" to
+"Never". If it's enabled, disable the offer to save passwords in the
+Security section.
 
-Go to Add-ons. Install:
+Go to **Add-ons**. Install:
 
- - [uBlock Origin](https://github.com/gorhill/uBlock)
- - [HTTPS Everywhere](https://www.eff.org/https-everywhere)
- - [NoScript](https://noscript.net/)
- - [Reddit Enhancement Suite](https://redditenhancementsuite.com/)
- - [PassIFox](https://github.com/pfn/passifox)
+ - [uBlock Origin](https://github.com/gorhill/uBlock): FOSS and
+   lightweight ad-blocker
+   * Under **Privacy**, tick "Prevent WebRTC from leaking local IP
+    addresses" 
+   * In the **3rd-party filters** tab, under **Ads**, enable
+     "Anti-Adblock Killer | Reek"
+ - [HTTPS Everywhere](https://www.eff.org/https-everywhere): Force
+   sites that offer HTTPS to use HTTPS instead of HTTP
+   * Disable sending certificates to the Observatory
+ - [NoScript](https://noscript.net/): Block JavaScript, Flash, etc by default
+   * In the **General** tab, tick "Temporarily allow top-level sites
+     by default", and select "Base 2nd level Domains
+     (noscript.net)". Tick "Automatically reload affected pages when
+     permissions change", and also "Reload the current tab only"
+   * In the **Notifications** tab, untick "Show message about blocked
+     scripts" and "Place message at the bottom". Also untick "Display
+     the release notes on updates"
+ - [Reddit Enhancement Suite](https://redditenhancementsuite.com/):
+   Make browsing reddit.com more enjoyable
+ - [PassIFox](https://github.com/pfn/passifox): Communicates with
+   `keepassxc`, alternative to the built in password manager
+ 
+Go to **Add-ons**. In the **Appearance** tab, enable the "Compact
+Light" theme.
+ 
+Configure KeepassXC to connect to PassIFox.
+
+Open GIMP. In the **Windows** tab, tick "Single-Window Mode".
+
+Install `openvpn` and `openvpn-update-resolv-conf-git` if you use
+OpenVPN. Manually edit `/etc/openvpn/update-resolv-conf` (tip: use
+`sudo emacs -nw`) and replace the assignment to the `RESOLVCONF`
+variable with `/usr/bin/resolvconf`. It should look like this:
+
+```
+# Bunch of comments
+export PATH=$PATH:/......
+RESOLVCONF=/usr/bin/resolvconf
+```
+
+Install `gvfs`, `gvfs-mtp`, `gamin`, `inotify-tools`, and
+`pcmanfm-gtk3`.
+
+Install `steam`, `steam-native-runtime`, and `steam-fonts` if you use
+Steam.
+
+*Bonus:* Install a replacement for `ls`:
+
+Install `rustup`. Then do `rustup update stable && rustup default
+stable && rustup component add rust-src`. This installs
+the [Rust](https://www.rust-lang.org/en-US/) compiler, source code,
+and sets the default toolchain to the latest stable version.
+
+Install `exa-git`.
+
+Clone
+my
+[aur-pkgbuilds](https://github.com/ben01189998819991197253/aur-pkgbuilds) repository,
+and install `contrail` with `makepkg -sri`. The config file should
+already be installed to `~/.config/contrail.toml`.
+
+### Dependencies
+
+This is a list of all the packages I install on my system by default,
+and what they're for.
+
+#### Required
+
+The system is pretty much unusable without these, or the dotfiles
+behave strangely without them.
+
+ - `networkmanager`, `network-manager-applet` -- Manages Wi-Fi and
+   Ethernet connections. The latter provides `nm-applet`, which
+   appears in my bar.
+ - `git`, `openssh` -- For working with git repositories
+ - `pulseaudio`, `pulseaudio-alsa` -- For being able to hear stuff
+ - `i3-gaps` -- Fork of the [i3](https://i3wm.org/) window manager. I don't actually
+   use gaps, but you can if you like.
+ - `polybar` -- Fast, configurable status bar that I use to replace
+   `i3bar`.
+ - `rofi-git` -- Program launcher
+ - `termite` -- Terminal emulator
+ - `gvfs`, `gvfs-mtp`, `gamin`, `inotify-tools` -- Lets file managers
+   do neat stuff like make Recycle Bins, and watch files without
+   polling for changes
+ - `compton` -- Compositor, required for things like shadows,
+   transparency, transitions when changing windows, etc.
+
+#### Recommended
+
+You probably also want these installed, too.
+
+ - `emacs` -- Extensible, customizable, frustrating ~~operating system~~
+   text editor
+ - `pcmanfm-gtk3` -- Lightweight file manager
+ - `feh` -- Background-setter, optional dependency of `wal`
+ - `wal-git` -- Generates colorschemes from images (the `wal-set`
+   script reloads `polybar` and `dunst` to use the new colors)
+ - `neofetch` -- Displays system information in your terminal
+ - `scrot` -- Takes screenshots
+ - `lxappearance` -- Tool for setting GTK/Icon themes
+ - `arandr` -- Tool for making shell commands that fix your monitor
+   setup
+ - `volumeicon` -- Provides an icon to control the volume. Shows up in
+   the bar next to the NetworkManager applet.
+ - `dunst-git` -- Notification daemon. Provides notifications when
+   stuff happens.
+ - `firefox` -- Web browser that supports lots of useful
+   extensions. My dotfiles come with custom CSS that makes it match
+   the colorscheme output by `wal`, although you have to enable the
+   "Compact Light" theme (as detailed above).
+
+#### Optional
+
+Completely personal preference. My dotfiles may contain references to
+these programs, but they should work without them installed.
+
+ - `gimp`, `gimp-font-rendering-fix` -- GNU Image Manipulation
+   Program. Excellent alternative to Photoshop.
+ - `krita` -- Digital painting program
+ - `vlc`, `qt4` -- Excellent multimedia player. `qt4` is needed for
+   the GUI.
+ - `keepassxc` -- Secure password manager that integrates nicely with
+   Firefox
+ - `paper-icon-theme-git`, `osx-arc-darker` -- Nice, flat GTK and icon theme
+ - `steam`, `steam-native-runtime`, `steam-fonts` -- Steam is a
+   digital distribution platform for PC games
+ - `libreoffice-fresh` -- Excellent alternative to Microsoft Office suite
+ - `rustup` -- Manages Rust toolchains
+ - `exa-git` -- Fast, secure, and cool-looking alternative to `ls`
+ - `contrail` -- Program I wrote to serve as a shell prompter
