@@ -1,5 +1,7 @@
 # dotfiles
 
+![My desktop](screenshots/rice_06_01_2017.png)
+
 My personal configuration files.
 
 Powered by [Dotbot](https://github.com/anishathalye/dotbot).
