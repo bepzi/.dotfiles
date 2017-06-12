@@ -36,4 +36,4 @@
 - shell:
   - [git submodule update --init --recursive, Installing submodules]
   - [git config --global core.excludesfile ~/.gitignore_global, Updating global gitignore]
-  - [. ~/bin/scripts/_install_firefox_css.sh $(pwd)/firefox/chrome, Installing Firefox CSS]
+  - [. $(pwd)/util/_install_firefox_css.sh $(pwd)/firefox/chrome, Installing Firefox CSS]
