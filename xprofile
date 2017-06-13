@@ -29,6 +29,9 @@ if command -v cargo >/dev/null 2>&1; then
     elif [ -d "$HOME/.rustup/toolchains/nightly-x86_64-unknown-linux-gnu/lib/rustlib/src/rust/src" ]; then
         export RUST_SRC_PATH="$HOME/.rustup/toolchains/nightly-x86_64-unknown-linux-gnu/lib/rustlib/src/rust/src"
     fi
+
+    # Enable incremental compilation, for faster compile times
+    export CARGO_INCREMENTAL="1"
 fi
 
 # Start the gnome-keyring-daemon, if installed
