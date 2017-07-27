@@ -21,6 +21,7 @@
     ~/.config/polybar: 'config/polybar'
     ~/.config/compton.conf: 'config/compton.conf'
     ~/.config/contrail.toml: 'config/contrail.toml'
+    ~/.config/git-completion.bash: 'config/git-completion.bash'
     ~/.config/dunst: 'config/dunst'
     ~/.config/fontconfig: 'config/fontconfig'
     ~/.emacs:

@@ -57,6 +57,9 @@ else
     VISUAL="$EDITOR"; export VISUAL
 fi
 
+# Enable bash completions with git
+[ -f "$HOME/.config/git-completion.bash" ] && . "$HOME/.config/git-completion.bash"
+
 # Shell prompt - use contrail and bash-powerline where possible
 if command -v contrail >/dev/null 2>&1; then    
     ps1() {
