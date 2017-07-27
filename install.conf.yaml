@@ -37,5 +37,5 @@
 - shell:
   - [git submodule update --init --recursive, Installing submodules]
   - [git config --global core.excludesfile ~/.gitignore_global, Updating global gitignore]
-  - [git config --global pull.rebase true ~/.gitignore_global, Setting misc. git settings]
+  - [git config --global pull.rebase true, Setting misc. git settings]
   - [. $(pwd)/util/_install_firefox_css.sh $(pwd)/firefox/chrome, Installing Firefox CSS]
