@@ -2,9 +2,6 @@
 #
 # Please see http://i3wm.org/docs/userguide.html for a complete reference!
 
-# Set the color scheme and bar, start notification daemon
-exec_always --no-startup-id wal -t -i "$(< "${HOME}/.cache/wal/wal")" -o ~/bin/scripts/wal-set
-
 # Variable declarations
 set $mod Mod4
 
@@ -42,6 +39,9 @@ bindsym $mod+Shift+q kill
 # bindsym $mod+d exec dmenu_run -nb "$fg" -nf "$bg" -sb "$bg" -sf "$fg"
 # bindsym $mod+d exec --no-startup-id i3-dmenu-desktop
 bindsym $mod+d exec --no-startup-id rofi -show drun
+
+# lock the screen
+bindsym $mod+l exec --no-startup-id i3lock
 
 # change focus
 bindsym $mod+$left focus left
@@ -176,7 +176,9 @@ client.background       $bg
 # Compositor
 exec --no-startup-id compton -b --config ~/.config/compton.conf
 
+# Backlight and screen tint
 exec --no-startup-id xbacklight -set 100
+exec --no-startup-id redshift-gtk
 
 # Start the polkit authenticator
 exec --no-startup-id /usr/lib/polkit-gnome/polkit-gnome-authentication-agent-1
@@ -190,3 +192,6 @@ exec --no-startup-id volumeicon
 
 # Open Org-Agenda
 exec --no-startup-id i3-msg 'workspace $ws1; exec emacs --eval "(org-agenda-list)"'
+
+# Set the color scheme and bar, start notification daemon, launch the bar
+exec_always --no-startup-id wal -t -i "$(< "${HOME}/.cache/wal/wal")" -o ~/bin/scripts/wal-set
