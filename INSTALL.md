@@ -133,7 +133,7 @@ all conflicts, and run `./install` again.
 **Important note:** I type in
 the [Dvorak](https://en.wikipedia.org/wiki/Dvorak_Simplified_Keyboard)
 keyboard layout. You probably do not. Comment out this line near the
-bottom of `~/.xinitrc`:
+bottom of `~/.xprofile`:
 
 ```
 setxkbmap dvorak

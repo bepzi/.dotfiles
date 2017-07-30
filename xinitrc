@@ -40,8 +40,5 @@ if command -v wal >/dev/null 2>&1; then
     wal -i "$(< "${HOME}/.cache/wal/wal")"
 fi
 
-# Set the X keyboard layout to dvorak
-setxkbmap dvorak
-
 # Start window manager
 exec i3
