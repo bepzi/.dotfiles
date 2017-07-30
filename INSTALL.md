@@ -30,6 +30,11 @@ Then install `intel-ucode` (if on an Intel-based system), `grub`,
 NTFS-formatted
 drives). [Install GRUB2](https://wiki.archlinux.org/index.php/GRUB#UEFI_systems).
 
+Also install `linux-lts` and `linux-lts-headers` so that you have a
+fallback kernel you can use in case a kernel update prevents you from
+booting. You'll need to configure GRUB to automatically use the normal
+`linux` kernel later, though.
+
 Your system should now be bootable and should automatically connect to
 the Internet.
 
@@ -190,7 +195,7 @@ Now for some essential programs.
 
 Install: `firefox`, `vlc`, `qt4`, `audacity`, `gimp`,
 `gimp-font-rendering-fix`, `krita`, `pulseaudio`, `pulseaudio-alsa`,
-`keepassxc`.
+`polkit-gnome`, and `keepassxc`.
 
 If you do not use `keepassxc` (it's a password manager), don't install
 the PassIFox Firefox extension.
