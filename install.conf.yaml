@@ -23,6 +23,8 @@
     ~/.config/contrail.toml: 'config/contrail.toml'
     ~/.config/git-completion.bash: 'config/git-completion.bash'
     ~/.config/dunst: 'config/dunst'
+    ~/.config/mpd: 'config/mpd'
+    ~/.config/pulse: 'config/pulse'
     ~/.config/fontconfig: 'config/fontconfig'
     ~/.emacs:
     ~/.emacs.d:
