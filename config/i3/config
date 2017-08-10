@@ -41,7 +41,7 @@ bindsym $mod+Shift+q kill
 bindsym $mod+d exec --no-startup-id rofi -show drun
 
 # lock the screen
-bindsym $mod+l exec --no-startup-id i3lock -i "$(< "${HOME}/.cache/wal/wal")"
+bindsym $mod+l exec --no-startup-id i3lock -i "$(< "${HOME}/.cache/wal/wal")" -t
 
 # toggle the keyboard layout Windows-style
 bindsym $mod+Shift+l exec --no-startup-id ~/bin/scripts/toggle_keyboard_layout
