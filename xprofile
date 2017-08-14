@@ -7,7 +7,11 @@
 [ -d "$HOME/.cargo/bin" ] && export PATH="$PATH:$HOME/.cargo/bin"
 
 # For Ruby stuff:
-[ -d "/usr/lib/ruby/gems/2.3.0" ] && export GEM_PATH="$GEM_PATH:/usr/lib/ruby/gems/2.3.0"
+if command -v ruby >/dev/null 2>&1; then
+    GEM_HOME=$(ls | ruby -e 'puts Gem.user_dir')
+    GEM_PATH=$GEM_HOME
+    [ -d "$GEM_PATH" ] && export PATH="$PATH:$GEM_HOME/bin"
+fi
 
 if command -v java >/dev/null 2>&1; then
     # Fix font rendering in Java applications, but make it so that
