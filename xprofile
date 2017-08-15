@@ -8,8 +8,8 @@
 
 # For Ruby stuff:
 if command -v ruby >/dev/null 2>&1; then
-    GEM_HOME=$(ls | ruby -e 'puts Gem.user_dir')
-    GEM_PATH=$GEM_HOME
+    export GEM_HOME=$(ls | ruby -e 'puts Gem.user_dir')
+    export GEM_PATH=$GEM_HOME
     [ -d "$GEM_PATH" ] && export PATH="$PATH:$GEM_HOME/bin"
 fi
 
