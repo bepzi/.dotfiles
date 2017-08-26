@@ -150,7 +150,7 @@ bar, program launcher, notification daemon, and some other goodies.
 7. Install some neat programs, and CONFIGURATION
 
 First, let's fix those colors, and set a wallpaper. Install `feh`,
-`scrot`, `neofetch`, `wal-git`, `lxappearance`, and possibly `arandr`
+`scrot`, `neofetch`, `python-pywal-git`, `lxappearance`, and possibly `arandr`
 if your monitor setup needs tweaking. With your desired wallpaper(s)
 in hand, run:
 
