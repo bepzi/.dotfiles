@@ -6,29 +6,27 @@ should be everything you need for a decent, working Arch Linux
 installation. There's a big list of dependencies (required,
 recommended, and optional) at the bottom of this guide.
 
-1. Install Arch Linux. If you know how you want your system to be
-   set up, disregard these instructions (until about step 4).
+1. Install Arch Linux. If you know how you want your system to be set
+   up, disregard these instructions (until about step 4).
 
-See
-[here](https://wiki.archlinux.org/index.php/Installation_guide). 
+See [here](https://wiki.archlinux.org/index.php/Installation_guide).
 
-Proceed until
-section
+Proceed until section
 [2.2](https://wiki.archlinux.org/index.php/Installation_guide#Install_the_base_packages),
 and instead of running `pacstrap /mnt base`, do `pacstrap /mnt base
-base-devel emacs`. Emacs is optional, of course (Who am I
-kidding? Of course it isn't).
+base-devel emacs`. Emacs is optional, of course (Who am I kidding? Of
+course it isn't).
 
 When you are `chroot`ed into the system and have gotten to the section
-on
-[Network Configuration](https://wiki.archlinux.org/index.php/Installation_guide#Network_configuration),
+on [Network
+Configuration](https://wiki.archlinux.org/index.php/Installation_guide#Network_configuration),
 install `networkmanager` and `network-manager-applet`. Then do
 `systemctl enable NetworkManager.service`.
 
 Then install `intel-ucode` (if on an Intel-based system), `grub`,
 `efibootmgr`, `os-prober`, and `ntfs-3g` (if your system uses
-NTFS-formatted
-drives). [Install GRUB2](https://wiki.archlinux.org/index.php/GRUB#UEFI_systems).
+NTFS-formatted drives). [Install
+GRUB2](https://wiki.archlinux.org/index.php/GRUB#UEFI_systems).
 
 Also install `linux-lts` and `linux-lts-headers` so that you have a
 fallback kernel you can use in case a kernel update prevents you from
@@ -48,7 +46,9 @@ Log out of `root` and log back in as your new user.
 
 3. Some minor configuration
 
-Install `git` and `openssh`.
+Install `git`, `openssh`, and `firefox`. If you're me, you'll need to
+be able to log into your GitHub account so that you can clone this
+repo with SSH.
 
 To get `git` up and running properly, execute in order:
 
@@ -102,20 +102,16 @@ to install the GPG key of the packager for `cower`, which is a
 dependency of `pacaur`, the AUR-helper that we *really* want to
 use. Then do `./saur cower pacaur`. You can delete `saur` if you want.
 
+*Note:* `cower` will eventually be superceded by `auracle`, at which
+point it will not be necessary to install `cower` before installing `pacaur`. 
+
 5. Get the X environment running
 
-Install `xorg-server`, `xorg-xinit`, `xlogin-git`, and
-`xorg-xbacklight` (optional). Also install: `gnome-keyring`, for
+Install `xorg-server`, `xorg-xinit`, and `gnome-keyring`, for
 managing Wi-Fi passwords and whatnot.
 
-I use `xlogin` to automatically source my `~/.xinitrc` and log in, but
-if that's not something you want, don't install `xlogin` and install
-the display manager of your choice. *Otherwise*, do `sudo systemctl
-enable xlogin@yourusernamegoeshere.service`. Just make sure whatever
-you use sources `~/.xinitrc`, and failing that, `~/.xprofile`.
-
 My config files are set up to use `i3`, a tiling window
-manager. Install `i3-gaps`, `polybar`, `rofi-git`, and
+manager. Install `i3-gaps`, `polybar`, `rofi`, and
 `termite`. These are my window manager, status bar, program launcher,
 and terminal emulator, respectively.
 
@@ -135,8 +131,8 @@ When you run `./install`, it's certain that it'll complain about files
 already existing (like `~/.bash_profile`, `~/.bashrc`, etc.) Delete
 all conflicts, and run `./install` again.
 
-**Important note:** I type in
-the [Dvorak](https://en.wikipedia.org/wiki/Dvorak_Simplified_Keyboard)
+**Important note:** I type in the
+[Dvorak](https://en.wikipedia.org/wiki/Dvorak_Simplified_Keyboard)
 keyboard layout. You probably do not. Comment out this line near the
 bottom of `~/.xprofile`:
 
@@ -150,9 +146,9 @@ bar, program launcher, notification daemon, and some other goodies.
 7. Install some neat programs, and CONFIGURATION
 
 First, let's fix those colors, and set a wallpaper. Install `feh`,
-`scrot`, `neofetch`, `python-pywal-git`, `lxappearance`, and possibly `arandr`
-if your monitor setup needs tweaking. With your desired wallpaper(s)
-in hand, run:
+`scrot`, `neofetch`, `python-pywal-git`, `lxappearance`, and possibly
+`arandr` if your monitor setup needs tweaking. With your desired
+wallpaper(s) in hand, run:
 
 ```
 wal -t -o ~/bin/scripts/wal-set -i pathtowallpaperhere
@@ -168,8 +164,8 @@ Install `fonts-meta-base`, `fonts-meta-extended-lt`,
 `adobe-source-code-pro-fonts`, `adobe-source-sans-pro-fonts`, and
 `adobe-source-serif-pro-fonts`.
 
-Follow
-[this guide](https://gist.github.com/cryzed/e002e7057435f02cc7894b9e748c5671). Skip
+Follow [this
+guide](https://gist.github.com/cryzed/e002e7057435f02cc7894b9e748c5671). Skip
 the instructions about removing Infinality packages, we never
 installed them, and you don't need to create an
 `/etc/fonts/local.conf`. My font configuration is already set up to
@@ -185,17 +181,17 @@ ln -s /etc/fonts/conf.avail/30-infinality-aliases.conf /etc/fonts/conf.d
 Now open Emacs. The first time you run it, it'll complain about
 missing packages - that's O.K. Just do `M-x package-install
 use-package`, then restart Emacs. It'll download everything else it
-needs. If you don't
-use [Org-agenda](http://orgmode.org/manual/Agenda-Views.html) (and you
+needs. If you don't use
+[Org-agenda](http://orgmode.org/manual/Agenda-Views.html) (and you
 totally should, it's great!), you'll want to comment out the last line
 in the `i3` config file, which launches Emacs at startup and opens my
 agenda.org file.
 
 Now for some essential programs.
 
-Install: `firefox`, `vlc`, `qt4`, `audacity`, `gimp`,
-`gimp-font-rendering-fix`, `krita`, `pulseaudio`, `pulseaudio-alsa`,
-`polkit-gnome`, and `keepassxc`.
+Install: `vlc`, `qt4`, `audacity`, `gimp`, `gimp-font-rendering-fix`,
+`krita`, `pulseaudio`, `pulseaudio-alsa`, `polkit-gnome`, and
+`keepassxc`.
 
 If you do not use `keepassxc` (it's a password manager), don't install
 the PassIFox Firefox extension.
@@ -214,13 +210,14 @@ Go to **Add-ons**. Install:
  - [uBlock Origin](https://github.com/gorhill/uBlock): FOSS and
    lightweight ad-blocker
    * Under **Privacy**, tick "Prevent WebRTC from leaking local IP
-    addresses" 
+    addresses"
    * In the **3rd-party filters** tab, under **Ads**, enable
      "Anti-Adblock Killer | Reek"
  - [HTTPS Everywhere](https://www.eff.org/https-everywhere): Force
    sites that offer HTTPS to use HTTPS instead of HTTP
    * Disable sending certificates to the Observatory
- - [NoScript](https://noscript.net/): Block JavaScript, Flash, etc by default
+ - [NoScript](https://noscript.net/): Block JavaScript, Flash, etc by
+   default
    * In the **General** tab, tick "Temporarily allow top-level sites
      by default", and select "Base 2nd level Domains
      (noscript.net)". Tick "Automatically reload affected pages when
@@ -251,26 +248,24 @@ export PATH=$PATH:/......
 RESOLVCONF=/usr/bin/resolvconf
 ```
 
-Install `gvfs`, `gvfs-mtp`, `gamin`, `inotify-tools`, and
-`pcmanfm-gtk3`.
+Install `gvfs`, `gvfs-mtp`, `gamin`, `inotify-tools`, `xarchiver`,
+`p7zip`, `unzip`, `unrar`, and `pcmanfm-gtk3`.
 
-Install `steam`, `steam-native-runtime`, and `steam-fonts` if you use
-Steam.
+Install `steam-native-runtime`, and `steam-fonts` if you use Steam.
 
 *Bonus:* Install a replacement for `ls`:
 
 Install `rustup`. Then do `rustup update stable && rustup default
-stable && rustup component add rust-src`. This installs
-the [Rust](https://www.rust-lang.org/en-US/) compiler, source code,
-and sets the default toolchain to the latest stable version.
+stable && rustup component add rust-src`. This installs the
+[Rust](https://www.rust-lang.org/en-US/) compiler, source code, and
+sets the default toolchain to the latest stable version.
 
 Install `exa-git`.
 
-Clone
-my
-[aur-pkgbuilds](https://github.com/ben01189998819991197253/aur-pkgbuilds) repository,
-and install `contrail` with `makepkg -sri`. The config file should
-already be installed to `~/.config/contrail.toml`.
+Clone my
+[aur-pkgbuilds](https://github.com/ben01189998819991197253/aur-pkgbuilds)
+repository, and install `contrail` with `makepkg -sri`. The config
+file should already be installed to `~/.config/contrail.toml`.
 
 ### Dependencies
 
@@ -287,8 +282,8 @@ behave strangely without them.
    appears in my bar.
  - `git`, `openssh` -- For working with git repositories
  - `pulseaudio`, `pulseaudio-alsa` -- For being able to hear stuff
- - `i3-gaps` -- Fork of the [i3](https://i3wm.org/) window manager. I don't actually
-   use gaps, but you can if you like.
+ - `i3-gaps` -- Fork of the [i3](https://i3wm.org/) window manager. I
+   don't actually use gaps, but you can if you like.
  - `polybar` -- Fast, configurable status bar that I use to replace
    `i3bar`.
  - `rofi-git` -- Program launcher
@@ -303,8 +298,8 @@ behave strangely without them.
 
 You probably also want these installed, too.
 
- - `emacs` -- Extensible, customizable, frustrating ~~operating system~~
-   text editor
+ - `emacs` -- Extensible, customizable, frustrating ~~operating
+   system~~ text editor
  - `pcmanfm-gtk3` -- Lightweight file manager
  - `feh` -- Background-setter, optional dependency of `wal`
  - `wal-git` -- Generates colorschemes from images (the `wal-set`
@@ -335,10 +330,12 @@ these programs, but they should work without them installed.
    the GUI.
  - `keepassxc` -- Secure password manager that integrates nicely with
    Firefox
- - `paper-icon-theme-git`, `osx-arc-darker` -- Nice, flat GTK and icon theme
+ - `paper-icon-theme-git`, `osx-arc-darker` -- Nice, flat GTK and icon
+   theme
  - `steam`, `steam-native-runtime`, `steam-fonts` -- Steam is a
    digital distribution platform for PC games
- - `libreoffice-fresh` -- Excellent alternative to Microsoft Office suite
+ - `libreoffice-fresh` -- Excellent alternative to Microsoft Office
+   suite
  - `rustup` -- Manages Rust toolchains
  - `exa-git` -- Fast, secure, and cool-looking alternative to `ls`
  - `contrail` -- Program I wrote to serve as a shell prompter
