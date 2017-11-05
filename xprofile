@@ -39,6 +39,12 @@ if command -v cargo >/dev/null 2>&1; then
     export CARGO_INCREMENTAL="1"
 fi
 
+# Prevent issues when using the Android Studio Android Emulator
+if command -v android-studio >/dev/null 2>&1; then
+    export ANDROID_HOME=/opt/android-sdk
+    export ANDROID_EMULATOR_USE_SYSTEM_LIBS=1
+fi
+
 # Start the gnome-keyring-daemon, if installed
 if command -v gnome-keyring-daemon >/dev/null 2>&1; then
     eval $(/usr/bin/gnome-keyring-daemon --start --components=pkcs11,secrets,ssh)
