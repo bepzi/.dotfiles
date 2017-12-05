@@ -4,6 +4,9 @@
 (use-package better-defaults
   :ensure t)
 
+(use-package helm
+  :ensure t)
+
 ;; Always follow symlinks, do not prompt
 (setq vc-follow-symlinks t)
 
