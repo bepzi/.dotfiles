@@ -6,6 +6,7 @@
 
 (use-package helm
   :ensure t)
+(helm-mode 1)
 
 ;; Always follow symlinks, do not prompt
 (setq vc-follow-symlinks t)
