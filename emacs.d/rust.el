@@ -2,7 +2,18 @@
 ;; Configuration file for how Emacs handles Rust code
 
 (use-package rust-mode
-  :ensure t)
+    :mode "\\.rs\\'"
+    :init
+    (setq rust-format-on-save t))
+(use-package lsp-mode
+    :init
+    (add-hook 'prog-mode-hook 'lsp-mode)
+    :config
+    (use-package lsp-flycheck
+        :ensure f ; comes with lsp-mode
+        :after flycheck))
+(use-package lsp-rust
+    :after lsp-mode)
 
 (use-package toml-mode
   :ensure t)
@@ -21,8 +32,6 @@
 (setq
  racer-rust-src-path "~/.rustup/toolchains/stable-x86_64-unknown-linux-gnu/lib/rustlib/src/rust/src")
 
-(setq rust-format-on-save t)
-
 ;; C-c C-c compiles/tests the code
 (defun rust-mode-setup ()
   (setq compile-command "cargo test && cargo check")
@@ -30,12 +39,10 @@
 
 ;; Start Racer, eldoc, and company when loading a Rust file
 (add-hook 'rust-mode-hook 'rust-mode-setup)
-(add-hook 'rust-mode-hook #'racer-mode)
-(add-hook 'racer-mode-hook #'eldoc-mode)
-(add-hook 'racer-mode-hook #'company-mode)
-; (add-hook 'flycheck-mode-hook #'flycheck-rust-setup)
-
-(require 'rust-mode)
+;; (add-hook 'rust-mode-hook #'racer-mode)
+;; (add-hook 'racer-mode-hook #'eldoc-mode)
+;; (add-hook 'racer-mode-hook #'company-mode)
+;; (add-hook 'flycheck-mode-hook #'flycheck-rust-setup)
 
 ;; Bind TAB to Company's completion/indent
 (define-key rust-mode-map (kbd "TAB") #'company-indent-or-complete-common)
