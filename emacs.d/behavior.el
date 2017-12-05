@@ -4,9 +4,12 @@
 (use-package better-defaults
   :ensure t)
 
+;; Use Helm for basic autocompletion and dialogs
 (use-package helm
   :ensure t)
 (helm-mode 1)
+(global-set-key "\C-x\C-f" 'helm-find-files)
+(global-set-key "\M-x" 'helm-M-x)
 
 ;; Always follow symlinks, do not prompt
 (setq vc-follow-symlinks t)
