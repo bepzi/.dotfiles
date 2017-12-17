@@ -21,6 +21,8 @@ alias vdir='vdir --color=auto'
 alias shutdown='sync && shutdown -h now'
 alias reboot='sync && reboot'
 
+alias xscreensaver='xscreensaver -no-splash'
+
 if command -v git >/dev/null 2>&1; then
     alias ga='git add .'
     alias gc='git commit -m'
