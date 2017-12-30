@@ -24,6 +24,7 @@
     ~/.config/git-completion.bash: 'config/git-completion.bash'
     ~/.config/dunst: 'config/dunst'
     ~/.config/mpd: 'config/mpd'
+    ~/.ncmpcpp/config: 'config/ncmpcpp/config'
     ~/.config/fontconfig: 'config/fontconfig'
     ~/.emacs:
     ~/.emacs.d:
