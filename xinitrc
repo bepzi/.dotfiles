@@ -35,9 +35,14 @@ fi
 [ -f /etc/xprofile ] && . /etc/xprofile
 [ -f ~/.xprofile ] && . ~/.xprofile
 
-# Reapply theme with wal, if installed
+# Reapply theme with wal
 if command -v wal >/dev/null 2>&1; then
     wal -i "$(< "${HOME}/.cache/wal/wal")"
+fi
+
+# Enable numlock: See https://wiki.archlinux.org/index.php/Activating_Numlock_on_Bootup#startx
+if command -v numlockx >/dev/null 2>&1; then
+    numlockx &
 fi
 
 # Start window manager

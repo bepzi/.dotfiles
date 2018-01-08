@@ -118,6 +118,8 @@ and terminal emulator, respectively.
 You'll also want `volumeicon`, `compton` and `dunst-git` as your
 volume controller, compositor, and notification daemon, respectively.
 
+Install `numlockx` to have Numlock automatically enabled on startup.
+
 6. Install the dotfiles
 
 ```bash
