@@ -91,4 +91,9 @@ for i in "$base_dir/"*.default; do
     ln -sf "$1" "$i/chrome" || script_exit "Failed to link new userChrome.css and userContent.css to $i/chrome" 1
 done
 
+# Patch userChrome.css to use the correct username
+readonly user_chrome="$1"/userChrome.css
+readonly replacement_import="@import url(\'file://$HOME/.cache/wal/firefox.css\');"
+sed -i "1s|.*|$replacement_import|" "$user_chrome"
+
 script_exit "Successfully installed contents of $1 to all profiles in $base_dir" 0
