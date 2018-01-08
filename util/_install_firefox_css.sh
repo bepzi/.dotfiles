@@ -65,7 +65,7 @@ function script_init() {
 
 # Ensure we've received a valid folder as the first argument
 if [[ $# -eq 1 ]]; then
-    [[ -d "$1" ]] || script_exit "Argument \"$1\" was not a valid folder" 2
+    [[ -d "$1" ]] || script_exit "Argument \"$1\" was not a valid folder. Ensure this script is being run from the same directory as install.sh" 2
 else
     script_exit "Incorrect number of arguments passed. Expected 1, received $#" 2
 fi
