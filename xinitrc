@@ -40,6 +40,20 @@ if command -v wal >/dev/null 2>&1; then
     wal -i "$(< "${HOME}/.cache/wal/wal")"
 fi
 
+# Start and theme dunst
+if command -v dunst >/dev/null 2>&1; then
+    source "${HOME}/.cache/wal/colors.sh"
+    
+    pkill dunst && \
+        dunst \
+            -lb "$color15" \
+            -nb "$color15" \
+            -cb "$color15" \
+            -lf "$color0"  \
+            -bf "$color0"  \
+            -cf "$color9" &
+fi
+
 # Enable numlock: See https://wiki.archlinux.org/index.php/Activating_Numlock_on_Bootup#startx
 if command -v numlockx >/dev/null 2>&1; then
     numlockx &
