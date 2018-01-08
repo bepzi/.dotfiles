@@ -46,9 +46,9 @@ Log out of `root` and log back in as your new user.
 
 3. Some minor configuration
 
-Install `git`, `openssh`, and `firefox`. If you're me, you'll need to
-be able to log into your GitHub account so that you can clone this
-repo with SSH.
+Install `git`, `openssh`, `bash-completion`, and `firefox`. If you're
+me, you'll need to be able to log into your GitHub account so that you
+can clone this repo with SSH.
 
 To get `git` up and running properly, execute in order:
 
@@ -89,21 +89,32 @@ Server = http://repo.archlinux.fr/$arch
 Do `sudo pacman -Syu` to update your system and get package lists from
 the `multilib` and `archlinuxfr` repositories.
 
+Then install `reflector`, and place the following snippet of code in a
+file named `mirrorupgrade.hook` at `/etc/pacman.d/hooks/`:
+
+```
+[Trigger]
+Operation = Upgrade
+Type = Package
+Target = pacman-mirrorlist
+
+[Action]
+Description = Updating pacman-mirrorlist with reflector and removing pacnew...
+When = PostTransaction
+Depends = reflector
+Exec = /bin/sh -c "reflector --country 'United States' --latest 100 --age 24 --sort rate --save /etc/pacman.d/mirrorlist; rm -f /etc/pacman.d/mirrorlist.pacnew"
+```
+
+This will automatically retrieve the top 100 fastest mirrors within
+the United States and replace your pacman mirrorlist with that list,
+sorted by speed. See: https://wiki.archlinux.org/index.php/Reflector#Pacman_Hook
+
 Clone [this repo](https://github.com/dylanaraps/bin) by Dylan
 Araps. We're interested in his `saur` script, which is a minimal
 AUR-helper meant for installing an actual AUR-helper from the AUR
-itself. Then do:
-
-```
-gpg --recv-keys --keyserver hkp://pgp.mit.edu 1EB2638FF56C0C53
-```
-
-to install the GPG key of the packager for `cower`, which is a
-dependency of `pacaur`, the AUR-helper that we *really* want to
-use. Then do `./saur cower pacaur`. You can delete `saur` if you want.
-
-*Note:* `cower` will eventually be superceded by `auracle`, at which
-point it will not be necessary to install `cower` before installing `pacaur`. 
+itself. Use it to install `yay`, which is an AUR helper. I used to
+recommend `pacaur`, but it has been deprecated and is no longer
+maintained. You can then delete your local copy of the repository.
 
 5. Get the X environment running
 
@@ -192,8 +203,8 @@ agenda.org file.
 Now for some essential programs.
 
 Install: `vlc`, `qt4`, `audacity`, `gimp`, `gimp-font-rendering-fix`,
-`krita`, `pulseaudio`, `pulseaudio-alsa`, `polkit-gnome`, and
-`keepassxc`.
+`krita`, `pulseaudio`, `pulseaudio-alsa`, `pavucontrol`, `mpd`, `mpc`,
+`ncmpcpp`, `polkit-gnome`, and `keepassxc`.
 
 If you do not use `keepassxc` (it's a password manager), don't install
 the PassIFox Firefox extension.
@@ -255,6 +266,8 @@ Install `gvfs`, `gvfs-mtp`, `gamin`, `inotify-tools`, `xarchiver`,
 
 Install `steam-native-runtime`, and `steam-fonts` if you use Steam.
 
+Install `redshift-gtk-git` if you use Redshift.
+
 *Bonus:* Install a replacement for `ls`:
 
 Install `rustup`. Then do `rustup update stable && rustup default
@@ -268,76 +281,3 @@ Clone my
 [aur-pkgbuilds](https://github.com/ben01189998819991197253/aur-pkgbuilds)
 repository, and install `contrail` with `makepkg -sri`. The config
 file should already be installed to `~/.config/contrail.toml`.
-
-### Dependencies
-
-This is a list of all the packages I install on my system by default,
-and what they're for.
-
-#### Required
-
-The system is pretty much unusable without these, or the dotfiles
-behave strangely without them.
-
- - `networkmanager`, `network-manager-applet` -- Manages Wi-Fi and
-   Ethernet connections. The latter provides `nm-applet`, which
-   appears in my bar.
- - `git`, `openssh` -- For working with git repositories
- - `pulseaudio`, `pulseaudio-alsa` -- For being able to hear stuff
- - `i3-gaps` -- Fork of the [i3](https://i3wm.org/) window manager. I
-   don't actually use gaps, but you can if you like.
- - `polybar` -- Fast, configurable status bar that I use to replace
-   `i3bar`.
- - `rofi-git` -- Program launcher
- - `termite` -- Terminal emulator
- - `gvfs`, `gvfs-mtp`, `gamin`, `inotify-tools` -- Lets file managers
-   do neat stuff like make Recycle Bins, and watch files without
-   polling for changes
- - `compton` -- Compositor, required for things like shadows,
-   transparency, transitions when changing windows, etc.
-
-#### Recommended
-
-You probably also want these installed, too.
-
- - `emacs` -- Extensible, customizable, frustrating ~~operating
-   system~~ text editor
- - `pcmanfm-gtk3` -- Lightweight file manager
- - `feh` -- Background-setter, optional dependency of `wal`
- - `wal-git` -- Generates colorschemes from images (the `wal-set`
-   script reloads `polybar` and `dunst` to use the new colors)
- - `neofetch` -- Displays system information in your terminal
- - `scrot` -- Takes screenshots
- - `lxappearance` -- Tool for setting GTK/Icon themes
- - `arandr` -- Tool for making shell commands that fix your monitor
-   setup
- - `volumeicon` -- Provides an icon to control the volume. Shows up in
-   the bar next to the NetworkManager applet.
- - `dunst-git` -- Notification daemon. Provides notifications when
-   stuff happens.
- - `firefox` -- Web browser that supports lots of useful
-   extensions. My dotfiles come with custom CSS that makes it match
-   the colorscheme output by `wal`, although you have to enable the
-   "Compact Light" theme (as detailed above).
-
-#### Optional
-
-Completely personal preference. My dotfiles may contain references to
-these programs, but they should work without them installed.
-
- - `gimp`, `gimp-font-rendering-fix` -- GNU Image Manipulation
-   Program. Excellent alternative to Photoshop.
- - `krita` -- Digital painting program
- - `vlc`, `qt4` -- Excellent multimedia player. `qt4` is needed for
-   the GUI.
- - `keepassxc` -- Secure password manager that integrates nicely with
-   Firefox
- - `paper-icon-theme-git`, `osx-arc-darker` -- Nice, flat GTK and icon
-   theme
- - `steam`, `steam-native-runtime`, `steam-fonts` -- Steam is a
-   digital distribution platform for PC games
- - `libreoffice-fresh` -- Excellent alternative to Microsoft Office
-   suite
- - `rustup` -- Manages Rust toolchains
- - `exa-git` -- Fast, secure, and cool-looking alternative to `ls`
- - `contrail` -- Program I wrote to serve as a shell prompter
