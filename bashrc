@@ -74,6 +74,19 @@ fi
 
 # Import colorscheme from wal, if installed
 if command -v wal >/dev/null 2>&1; then
-    (wal -t -r &)
+
+    # wal-git and python-pywal are different programs now
+    if pacman -Qi wal-git >/dev/null 2>&1; then
+        (wal -t -r &)
+    else
+        # python-pywal is installed, as wal-git and python-pywal are mutually exclusive
+        
+        # Import colorscheme from 'wal' asynchronously
+        # ( ) # Hide shell job control messages.
+        (cat "$HOME/.cache/wal/sequences" &)
+
+        # Add support for TTYs
+        source "$HOME/.cache/wal/colors-tty.sh"
+    fi
 fi
 

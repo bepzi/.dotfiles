@@ -35,14 +35,21 @@ fi
 [ -f /etc/xprofile ] && . /etc/xprofile
 [ -f ~/.xprofile ] && . ~/.xprofile
 
-# Reapply theme with wal
+# Restore last colorscheme and wallpaper with wal
 if command -v wal >/dev/null 2>&1; then
-    wal -i "$(< "${HOME}/.cache/wal/wal")"
+    
+    # wal-git and python-pywal are different programs now
+    if pacman -Qi wal-git >/dev/null 2>&1; then
+        wal -i "$(< "$HOME/.cache/wal/wal")"
+    else
+        # python-pywal is installed, as wal-git and python-pywal are mutually exclusive
+        wal -R
+    fi
 fi
 
 # Start and theme dunst
 if command -v dunst >/dev/null 2>&1; then
-    source "${HOME}/.cache/wal/colors.sh"
+    source "$HOME/.cache/wal/colors.sh"
     
     pkill dunst && \
         dunst \
