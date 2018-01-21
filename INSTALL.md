@@ -164,14 +164,13 @@ First, let's fix those colors, and set a wallpaper. Install `feh`,
 wallpaper(s) in hand, run:
 
 ```
-wal -t -o ~/bin/scripts/wal-set -i pathtowallpaperhere
+wal -o ~/bin/scripts/wal-set -i pathtowallpaperhere
 ```
 
-We need the `-t` flag because we're using `termite` as the terminal
-emulator.
-
-Install `paper-icon-theme-git` and `osx-arc-darker`. Use
-`lxappearance` to set the GTK and Icon themes to these.
+Install `archdroid-icon-theme-git` and `oomox-git`. Use `lxappearance`
+to set the GTK and Icon themes to these. The Archdroid icon theme may
+have to be manually set to whichever color best suits your current
+wallpaper.
 
 Install `fonts-meta-base`, `fonts-meta-extended-lt`,
 `adobe-source-code-pro-fonts`, `adobe-source-sans-pro-fonts`, and
