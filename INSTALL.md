@@ -158,6 +158,8 @@ bar, program launcher, notification daemon, and some other goodies.
 
 7. Install some neat programs, and CONFIGURATION
 
+Install `archdroid-icon-theme-git` and `oomox-git`.
+
 First, let's fix those colors, and set a wallpaper. Install `feh`,
 `scrot`, `neofetch`, `python-pywal-git`, `lxappearance`, and possibly
 `arandr` if your monitor setup needs tweaking. With your desired
@@ -167,10 +169,8 @@ wallpaper(s) in hand, run:
 wal -o ~/bin/scripts/wal-set -i pathtowallpaperhere
 ```
 
-Install `archdroid-icon-theme-git` and `oomox-git`. Use `lxappearance`
-to set the GTK and Icon themes to these. The Archdroid icon theme may
-have to be manually set to whichever color best suits your current
-wallpaper.
+Use `lxappearance` to set the GTK theme to "wal" and the icon theme to
+whatever Archdroid theme suites your wallpaper.
 
 Install `fonts-meta-base`, `fonts-meta-extended-lt`,
 `adobe-source-code-pro-fonts`, `adobe-source-sans-pro-fonts`, and
@@ -241,11 +241,6 @@ Go to **Add-ons**. Install:
    Make browsing reddit.com more enjoyable
  - [PassIFox](https://github.com/pfn/passifox): Communicates with
    `keepassxc`, alternative to the built in password manager
- 
-Go to **Add-ons**. In the **Appearance** tab, enable the "Compact
-Light" theme.
- 
-Configure KeepassXC to connect to PassIFox.
 
 Open GIMP. In the **Windows** tab, tick "Single-Window Mode".
 
