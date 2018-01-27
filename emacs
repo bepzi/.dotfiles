@@ -28,16 +28,11 @@
   "Load a file in current user's configuration directory"
   (load-file (expand-file-name file "~/.emacs.d/")))
 
-;; (use-package flycheck
-;;   :ensure t)
-
 ;; Load individual configuration files
 (load-user-file "behavior.el")
 (load-user-file "appearance.el")
 (load-user-file "org.el")
+(load-user-file "programming.el")
 (load-user-file "company.el")
-(load-user-file "rust.el")
-(load-user-file "scala.el")
-(load-user-file "functional.el")
 
 (load-user-file "xresources-theme/xresources-theme.el")
