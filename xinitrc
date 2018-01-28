@@ -50,15 +50,18 @@ fi
 # Start and theme dunst
 if command -v dunst >/dev/null 2>&1; then
     source "$HOME/.cache/wal/colors.sh"
-    
+
     pkill dunst && \
         dunst \
             -lb "$color15" \
-            -nb "$color15" \
-            -cb "$color15" \
             -lf "$color0"  \
-            -bf "$color0"  \
-            -cf "$color9" &
+            -lfr "$color0" \
+            -nb "$color15" \
+            -nf "$color0"  \
+            -nfr "$color0" \
+            -cb "$color15" \
+            -cf "$color9"  \
+            -cfr "$color9" &
 fi
 
 # Enable numlock: See https://wiki.archlinux.org/index.php/Activating_Numlock_on_Bootup#startx

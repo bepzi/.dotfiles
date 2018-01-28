@@ -10,24 +10,21 @@ reload_dunst() {
     pkill dunst && \
         dunst \
             -lb "$color15" \
-            -nb "$color15" \
-            -cb "$color15" \
             -lf "$color0"  \
-            -bf "$color0"  \
-            -cf "$color9" &
+            -lfr "$color0" \
+            -nb "$color15" \
+            -nf "$color0"  \
+            -nfr "$color0" \
+            -cb "$color15" \
+            -cf "$color9"  \
+            -cfr "$color9" &
 }
 
 reload_bar() {
-    . "$HOME/bin/scripts/launch_polybar.sh"
+    ./"$HOME/bin/scripts/launch_polybar.sh"
 }
 
 main() {
-    # Use wpg to correct the color scheme
-    if command -v wpg >/dev/null 2>&1; then
-        wpg -e
-        wpg-install.sh -gi
-    fi
-    
     reload_dunst &
     reload_bar &
 }
