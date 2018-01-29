@@ -48,8 +48,8 @@
 
 (defun c-mode-setup ()
   (setq company-backends (delete 'company-semantic company-backends))
-  (define-key c-mode-map  [(tab)] 'company-indent-or-complete-common)
-  (define-key c++-mode-map  [(tab)] 'company-complete-or-complete-common)
+  (define-key c-mode-map  [(tab)] 'indent-or-complete)
+  (define-key c++-mode-map  [(tab)] 'indent-or-complete)
   (add-to-list 'company-backends 'company-c-headers))
 
 (add-hook 'c-mode-hook 'c-mode-setup)

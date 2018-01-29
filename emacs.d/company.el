@@ -1,6 +1,12 @@
 ;; ~/.emacs.d/company.el
 ;; Configuration file for Company, the text-completion framework for Emacs
 
+(defun indent-or-complete ()
+    (interactive)
+    (if (looking-at "\\_>")
+        (company-complete-common)
+      (indent-according-to-mode)))
+
 ;; Start company in every buffer
 (add-hook 'after-init-hook 'global-company-mode)
 (add-hook 'after-init-hook #'global-flycheck-mode)
