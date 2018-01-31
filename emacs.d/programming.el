@@ -7,6 +7,9 @@
   :ensure t)
 
 ;; Rust
+;; Must do:
+;; rustup component add rls-preview rust-analysis rust-src
+
 (use-package rust-mode
     :mode "\\.rs\\'"
     :init
@@ -34,12 +37,17 @@
 (defun rust-mode-setup ()
   (setq compile-command "cargo test && cargo check")
   (setq racer-rust-src-path "~/.rustup/toolchains/stable-x86_64-unknown-linux-gnu/lib/rustlib/src/rust/src")
-  (define-key rust-mode-map "\C-c\C-c" 'compile)
-  (#'flycheck-rust-setup))
+  (define-key rust-mode-map "\C-c\C-c" 'compile))
+
+(with-eval-after-load 'lsp-mode
+  (setq lsp-rust-rls-command '("rustup" "run" "nightly" "rls"))
+  (require 'lsp-rust))
 
 (add-hook 'rust-mode-hook 'rust-mode-setup)
+(add-hook 'rust-mode-hook #'lsp-rust-enable)
+(add-hook 'rust-mode-hook #'flycheck-mode)
 ;; (add-hook 'rust-mode-hook #'racer-mode)
-;; (add-hook 'flycheck-mode-hook #'flycheck-rust-setup)
+(add-hook 'flycheck-mode-hook #'flycheck-rust-setup)
 
 
 ;; C/C++
