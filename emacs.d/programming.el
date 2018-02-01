@@ -62,6 +62,9 @@
 
 (add-hook 'c-mode-hook 'c-mode-setup)
 
+;; Use C++-mode for header files
+(add-to-list 'auto-mode-alist '("\\.h\\'" . c++-mode))
+
 ;; Scala
 (use-package ensime
   :ensure t
