@@ -46,7 +46,7 @@
 (add-hook 'rust-mode-hook 'rust-mode-setup)
 (add-hook 'rust-mode-hook #'lsp-rust-enable)
 (add-hook 'rust-mode-hook #'flycheck-mode)
-;; (add-hook 'rust-mode-hook #'racer-mode)
+(add-hook 'rust-mode-hook #'racer-mode)
 (add-hook 'flycheck-mode-hook #'flycheck-rust-setup)
 
 
