@@ -60,33 +60,16 @@ fi
 # Enable bash completions with git
 [ -f "$HOME/.config/git-completion.bash" ] && . "$HOME/.config/git-completion.bash"
 
-# Shell prompt - use contrail and bash-powerline where possible
-if command -v contrail >/dev/null 2>&1; then    
-    ps1() {
-        PS1="$(contrail -e $? -c $HOME/.config/contrail.toml) "
-    }
-
-    PROMPT_COMMAND="ps1; $PROMPT_COMMAND"
-else
-    PS1='[\u@\h \W]\$ '
-    [ -f "$HOME/bin/bash-powerline.sh" ] && . "$HOME/bin/bash-powerline.sh"
-fi
+PS1='[\u@\h \W]\$ '
+[ -f "$HOME/bin/bash-powerline.sh" ] && . "$HOME/bin/bash-powerline.sh"
 
 # Import colorscheme from wal, if installed
-if command -v wal >/dev/null 2>&1; then
+if command -v wal >/dev/null 2>&1; then    
+    # Import colorscheme from 'wal' asynchronously
+    # ( ) # Hide shell job control messages.
+    (cat "$HOME/.cache/wal/sequences" &)
 
-    # wal-git and python-pywal are different programs now
-    if pacman -Qi wal-git >/dev/null 2>&1; then
-        (wal -t -r &)
-    else
-        # python-pywal is installed, as wal-git and python-pywal are mutually exclusive
-        
-        # Import colorscheme from 'wal' asynchronously
-        # ( ) # Hide shell job control messages.
-        (cat "$HOME/.cache/wal/sequences" &)
-
-        # Add support for TTYs
-        source "$HOME/.cache/wal/colors-tty.sh"
-    fi
+    # Add support for TTYs
+    source "$HOME/.cache/wal/colors-tty.sh"
 fi
 

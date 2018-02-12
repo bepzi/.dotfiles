@@ -18,5 +18,5 @@
 (setq use-package-always-ensure t)
 
 ;; Automatically fill paragraphs instead of doing M-q a whole bunch
-(add-hook 'text-mode-hook 'turn-on-auto-fill)
-(add-hook 'org-mode-hook 'turn-on-auto-fill)
+;; (add-hook 'text-mode-hook 'turn-on-auto-fill)
+;; (add-hook 'org-mode-hook 'turn-on-auto-fill)
