@@ -54,10 +54,17 @@
 (use-package company-c-headers
   :ensure t)
 
+;; Create clang-format file using google style
+;; clang-format -style=google -dump-config > .clang-format
+(use-package clang-format
+  :ensure t)
+
 (defun c-mode-setup ()
   (setq company-backends (delete 'company-semantic company-backends))
+  (setq flycheck-clang-language-standard "c++14")
   (define-key c-mode-map  [(tab)] 'indent-or-complete)
   (define-key c++-mode-map  [(tab)] 'indent-or-complete)
+  (add-hook 'after-save-hook 'clang-format-buffer)
   (add-to-list 'company-backends 'company-c-headers))
 
 (add-hook 'c-mode-hook 'c-mode-setup)
