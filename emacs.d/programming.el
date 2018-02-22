@@ -59,15 +59,21 @@
 (use-package clang-format
   :ensure t)
 
+;; Show modern C++ symbols
+(use-package modern-cpp-font-lock
+  :ensure t)
+
 (defun c-mode-setup ()
   (setq company-backends (delete 'company-semantic company-backends))
   (setq flycheck-clang-language-standard "c++14")
+  
   (define-key c-mode-map  [(tab)] 'indent-or-complete)
   (define-key c++-mode-map  [(tab)] 'indent-or-complete)
   (add-hook 'after-save-hook 'clang-format-buffer)
   (add-to-list 'company-backends 'company-c-headers))
 
 (add-hook 'c-mode-hook 'c-mode-setup)
+(add-hook 'c++-mode-hook #'modern-c++-font-lock-mode)
 
 ;; Use C++-mode for header files
 (add-to-list 'auto-mode-alist '("\\.h\\'" . c++-mode))
