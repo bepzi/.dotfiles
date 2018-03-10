@@ -68,8 +68,5 @@ if command -v wal >/dev/null 2>&1; then
     # Import colorscheme from 'wal' asynchronously
     # ( ) # Hide shell job control messages.
     (cat "$HOME/.cache/wal/sequences" &)
-
-    # Add support for TTYs
-    source "$HOME/.cache/wal/colors-tty.sh"
 fi
 
