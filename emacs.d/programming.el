@@ -17,10 +17,11 @@
 (use-package lsp-mode
     :init
     (add-hook 'prog-mode-hook 'lsp-mode)
-    :config
-    (use-package lsp-flycheck
-        :ensure f ; comes with lsp-mode
-        :after flycheck))
+    :config)
+(use-package lsp-ui
+  :ensure t
+  :init
+  (add-hook 'lsp-mode-hook 'lsp-ui-mode))
 (use-package lsp-rust
     :after lsp-mode)
 (use-package toml-mode
