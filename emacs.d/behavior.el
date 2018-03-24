@@ -7,8 +7,8 @@
 ;; NERDTree-style file viewer
 (use-package neotree
   :ensure t
-  :init
-  (global-set-key [f8] 'neotree-toggle))
+  :config
+  (global-set-key (kbd "C-c t") 'neotree-toggle))
 
 ;; Use Helm for basic autocompletion and dialogs
 (use-package helm
