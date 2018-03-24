@@ -6,7 +6,7 @@
  '(inhibit-startup-screen t)
  '(package-selected-packages
    (quote
-    (ox-gfm git-gutter magit lsp-ui modern-cpp-font-lock clang-format company-c-headers f lsp-rust lsp-mode helm-config helm intero flycheck-haskell haskell-mode racket-mode markdown-mode flycheck flycheck-rust ensime use-package toml-mode tidy racer company cargo rust-mode powerline better-defaults))))
+    (neotree ox-gfm git-gutter magit lsp-ui modern-cpp-font-lock clang-format company-c-headers f lsp-rust lsp-mode helm-config helm intero flycheck-haskell haskell-mode racket-mode markdown-mode flycheck flycheck-rust ensime use-package toml-mode tidy racer company cargo rust-mode powerline better-defaults))))
 (custom-set-faces
  ;; custom-set-faces was added by Custom.
  ;; If you edit it by hand, you could mess it up, so be careful.

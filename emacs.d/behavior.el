@@ -4,6 +4,12 @@
 (use-package better-defaults
   :ensure t)
 
+;; NERDTree-style file viewer
+(use-package neotree
+  :ensure t
+  :init
+  (global-set-key [f8] 'neotree-toggle))
+
 ;; Use Helm for basic autocompletion and dialogs
 (use-package helm
   :ensure t)
