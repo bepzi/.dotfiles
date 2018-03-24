@@ -18,28 +18,27 @@
 
 '(org-export-backends (quote (ascii html icalendar latex md)))
 
+;; Directory for Agenda files
+(setq org-agenda-files '("~/documents/gtd"))
 
 ;; Include general recurring info (holidays, etc.) in Agenda
 (setq org-agenda-include-diary t)
 
 ;; Capture templates
-(setq org-capture-templates
-      '(("t" "Add a task to the TODO list." entry
-         (file+headline "~/documents/agenda.org" "Tasks")
-         "* TODO %? %t")
-        ("n" "Add a note for later." entry
-         (file+headline "~/documents/agenda.org" "Notes")
-         "* TODO %? %t")
-        ("a" "Add an upcoming date to the calendar." entry
-         (file+headline "~/documents/agenda.org" "Calendar")
-         "* %? %t")
-        ("s" "Add an entry to the \"Some Day\" category." entry
-         (file+headline "~/documents/agenda.org" "Some Day")
-         "* %?")))
+(setq org-capture-templates '(("t" "Todo [inbox]" entry
+                               (file+headline "~/documents/gtd/inbox.org" "Tasks")
+                               "* TODO %i%?")
+                              ("T" "Tickler" entry
+                               (file+headline "~/documents/gtd/tickler.org" "Tickler")
+                               "* %i%? \n %U")))
+
+(setq org-refile-targets '(("~/documents/gtd/gtd.org" :maxlevel . 3)
+                           ("~/documents/gtd/someday.org" :level . 1)
+                           ("~/documents/gtd/tickler.org" :maxlevel . 2)))
 
 ;; Default task sequence
 (setq org-todo-keywords
-      '((sequence "TODO" "IN-PROGRESS" "WAITING" "|" "DONE" "DEFERRED" "CANCELED")))
+      '((sequence "TODO(t)" "WAITING(w)" "|" "DONE(d)" "CANCELED(c)")))
 
 ;; Set priority range from A to C with default A
 (setq org-highest-priority ?A)
@@ -81,6 +80,3 @@
 (global-set-key "\C-ca" 'org-agenda)
 (global-set-key "\C-cc" 'org-capture)
 (global-set-key "\C-cb" 'org-iswitchb)
-
-;; Directory for Agenda files
-(setq org-agenda-files '("~/documents/"))
