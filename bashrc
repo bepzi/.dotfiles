@@ -39,7 +39,7 @@ else
 fi
 
 if command -v emacs >/dev/null 2>&1; then
-    EDITOR="$(which emacs) -nw"
+    EDITOR="$(which emacsclient) -t"
 elif command -v nvim >/dev/null 2>&1; then
     EDITOR="$(which nvim)"
 elif command -v vim >/dev/null 2>&1; then
@@ -52,9 +52,9 @@ fi
 
 # Emacs has to be treated a little differently here
 if command -v emacs >/dev/null 2>&1; then
-    VISUAL="$(which emacs)"; export VISUAL
+    export VISUAL="$(which emacsclient) -cn"
 else
-    VISUAL="$EDITOR"; export VISUAL
+    export VISUAL="$EDITOR"
 fi
 
 # Enable bash completions with git

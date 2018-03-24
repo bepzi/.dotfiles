@@ -196,7 +196,8 @@ exec --no-startup-id nm-applet
 exec --no-startup-id volumeicon
 
 # Open Org-Agenda
-exec --no-startup-id i3-msg 'workspace $ws1; exec emacs --eval "(org-agenda-list)"'
+exec --no-startup-id i3-msg 'workspace $ws1; exec emacsclient -c'
+# exec --no-startup-id i3-msg 'workspace $ws1; exec emacs --eval "(org-agenda-list)"'
 
 # Set the color scheme and bar, start notification daemon, launch the bar
 exec --no-startup-id wal -R -o ~/.dotfiles/util/wal-set
