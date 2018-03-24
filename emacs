@@ -32,6 +32,13 @@
   "Load a file in current user's configuration directory"
   (load-file (expand-file-name file "~/.emacs.d/")))
 
+;; Allow for running GUI-specific code through emacsclient
+(defun new-frame-setup (&optional frame)
+  (if (display-graphic-p frame)
+      (load-user-file "xresources-theme/xresources-theme.el")))
+(mapc 'new-frame-setup (frame-list))
+(add-hook 'after-make-frame-functions 'new-frame-setup)
+
 ;; Load individual configuration files
 (load-user-file "behavior.el")
 (load-user-file "appearance.el")
@@ -39,4 +46,5 @@
 (load-user-file "programming.el")
 (load-user-file "company.el")
 
-(load-user-file "xresources-theme/xresources-theme.el")
+(if (display-graphic-p)
+    (load-user-file "xresources-theme/xresources-theme.el"))
