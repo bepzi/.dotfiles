@@ -1,9 +1,23 @@
 ;; ~/.emacs.d/org.el
 ;; Configuration for Emacs Org-mode
 
-;; We might as well add support for Markdown
+;; Add support for markdown
 (use-package markdown-mode
+  :ensure t
+  :commands (markdown-mode gfm-mode)
+  :mode (("README\\.md\\'" . gfm-mode)
+         ("\\.md\\'" . markdown-mode)
+         ("\\.markdown\\'" . markdown-mode))
+  :init (setq markdown-command "multimarkdown"))
+
+;; Allow org to export as Markdown
+(use-package ox-gfm
   :ensure t)
+(eval-after-load "org"
+  '(require 'ox-gfm nil t))
+
+'(org-export-backends (quote (ascii html icalendar latex md)))
+
 
 ;; Include general recurring info (holidays, etc.) in Agenda
 (setq org-agenda-include-diary t)

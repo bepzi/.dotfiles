@@ -6,7 +6,7 @@
  '(inhibit-startup-screen t)
  '(package-selected-packages
    (quote
-    (git-gutter magit lsp-ui modern-cpp-font-lock clang-format company-c-headers f lsp-rust lsp-mode helm-config helm intero flycheck-haskell haskell-mode racket-mode markdown-mode flycheck flycheck-rust ensime use-package toml-mode tidy racer company cargo rust-mode powerline better-defaults))))
+    (ox-gfm git-gutter magit lsp-ui modern-cpp-font-lock clang-format company-c-headers f lsp-rust lsp-mode helm-config helm intero flycheck-haskell haskell-mode racket-mode markdown-mode flycheck flycheck-rust ensime use-package toml-mode tidy racer company cargo rust-mode powerline better-defaults))))
 (custom-set-faces
  ;; custom-set-faces was added by Custom.
  ;; If you edit it by hand, you could mess it up, so be careful.
@@ -16,6 +16,10 @@
 
 (when (>= emacs-major-version 24)
   (require 'package)
+  (add-to-list
+   'package-archives
+   '("org" . "http://orgmode.org/elpa/")
+   t)
   (add-to-list
    'package-archives
    '("melpa" . "http://melpa.org/packages/")

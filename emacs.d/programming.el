@@ -70,7 +70,6 @@
   
   (define-key c-mode-map  [(tab)] 'indent-or-complete)
   (define-key c++-mode-map  [(tab)] 'indent-or-complete)
-  (add-hook 'after-save-hook 'clang-format-buffer)
   (add-to-list 'company-backends 'company-c-headers))
 
 (add-hook 'c-mode-hook 'c-mode-setup)
