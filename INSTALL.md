@@ -193,11 +193,42 @@ ln -s /etc/fonts/conf.avail/30-infinality-aliases.conf /etc/fonts/conf.d
 Now open Emacs. The first time you run it, it'll complain about
 missing packages - that's O.K. Just do `M-x package-install
 use-package`, then restart Emacs. It'll download everything else it
-needs. If you don't use
-[Org-agenda](http://orgmode.org/manual/Agenda-Views.html) (and you
-totally should, it's great!), you'll want to comment out the last line
-in the `i3` config file, which launches Emacs at startup and opens my
-agenda.org file.
+needs.
+
+Add the following file to `~/.config/systemd/user/emacs.service`:
+
+```
+[Unit]
+Description=Emacs: the extensible, self-documenting text editor
+
+[Service]
+Type=forking
+ExecStart=/usr/bin/emacs --daemon
+ExecStop=/usr/bin/emacsclient --eval "(kill-emacs)"
+Restart=always
+
+[Install]
+WantedBy=default.target
+```
+
+and do `systemctl --user enable --now emacs`
+
+Also add the following file to `~/.local/share/applications/emacs.desktop`:
+
+```
+[Desktop Entry]
+Name=Emacs
+GenericName=Text Editor
+Comment=Edit text
+MimeType=text/english;text/plain;text/x-makefile;text/x-c++hdr;text/x-c++src;text/x-chdr;text/x-csrc;text/x-java;text/x-moc;text/x-pascal;text/x-tcl;text/x-tex;application/x-shellscript;text/x-c;text/x-c++;
+Exec=emacsclient -c %F
+Icon=emacs
+Type=Application
+Terminal=false
+Categories=Development;TextEditor;
+StartupWMClass=Emacs
+Keywords=Text;Editor;
+```
 
 Now for some essential programs.
 
