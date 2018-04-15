@@ -8,7 +8,8 @@
 
 ;; Rust
 ;; Must do:
-;; rustup component add rls-preview rust-analysis rust-src
+;; $ cargo install --force racer
+;; $ rustup component add rls-preview rust-analysis rust-src rustfmt-preview
 
 (use-package rust-mode
     :mode "\\.rs\\'"
@@ -33,10 +34,8 @@
 (use-package flycheck-rust
   :ensure t)
 
-(define-key rust-mode-map [(tab)] #'company-indent-or-complete-common)
-
 (defun rust-mode-setup ()
-  (setq compile-command "cargo test && cargo check")
+  (setq compile-command "cargo check")
   (setq racer-rust-src-path "~/.rustup/toolchains/stable-x86_64-unknown-linux-gnu/lib/rustlib/src/rust/src")
   (define-key rust-mode-map "\C-c\C-c" 'compile))
 
@@ -45,10 +44,12 @@
   (require 'lsp-rust))
 
 (add-hook 'rust-mode-hook 'rust-mode-setup)
-(add-hook 'rust-mode-hook #'lsp-rust-enable)
-(add-hook 'rust-mode-hook #'flycheck-mode)
-(add-hook 'rust-mode-hook #'racer-mode)
-(add-hook 'flycheck-mode-hook #'flycheck-rust-setup)
+(add-hook 'rust-mode-hook 'eldoc-mode)
+(add-hook 'rust-mode-hook 'lsp-mode)
+(add-hook 'rust-mode-hook 'lsp-rust-enable)
+(add-hook 'rust-mode-hook 'flycheck-mode)
+(add-hook 'rust-mode-hook 'racer-mode)
+(add-hook 'flycheck-mode-hook 'flycheck-rust-setup)
 
 
 ;; C/C++
