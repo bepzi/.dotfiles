@@ -55,6 +55,22 @@
 (use-package company-c-headers
   :ensure t)
 
+;; Irony - completion package for C/C++/Objective-C
+(use-package irony
+  :ensure t)
+(use-package company-irony
+  :ensure t)
+(use-package flycheck-irony
+  :ensure t)
+(use-package irony-eldoc
+  :ensure t)
+
+(add-hook 'c++-mode-hook 'irony-mode)
+(add-hook 'c-mode-hook 'irony-mode)
+(add-hook 'objc-mode-hook 'irony-mode)
+(add-hook 'irony-mode-hook 'irony-cdb-autosetup-compile-options)
+(add-hook 'irony-mode-hook #'irony-eldoc)
+
 ;; Create clang-format file using google style
 ;; clang-format -style=google -dump-config > .clang-format
 (use-package clang-format
@@ -64,15 +80,15 @@
 (use-package modern-cpp-font-lock
   :ensure t)
 
-(defun c-mode-setup ()
-  (setq company-backends (delete 'company-semantic company-backends))
-  (setq flycheck-clang-language-standard "c++14")
-  
-  (define-key c-mode-map  [(tab)] 'indent-or-complete)
-  (define-key c++-mode-map  [(tab)] 'indent-or-complete)
-  (add-to-list 'company-backends 'company-c-headers))
+;; (define-key c-mode-map  [(tab)] 'indent-or-complete)
+;; (define-key c++-mode-map  [(tab)] 'indent-or-complete)
 
-(add-hook 'c-mode-hook 'c-mode-setup)
+(setq flycheck-clang-language-standard "c++14")
+(add-to-list 'company-backends 'company-irony)
+(add-to-list 'company-backends 'company-c-headers)
+(eval-after-load 'flycheck
+  '(add-hook 'flycheck-mode-hook #'flycheck-irony-setup))
+
 (add-hook 'c++-mode-hook #'modern-c++-font-lock-mode)
 
 ;; Use C++-mode for header files
