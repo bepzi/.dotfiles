@@ -95,34 +95,5 @@
 ;; Use C++-mode for header files
 (add-to-list 'auto-mode-alist '("\\.h\\'" . c++-mode))
 
-;; Scala
-(use-package ensime
-  :ensure t
-  :pin melpa)
-(use-package scala-mode
-  :pin melpa)
-(use-package sbt-mode
-  :pin melpa)
-
-(defun scala-mode-setup ()
-  (setq compile-command "sbt test && sbt compile")
-  (define-key scala-mode-map "\C-c\C-c" 'compile))
-
-(add-hook 'scala-mode-hook 'scala-mode-setup)
-
-;; Racket
-(use-package racket-mode
-  :ensure t)
-
-;; Haskell
-(use-package haskell-mode
-  :ensure t)
-(use-package intero
-  :ensure t)
-
-;; (add-hook 'haskell-mode-hook 'intero-mode)
-;; (setq flycheck-check-syntax-automatically '(save new-line))
-;; (flycheck-add-next-checker 'intero '(warning . haskell-hlint))
-
 (provide 'programming)
 ;;; programming.el ends here
