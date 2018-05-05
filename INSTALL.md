@@ -57,7 +57,7 @@ To get `git` up and running properly, execute in order:
  - `ssh-keygen -t rsa -b 4096 -C "youremailgoeshere"`
  - `eval "$(ssh-agent -s)"`
  - `ssh-add ~/.ssh/id_rsa`
- 
+
 You can now add `~/.ssh/id_rsa.pub` to whatever applications you need.
 
 4. Configure `pacman` and access the AUR
@@ -247,6 +247,12 @@ Do Not Track. "Use custom settings for history". Tick "Always use
 private browsing mode", and set "Accept third-party cookies" to
 "Never". If it's enabled, disable the offer to save passwords in the
 Security section.
+
+Go to `about:config`. Create a new string pref named
+`widget.content.gtk-theme-override` and as a value set an installed
+light GTK3 theme name (e.g. `Adwaita:light`, `Breeze-Light` etc), then
+restart Firefox. This fixes issues with dark GTK themes causing
+unreadable input text boxes.
 
 Go to **Add-ons**. Install:
 
