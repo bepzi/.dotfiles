@@ -14,6 +14,7 @@
     ~/.bash_aliases:
     ~/.bash_profile:
     ~/.bash_logout:
+    ~/.scripts: 'scripts'
     ~/.config/user-dirs.dirs: 'config/user-dirs.dirs'
     ~/.config/i3: 'config/i3'
     ~/.config/termite: 'config/termite'
@@ -29,7 +30,6 @@
     ~/.emacs:
     ~/.emacs.d:
     ~/.gitignore_global:
-    ~/bin/scripts: 'scripts'
     ~/bin/bash-powerline.sh: 'bash-powerline/bash-powerline.sh'
     ~/.xprofile:
     ~/.Xresources:
