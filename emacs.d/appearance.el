@@ -24,27 +24,27 @@
 
 (setq whitespace-style '(space-mark tab-mark))
 
-(let ((whitespace-enabled-modes
-       '(
-         tuareg-mode-hook
-         c++-mode-hook
-         c-mode-hook
-         rust-mode-hook
-         emacs-lisp-mode
-         java-mode-hook
-         lua-mode-hook
-         rust-mode-hook
-         scala-mode-hook
-         markdown-mode-hook
-         js2-mode-hook
-         haskell-mode-hook
-         python-mode-hook
-         erlang-mode-hook
-         asm-mode-hook
-         nasm-mode-hook
-         )))
-  (dolist (mode whitespace-enabled-modes)
-(add-hook mode 'rc/set-up-whitespace-handling)))
+;; (let ((whitespace-enabled-modes
+;;        '(
+;;          tuareg-mode-hook
+;;          c++-mode-hook
+;;          c-mode-hook
+;;          rust-mode-hook
+;;          emacs-lisp-mode
+;;          java-mode-hook
+;;          lua-mode-hook
+;;          rust-mode-hook
+;;          scala-mode-hook
+;;          markdown-mode-hook
+;;          js2-mode-hook
+;;          haskell-mode-hook
+;;          python-mode-hook
+;;          erlang-mode-hook
+;;          asm-mode-hook
+;;          nasm-mode-hook
+;;          )))
+;;   (dolist (mode whitespace-enabled-modes)
+;; (add-hook mode 'rc/set-up-whitespace-handling)))
 
 ;; Custom font size
 ;; Height value is in 1/10pt, so 100=10pt
