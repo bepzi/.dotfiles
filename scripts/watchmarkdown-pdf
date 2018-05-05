@@ -1,0 +1,58 @@
+#!/bin/bash
+## Author: ben01189998819991197253
+# Script to automatically generate a PDF whenever a Markdown
+# file or a directory with Markdown files is modified.
+# Only generates a PDF for files ending in .md or .markdown.
+# Dependencies: inotify-tools, markdown-pdf
+##
+
+set -o errexit          # Exit on most errors (see the manual)
+set -o errtrace         # Make sure any error trap is inherited
+set -o nounset          # Disallow expansion of unset variables
+set -o pipefail         # Use last non-zero exit code in a pipeline
+#set -o xtrace          # Trace the execution of the script (debug)
+
+trap 'exit 0' SIGINT
+
+GREEN="\033[0;32m"
+RED="\033[0;31m"
+NC="\033[0m" # No color
+
+if [[ ! -e $1 ]]; then
+	echo -e "${RED}File/directory passed as argument doesn't exist.${NC}" >&2
+	exit 1
+fi
+
+markdown_file() {
+	if [[ -f $1 ]]; then
+		echo "$1" | grep -qi -E '\.md$|\.markdown$|\.mdown$|\.mkdn$|\.mkd$'
+		if [[ $? -eq 0 ]]; then
+			markdown-pdf "$1" 2> /dev/null
+		fi
+	fi
+}
+
+markdown_directory() {
+	for file in "$1/"*; do
+		# File existence-checking is done in markdown_file()
+		markdown_file "$file"
+	done
+}
+
+if [[ -d $1 ]]; then
+	markdown_directory "$1"
+else
+	markdown_file "$1"
+fi
+
+echo -e "Watching ${GREEN}$1${NC} for changes."
+
+while inotifywait -qq -e modify,attrib -- "$1"; do
+	if [[ -d $1 ]]; then
+		echo -e " >>> The contents of ${GREEN}$1${NC} have changed."
+		markdown_directory "$1"
+	else
+		echo -e " >>> File ${GREEN}$1${NC} has changed."
+		markdown_file "$1"
+	fi
+done

@@ -1,0 +1,15 @@
+#!/bin/bash
+## Author: ben01189998819991197253
+# Script to fetch and display all internal IPv4 addresses on your local network.
+# Dependencies: arp-scan
+##
+
+set -o errexit          # Exit on most errors (see the manual)
+set -o errtrace         # Make sure any error trap is inherited
+set -o nounset          # Disallow expansion of unset variables
+set -o pipefail         # Use last non-zero exit code in a pipeline
+#set -o xtrace          # Trace the execution of the script (debug)
+
+ARP=$(which arp-scan)
+
+echo $(sudo "$ARP" --localnet --numeric --quiet --ignoredups | grep -E '([a-f0-9]{2}:){5}[a-f0-9]{2}' | awk '{print $1}')
