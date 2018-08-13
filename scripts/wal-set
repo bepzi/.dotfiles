@@ -4,24 +4,24 @@
 # Adapted from: https://github.com/dylanaraps/wal
 
 # Source generated colors.
-source "$HOME/.cache/wal/colors.sh"
+. "$HOME/.cache/wal/colors.sh"
 
 reload_dunst() {
-    pkill dunst && \
-        dunst \
-            -lb "$color15" \
-            -lf "$color0"  \
-            -lfr "$color0" \
-            -nb "$color15" \
-            -nf "$color0"  \
-            -nfr "$color0" \
-            -cb "$color15" \
-            -cf "$color9"  \
-            -cfr "$color9" &
+    pkill dunst
+    dunst \
+        -lb "$color15" \
+        -lf "$color0"  \
+        -lfr "$color0" \
+        -nb "$color15" \
+        -nf "$color0"  \
+        -nfr "$color0" \
+        -cb "$color15" \
+        -cf "$color9"  \
+        -cfr "$color9" &
 }
 
 reload_bar() {
-    . "$HOME/bin/scripts/launch_polybar.sh"
+    . "$HOME/.scripts/launch_polybar.sh"
 }
 
 main() {

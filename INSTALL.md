@@ -173,8 +173,8 @@ Use `lxappearance` to set the GTK theme to "wal" and the icon theme to
 whatever Archdroid theme suites your wallpaper.
 
 Install `fonts-meta-base`, `fonts-meta-extended-lt`,
-`adobe-source-code-pro-fonts`, `adobe-source-sans-pro-fonts`, and
-`adobe-source-serif-pro-fonts`.
+`ttf-material-design-icons`, `adobe-source-code-pro-fonts`,
+`adobe-source-sans-pro-fonts`, and `adobe-source-serif-pro-fonts`.
 
 Follow [this
 guide](https://gist.github.com/cryzed/e002e7057435f02cc7894b9e748c5671). Skip

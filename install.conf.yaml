@@ -14,19 +14,8 @@
     ~/.bash_aliases:
     ~/.bash_profile:
     ~/.bash_logout:
-    ~/.scripts: 'scripts'
-    ~/.config/user-dirs.dirs: 'config/user-dirs.dirs'
-    ~/.config/i3: 'config/i3'
-    ~/.config/termite: 'config/termite'
-    ~/.config/twmn: 'config/twmn'
-    ~/.config/polybar: 'config/polybar'
-    ~/.config/compton.conf: 'config/compton.conf'
-    ~/.config/contrail.toml: 'config/contrail.toml'
-    ~/.config/git-completion.bash: 'config/git-completion.bash'
-    ~/.config/dunst: 'config/dunst'
-    ~/.config/mpd: 'config/mpd'
-    ~/.ncmpcpp/config: 'config/ncmpcpp/config'
-    ~/.config/fontconfig: 'config/fontconfig'
+    ~/.scripts:
+    ~/.config:
     ~/.emacs:
     ~/.emacs.d:
     ~/.gitignore_global:
