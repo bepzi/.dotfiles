@@ -22,9 +22,6 @@ if command -v java >/dev/null 2>&1; then
     unset _JAVA_OPTIONS
     alias java='java "$_SILENT_JAVA_OPTIONS"'
 
-    # For ENSIME, tool for helping with JVM languages
-    [ -f "/usr/lib/jvm/java-7-openjdk/lib/tools.jar" ] && export JDK_HOME="/usr/lib/jvm/java-7-openjdk"
-    [ -f "/usr/lib/jvm/java-8-openjdk/lib/tools.jar" ] && export JDK_HOME="/usr/lib/jvm/java-8-openjdk"
     [ -d "/usr/lib/jvm/default" ] && export JAVA_HOME="/usr/lib/jvm/default"
 fi
 
@@ -37,7 +34,7 @@ if command -v cargo >/dev/null 2>&1; then
     fi
 
     # Enable incremental compilation, for faster compile times
-    export CARGO_INCREMENTAL="1"
+    export CARGO_INCREMENTAL=1
 fi
 
 # Prevent issues when using the Android Studio Android Emulator

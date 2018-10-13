@@ -55,7 +55,7 @@ bindsym $mod+d exec --no-startup-id rofi -show drun
 bindsym $mod+l exec --no-startup-id i3lock -t
 
 # toggle the keyboard layout Windows-style
-bindsym $mod+Shift+l exec --no-startup-id ~/bin/scripts/toggle_keyboard_layout
+bindsym $mod+Shift+l exec "~/bin/scripts/toggle_keyboard_layout"
 
 # change focus
 bindsym $mod+$left focus left

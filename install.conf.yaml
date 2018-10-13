@@ -10,11 +10,11 @@
 
 # <destination>: <source (relative to root dotfiles directory)>
 - link:
+    ~/bin:
     ~/.bashrc:
     ~/.bash_aliases:
     ~/.bash_profile:
     ~/.bash_logout:
-    ~/.scripts: 'scripts'
     ~/.config/user-dirs.dirs: 'config/user-dirs.dirs'
     ~/.config/i3: 'config/i3'
     ~/.config/termite: 'config/termite'

@@ -42,7 +42,7 @@ fi
 
 # Start and theme dunst
 if command -v dunst >/dev/null 2>&1; then
-    source "$HOME/.cache/wal/colors.sh"
+    . "$HOME/.cache/wal/colors.sh"
 
     pkill dunst && \
         dunst \
@@ -55,11 +55,6 @@ if command -v dunst >/dev/null 2>&1; then
             -cb "$color15" \
             -cf "$color9"  \
             -cfr "$color9" &
-fi
-
-# Enable numlock: See https://wiki.archlinux.org/index.php/Activating_Numlock_on_Bootup#startx
-if command -v numlockx >/dev/null 2>&1; then
-    numlockx &
 fi
 
 # Start window manager
