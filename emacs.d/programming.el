@@ -3,6 +3,9 @@
 
 ;;; Code:
 
+(use-package auctex
+  :ensure t)
+
 (use-package flycheck
   :ensure t)
 
