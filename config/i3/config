@@ -185,4 +185,4 @@ exec --no-startup-id volumeicon
 
 # Set the color scheme and bar, start notification daemon, launch the
 # bar
-exec_always --no-startup-id wal -R -o ~/.dotfiles/util/wal-set
+exec_always "wal -R -o ~/bin/scripts/wal-set"
