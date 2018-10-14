@@ -10,11 +10,11 @@
 
 # <destination>: <source (relative to root dotfiles directory)>
 - link:
-    ~/bin:
+    ~/bin/bash-powerline.sh: 'bash-powerline/bash-powerline.sh'
+    ~/bin/scripts: 'scripts'
     ~/.bashrc:
     ~/.bash_aliases:
     ~/.bash_profile:
-    ~/.bash_logout:
     ~/.config/user-dirs.dirs: 'config/user-dirs.dirs'
     ~/.config/i3: 'config/i3'
     ~/.config/termite: 'config/termite'
@@ -30,11 +30,9 @@
     ~/.emacs:
     ~/.emacs.d:
     ~/.gitignore_global:
-    ~/bin/bash-powerline.sh: 'bash-powerline/bash-powerline.sh'
     ~/.xprofile:
     ~/.Xresources:
     ~/.xinitrc:
-    ~/.zshrc:
 
 - shell:
   - [git submodule update --init --recursive, Installing submodules]
