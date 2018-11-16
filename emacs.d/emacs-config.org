@@ -1,4 +1,4 @@
-#+TITLE: Ben's Emacs configuration
+#+TITLE: My Emacs configuration
 #+PROPERTY: header-args:emacs-lisp :tangle yes
 
 * Emacs Config
@@ -53,6 +53,13 @@ after adding these for the first time.
 (use-package better-defaults)
 #+end_src
 
+*** Splash Screen
+Don't display the "Welcome to Emacs" stuff
+
+#+begin_src emacs-lisp
+(setq inhibit-startup-screen t)
+#+end_src
+
 *** Backups
 By default, Emacs saves backup files in the current directory. These
 are the files ending in =~= that are cluttering up your directory
@@ -90,6 +97,12 @@ Helm makes it easy to complete various things.
 (global-set-key "\M-x" 'helm-M-x)
 
 (ido-mode -1) ;; Turn off ido mode in case I enabled it accidentally
+#+end_src
+
+*** Abbrev mode
+I don't currently use Abbrev, so I disable it.
+#+begin_src emacs-lisp
+(abbrev-mode -1)
 #+end_src
 
 *** Mode line format
