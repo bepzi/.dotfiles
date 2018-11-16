@@ -27,7 +27,6 @@
     ~/.config/mpd: 'config/mpd'
     ~/.ncmpcpp/config: 'config/ncmpcpp/config'
     ~/.config/fontconfig: 'config/fontconfig'
-    ~/.emacs:
     ~/.emacs.d:
     ~/.gitignore_global:
     ~/.xprofile:
