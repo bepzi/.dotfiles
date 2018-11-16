@@ -7,7 +7,7 @@
 (package-initialize)
 #+end_src
 
-** Emacs Customize location
+*** Customize output file
 I don't want stuff added by Customize to show up in =init.el=.
 
 #+begin_src emacs-lisp
@@ -16,7 +16,7 @@ I don't want stuff added by Customize to show up in =init.el=.
      (load custom-file :noerror))
 #+end_src
 
-** Add package repos
+*** Add package repos
 #+begin_src emacs-lisp
 ;; Adds melpa and org mode repos unless already defined
 (unless (assoc-default "melpa" package-archives)
@@ -28,7 +28,7 @@ I don't want stuff added by Customize to show up in =init.el=.
 Use =M-x package-refresh-contents= to reload the list of packages
 after adding these for the first time.
 
-** Set up automatic package installation
+*** Set up automatic package installation
 #+begin_src emacs-lisp
 (unless (package-installed-p 'use-package)
   (package-install 'use-package))
@@ -42,7 +42,7 @@ after adding these for the first time.
 (setq load-prefer-newer t)
 #+end_src
 
-** Other needed packages
+*** Config utility packages
 #+begin_src emacs-lisp
 (use-package bind-key) ;; Utility for rebinding stuff
 (use-package diminish) ;; Allows use-package to hide minor modes from the modeline
@@ -53,14 +53,15 @@ after adding these for the first time.
 (use-package better-defaults)
 #+end_src
 
-*** Splash Screen
+*** Behavior
+**** Splash Screen
 Don't display the "Welcome to Emacs" stuff
 
 #+begin_src emacs-lisp
 (setq inhibit-startup-screen t)
 #+end_src
 
-*** Backups
+**** Backups
 By default, Emacs saves backup files in the current directory. These
 are the files ending in =~= that are cluttering up your directory
 lists. The following code stashes them all in =~/.emacs.d/backups=,
@@ -80,12 +81,7 @@ Disk space is cheap. Save lots.
 (setq auto-save-file-name-transforms '((".*" "~/.emacs.d/auto-save-list/" t)))
 #+end_src
 
-*** Time in the modeline
-#+begin_src emacs-lisp
-(display-time-mode 1)
-#+end_src
-
-*** Helm - interactive completion
+**** Helm
 Helm makes it easy to complete various things.
 
 #+begin_src emacs-lisp
@@ -99,27 +95,27 @@ Helm makes it easy to complete various things.
 (ido-mode -1) ;; Turn off ido mode in case I enabled it accidentally
 #+end_src
 
-*** Abbrev mode
+**** Abbrev mode
 I don't currently use Abbrev, so I disable it.
 #+begin_src emacs-lisp
 (abbrev-mode -1)
 #+end_src
 
-*** Mode line format
+**** Mode line format
 Display a more compact mode line
 
 #+begin_src emacs-lisp 
 (use-package smart-mode-line)
 #+end_src
 
-*** Change "yes or no" to "y or n"
+**** Change "yes or no" to "y or n"
 Lazy people like me never want to type "yes" when "y" will suffice.
 
 #+begin_src emacs-lisp 
 (fset 'yes-or-no-p 'y-or-n-p)
 #+end_src
 
-*** Line numbers
+**** Line numbers
 As of Emacs 26, =linum-mode= is deprecated, to be replaced with
 =display-line-numbers-mode=.
 
@@ -132,9 +128,25 @@ As of Emacs 26, =linum-mode= is deprecated, to be replaced with
   (global-linum-mode -1))
 #+end_src
 
-*** Automatically follow symlinks
+**** Automatically follow symlinks
+This is especially helpful when you use symlinks to manage your
+configuration files, as I do.
+
 #+begin_src emacs-lisp
 (setq vc-follow-symlinks t)
+#+end_src
+
+*** Appearance
+**** Color scheme
+#+begin_src emacs-lisp
+(use-package base16-theme
+  :config
+  (load-theme 'base16-default-dark t))
+#+end_src
+
+**** Time in the modeline
+#+begin_src emacs-lisp
+(display-time-mode 1)
 #+end_src
 
 *** Editing
@@ -148,13 +160,6 @@ fill-paragraph=. This command binds =M-Q= to be the inverse of =M-q=.
     (interactive (progn (barf-if-buffer-read-only) (list t)))
     (let ((fill-column (point-max))) (fill-paragraph nil region)))
 (bind-key "M-Q" 'my/unfill-paragraph)
-#+end_src
-
-**** Arch Linux PKGBUILDs
-A =PKGBUILD= should be treated like a shell script.
-
-#+begin_src emacs-lisp
-(add-to-list 'auto-mode-alist '("PKGBUILD\\'" . shell-script-mode))
 #+end_src
 
 **** LaTeX
@@ -198,6 +203,22 @@ Autocompletion framework for Emacs
 
 (use-package company-lsp
   :init (push 'company-lsp company-backends))
+#+end_src
+
+**** Bash
+You'll need the [[https://github.com/mads-hartmann/bash-language-server][Bash Language Server]] installed (AUR:
+=bash-language-server=).
+
+#+begin_src emacs-lisp
+(use-package lsp-sh
+  :init (add-hook 'sh-mode-hook #'lsp-sh-enable))
+#+end_src
+
+***** Arch Linux PKGBUILDS
+A =PKGBUILD= should be treated like a shell script.
+
+#+begin_src emacs-lisp
+(add-to-list 'auto-mode-alist '("PKGBUILD\\'" . shell-script-mode))
 #+end_src
 
 **** TOML
