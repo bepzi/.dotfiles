@@ -48,12 +48,12 @@ after adding these for the first time.
 (use-package diminish) ;; Allows use-package to hide minor modes from the modeline
 #+end_src
 
-** General configuration
+** General Configuration
 #+begin_src emacs-lisp
 (use-package better-defaults)
 #+end_src
 
-*** Behavior
+*** General Behavior
 **** Splash Screen
 Don't display the "Welcome to Emacs" stuff
 
@@ -99,6 +99,11 @@ Helm makes it easy to complete various things.
 I don't currently use Abbrev, so I disable it.
 #+begin_src emacs-lisp
 (abbrev-mode -1)
+#+end_src
+
+**** Delete trailing whitespace
+#+begin_src emacs-lisp
+(add-hook 'before-save-hook 'delete-trailing-whitespace)
 #+end_src
 
 **** Mode line format
