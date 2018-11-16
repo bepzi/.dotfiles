@@ -1,0 +1,232 @@
+#+TITLE: Ben's Emacs configuration
+#+PROPERTY: header-args:emacs-lisp :tangle yes
+
+* Emacs Config
+** Initialization
+#+begin_src emacs-lisp
+(package-initialize)
+#+end_src
+
+** Emacs Customize location
+I don't want stuff added by Customize to show up in =init.el=.
+
+#+begin_src emacs-lisp
+(setq custom-file (expand-file-name "custom.el" user-emacs-directory))
+  (when (file-exists-p custom-file)
+     (load custom-file :noerror))
+#+end_src
+
+** Add package repos
+#+begin_src emacs-lisp
+;; Adds melpa and org mode repos unless already defined
+(unless (assoc-default "melpa" package-archives)
+  (add-to-list 'package-archives '("melpa" . "https://melpa.org/packages/") t))
+(unless (assoc-default "org" package-archives)
+  (add-to-list 'package-archives '("org" . "https://orgmode.org/elpa/") t))
+#+end_src
+
+Use =M-x package-refresh-contents= to reload the list of packages
+after adding these for the first time.
+
+** Set up automatic package installation
+#+begin_src emacs-lisp
+(unless (package-installed-p 'use-package)
+  (package-install 'use-package))
+(setq use-package-verbose t)
+(setq use-package-always-ensure t)
+(require 'use-package)
+
+;; Don't use outdated elisp bytecode
+(use-package auto-compile
+  :config (auto-compile-on-load-mode))
+(setq load-prefer-newer t)
+#+end_src
+
+** Other needed packages
+#+begin_src emacs-lisp
+(use-package bind-key) ;; Utility for rebinding stuff
+(use-package diminish) ;; Allows use-package to hide minor modes from the modeline
+#+end_src
+
+** General configuration
+#+begin_src emacs-lisp
+(use-package better-defaults)
+#+end_src
+
+*** Backups
+By default, Emacs saves backup files in the current directory. These
+are the files ending in =~= that are cluttering up your directory
+lists. The following code stashes them all in =~/.emacs.d/backups=,
+where I can find them with =C-x C-f= (=find-file=) if I really need
+to.
+
+#+begin_src emacs-lisp
+(setq backup-directory-alist '(("." . "~/.emacs.d/backups")))
+#+end_src
+
+Disk space is cheap. Save lots.
+
+#+begin_src emacs-lisp
+(setq delete-old-versions -1)
+(setq version-control t)
+(setq vc-make-backup-files t)
+(setq auto-save-file-name-transforms '((".*" "~/.emacs.d/auto-save-list/" t)))
+#+end_src
+
+*** Time in the modeline
+#+begin_src emacs-lisp
+(display-time-mode 1)
+#+end_src
+
+*** Helm - interactive completion
+Helm makes it easy to complete various things.
+
+#+begin_src emacs-lisp
+(use-package helm
+  :diminish helm-mode)
+(helm-mode 1)
+
+(global-set-key "\C-x\C-f" 'helm-find-files)
+(global-set-key "\M-x" 'helm-M-x)
+
+(ido-mode -1) ;; Turn off ido mode in case I enabled it accidentally
+#+end_src
+
+*** Mode line format
+Display a more compact mode line
+
+#+begin_src emacs-lisp 
+(use-package smart-mode-line)
+#+end_src
+
+*** Change "yes or no" to "y or n"
+Lazy people like me never want to type "yes" when "y" will suffice.
+
+#+begin_src emacs-lisp 
+(fset 'yes-or-no-p 'y-or-n-p)
+#+end_src
+
+*** Line numbers
+As of Emacs 26, =linum-mode= is deprecated, to be replaced with
+=display-line-numbers-mode=.
+
+#+begin_src emacs-lisp
+(when (< emacs-major-version 26)
+  (global-linum-mode))
+
+(when (>= emacs-major-version 26)
+  (global-display-line-numbers-mode)
+  (global-linum-mode -1))
+#+end_src
+
+*** Automatically follow symlinks
+#+begin_src emacs-lisp
+(setq vc-follow-symlinks t)
+#+end_src
+
+*** Editing
+**** Unfilling
+It's a little strange that you can't readily undo =M-x
+fill-paragraph=. This command binds =M-Q= to be the inverse of =M-q=.
+
+#+begin_src emacs-lisp
+(defun my/unfill-paragraph (&optional region)
+    "Takes a multi-line paragraph and makes it into a single line of text."
+    (interactive (progn (barf-if-buffer-read-only) (list t)))
+    (let ((fill-column (point-max))) (fill-paragraph nil region)))
+(bind-key "M-Q" 'my/unfill-paragraph)
+#+end_src
+
+**** Arch Linux PKGBUILDs
+A =PKGBUILD= should be treated like a shell script.
+
+#+begin_src emacs-lisp
+(add-to-list 'auto-mode-alist '("PKGBUILD\\'" . shell-script-mode))
+#+end_src
+
+**** LaTeX
+#+begin_src emacs-lisp
+(use-package tex-mode
+  :ensure auctex)
+#+end_src
+
+**** Markdown
+#+begin_src emacs-lisp
+(use-package markdown-mode
+  :commands (markdown-mode gfm-mode)
+  :mode (("README\\.md\\'" . gfm-mode)
+         ("\\.md\\'" . markdown-mode)
+         ("\\.markdown\\'" . markdown-mode))
+  :init (setq markdown-command "multimarkdown"))
+#+end_src
+
+**** Flycheck
+#+begin_src emacs-lisp
+(use-package flycheck
+  :init (add-hook 'prog-mode-hook 'flycheck-mode))
+#+end_src
+
+**** Company
+Autocompletion framework for Emacs
+
+#+begin_src emacs-lisp
+(use-package company
+  :init (add-hook 'prog-mode-hook 'company-mode)
+  :config (setq company-tooltip-align-annotations t)
+          (setq company-minimum-prefix-length 1))
+#+end_src
+
+**** Language Server Protocol (LSP)
+#+begin_src emacs-lisp
+(use-package lsp-mode)
+
+(use-package lsp-ui
+  :init (add-hook 'lsp-mode-hook 'lsp-ui-mode))
+
+(use-package company-lsp
+  :init (push 'company-lsp company-backends))
+#+end_src
+
+**** TOML
+#+begin_src emacs-lisp
+(use-package toml-mode)
+#+end_src
+
+**** Rust
+#+begin_src emacs-lisp
+(use-package rust-mode)
+
+(use-package flycheck-rust
+  :init (with-eval-after-load 'rust-mode (add-hook 'flycheck-mode-hook 'flycheck-rust-setup)))
+
+(use-package lsp-rust
+  :config (setq lsp-rust-rls-command '("rustup" "run" "nightly" "rls"))
+  :init (add-hook 'rust-mode-hook 'lsp-rust-enable))
+#+end_src
+
+**** C/C++
+You must have =cquery= installed from the AUR, if you're on Arch Linux
+as I am.
+
+=cquery= works best with a =compile_commands.json= file at the project
+root. Alternatively, a simple =.cquery= can suffice, with
+one flag per line; see: [[https://github.com/cquery-project/cquery/wiki/.cquery][the cquery wiki]]
+
+#+begin_src emacs-lisp
+(defun cquery//enable ()
+  (condition-case nil
+      (lsp-cquery-enable)
+    (user-error nil)))
+
+(use-package cquery
+  :commands lsp-cquery-enable
+  :init (add-hook 'c-mode-hook #'cquery//enable)
+        (add-hook 'c++-mode-hook #'cquery//enable))
+  :config (setq cquery-executable "/usr/bin/cquery")
+#+end_src
+
+**** MIPS
+#+begin_src emacs-lisp
+(use-package mips-mode 
+  :mode "\\.mips$")
+#+end_src
