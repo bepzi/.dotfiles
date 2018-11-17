@@ -109,14 +109,14 @@ I don't currently use Abbrev, so I disable it.
 **** Mode line format
 Display a more compact mode line
 
-#+begin_src emacs-lisp 
+#+begin_src emacs-lisp
 (use-package smart-mode-line)
 #+end_src
 
 **** Change "yes or no" to "y or n"
 Lazy people like me never want to type "yes" when "y" will suffice.
 
-#+begin_src emacs-lisp 
+#+begin_src emacs-lisp
 (fset 'yes-or-no-p 'y-or-n-p)
 #+end_src
 
@@ -144,9 +144,9 @@ configuration files, as I do.
 *** Appearance
 **** Color scheme
 #+begin_src emacs-lisp
-(use-package base16-theme
-  :config
-  (load-theme 'base16-default-dark t))
+  (use-package zenburn-theme
+    :config
+    (load-theme 'zenburn t))
 #+end_src
 
 **** Time in the modeline
@@ -244,8 +244,7 @@ A =PKGBUILD= should be treated like a shell script.
 #+end_src
 
 **** C/C++
-You must have =cquery= installed from the AUR, if you're on Arch Linux
-as I am.
+You must have =cquery= installed (AUR: =cquery= or =cquery-git=).
 
 =cquery= works best with a =compile_commands.json= file at the project
 root. Alternatively, a simple =.cquery= can suffice, with
@@ -262,10 +261,11 @@ one flag per line; see: [[https://github.com/cquery-project/cquery/wiki/.cquery]
   :init (add-hook 'c-mode-hook #'cquery//enable)
         (add-hook 'c++-mode-hook #'cquery//enable))
   :config (setq cquery-executable "/usr/bin/cquery")
+          (setq cquery-sem-highlight-method 'font-lock)
 #+end_src
 
 **** MIPS
 #+begin_src emacs-lisp
-(use-package mips-mode 
+(use-package mips-mode
   :mode "\\.mips$")
 #+end_src
