@@ -1,4 +1,5 @@
 #+TITLE: My Emacs configuration
+#+STARTUP: showeverything
 #+PROPERTY: header-args:emacs-lisp :tangle yes
 
 * Emacs Config
@@ -159,6 +160,16 @@ enable this theme for the first time.
 **** Time in the modeline
 #+begin_src emacs-lisp
 (display-time-mode 1)
+#+end_src
+
+**** Whitespace Mode
+#+begin_src emacs-lisp
+(custom-set-faces
+  '(whitespace-space ((t (:foreground "dim gray" :background nil))))
+  '(whitespace-line  ((t (:foreground nil :background nil))))
+  '(whitespace-empty ((t (:foreground nil :background nil)))))
+
+(add-hook 'prog-mode-hook 'whitespace-mode)
 #+end_src
 
 *** Editing
