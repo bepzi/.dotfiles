@@ -129,6 +129,8 @@ and terminal emulator, respectively.
 You'll also want `volumeicon`, `compton` and `dunst-git` as your
 volume controller, compositor, and notification daemon, respectively.
 
+If you use a laptop, install `cbatticon`.
+
 Install `numlockx` to have Numlock automatically enabled on startup.
 
 6. Install the dotfiles
@@ -190,22 +192,23 @@ ln -s /etc/fonts/conf.avail/10-sub-pixel-rgb.conf /etc/fonts/conf.d
 ln -s /etc/fonts/conf.avail/30-infinality-aliases.conf /etc/fonts/conf.d
 ```
 
-Now open Emacs. The first time you run it, it'll complain about
-missing packages - that's O.K. Just do `M-x package-install
-use-package`, then restart Emacs. It'll download everything else it
-needs.
+Now open Emacs. If it complains about missing packages - that's
+O.K. Just do `M-x package-install use-package`, then restart
+Emacs. It'll download everything else it needs.
 
 Add the following file to `~/.config/systemd/user/emacs.service`:
 
 ```
 [Unit]
-Description=Emacs: the extensible, self-documenting text editor
+Description=Emacs text editor
+Documentation=info:emacs man:emacs(1) https://gnu.org/software/emacs/
 
 [Service]
-Type=forking
-ExecStart=/usr/bin/emacs --daemon
+Type=simple
+ExecStart=/usr/bin/emacs --fg-daemon
 ExecStop=/usr/bin/emacsclient --eval "(kill-emacs)"
-Restart=always
+Environment=SSH_AUTH_SOCK=%t/keyring/ssh
+Restart=on-failure
 
 [Install]
 WantedBy=default.target
