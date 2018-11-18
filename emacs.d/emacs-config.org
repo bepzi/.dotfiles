@@ -140,7 +140,7 @@ Display a more compact mode line.
 
 #+begin_src emacs-lisp
 (use-package smart-mode-line
-  :init (smart-mode-line-enable))
+  :config (smart-mode-line-enable))
 #+end_src
 
 When using =emacs --daemon=, you may have to launch an actual instance
@@ -149,9 +149,8 @@ new line mode theme.
 
 **** Color scheme
 #+begin_src emacs-lisp
-  (use-package zenburn-theme
-    :config
-    (load-theme 'zenburn t))
+(use-package zenburn-theme
+  :config (load-theme 'zenburn t))
 #+end_src
 
 Again, you may have to launch an actual =emacs= instance in order to
