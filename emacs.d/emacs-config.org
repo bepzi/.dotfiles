@@ -106,13 +106,6 @@ I don't currently use Abbrev, so I disable it.
 (add-hook 'before-save-hook 'delete-trailing-whitespace)
 #+end_src
 
-**** Mode line format
-Display a more compact mode line
-
-#+begin_src emacs-lisp
-(use-package smart-mode-line)
-#+end_src
-
 **** Change "yes or no" to "y or n"
 Lazy people like me never want to type "yes" when "y" will suffice.
 
@@ -142,12 +135,27 @@ configuration files, as I do.
 #+end_src
 
 *** Appearance
+**** Mode line format
+Display a more compact mode line.
+
+#+begin_src emacs-lisp
+(use-package smart-mode-line
+  :init (smart-mode-line-enable))
+#+end_src
+
+When using =emacs --daemon=, you may have to launch an actual instance
+of =emacs= (i.e, /not/ =emacsclient=) in order to correctly enable the
+new line mode theme.
+
 **** Color scheme
 #+begin_src emacs-lisp
   (use-package zenburn-theme
     :config
     (load-theme 'zenburn t))
 #+end_src
+
+Again, you may have to launch an actual =emacs= instance in order to
+enable this theme for the first time.
 
 **** Time in the modeline
 #+begin_src emacs-lisp
