@@ -73,10 +73,7 @@ to.
 (setq backup-directory-alist '(("." . "~/.emacs.d/backups")))
 #+end_src
 
-Disk space is cheap. Save lots.
-
 #+begin_src emacs-lisp
-(setq delete-old-versions -1)
 (setq version-control t)
 (setq vc-make-backup-files t)
 (setq auto-save-file-name-transforms '((".*" "~/.emacs.d/auto-save-list/" t)))
