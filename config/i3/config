@@ -23,14 +23,16 @@ set $ws10 0
 
 set_from_resource $fg i3wm.color0 #f0f0f0
 set_from_resource $bg i3wm.color1 #f0f0f0
+set $transparent #00000000
 
 # class                 border  backgr. text indicator child_border
-client.focused          $bg      $bg    $bg  $bg   $bg
-client.focused_inactive $bg2     $bg2   $bg  $bg   $bg
-client.unfocused        $bg2     $bg2   $bg  $bg   $bg
-client.urgent           $bg      $bg    $bg  $bg   $bg
-client.placeholder      $bg2     $bg2   $bg  $bg   $bg
-client.background $bg
+client.focused          $bg     $bg     $fg  $bg       $bg
+client.focused_inactive $bg     $bg     $fg  $bg       $bg
+client.unfocused        $bg     $bg     $fg  $bg       $bg
+client.urgent           $bg     $bg     $fg  $bg       $bg
+client.placeholder      $bg     $bg     $fg  $bg       $bg
+
+client.background       $bg
 
 # Font for window titles. Will also be used by the bar unless a different font
 # is used in the bar {} block below.
@@ -165,6 +167,23 @@ mode "resize" {
 bindsym $mod+r mode "resize"
 
 for_window [class="^.*"] border pixel 4
+
+bar {
+    status_command i3blocks
+    position top
+
+    colors {
+        statusline         $bg
+        background         $fg
+
+    #                      BORDER       BACKGROUND   TEXT
+        focused_workspace  $bg          $transparent $bg
+        inactive_workspace $transparent $transparent $bg
+        active_workspace   $transparent $transparent $bg
+        urgent_workspace   $fg          $fg          $transparent
+        binding_mode       $fg          $fg          $transparent
+    }
+}
 
 # Compositor
 exec --no-startup-id "allow_rgb10_configs=false compton -b --config ~/.config/compton.conf"

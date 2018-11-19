@@ -20,13 +20,13 @@ reload_dunst() {
         -cfr "$color9" &
 }
 
-reload_bar() {
-    . "$HOME/.scripts/launch_polybar.sh"
-}
+# reload_bar() {
+#     . "$HOME/.scripts/launch_polybar.sh"
+# }
 
 main() {
     reload_dunst &
-    reload_bar &
+    # reload_bar &
 }
 
 main >/dev/null 2>&1

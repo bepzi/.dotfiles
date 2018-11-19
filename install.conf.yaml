@@ -17,6 +17,7 @@
     ~/.bash_profile:
     ~/.config/user-dirs.dirs: 'config/user-dirs.dirs'
     ~/.config/i3: 'config/i3'
+    ~/.config/i3blocks: 'config/i3blocks'
     ~/.config/termite: 'config/termite'
     ~/.config/polybar: 'config/polybar'
     ~/.config/compton.conf: 'config/compton.conf'
