@@ -71,11 +71,6 @@ to.
 
 #+begin_src emacs-lisp
 (setq backup-directory-alist '(("." . "~/.emacs.d/backups")))
-#+end_src
-
-#+begin_src emacs-lisp
-(setq version-control t)
-(setq vc-make-backup-files t)
 (setq auto-save-file-name-transforms '((".*" "~/.emacs.d/auto-save-list/" t)))
 #+end_src
 
@@ -247,6 +242,9 @@ A =PKGBUILD= should be treated like a shell script.
 #+end_src
 
 **** Rust
+With =rustup=, run =rustup update nightly= and =rustup component add
+rls-preview rust-analysis rust-src=.
+
 #+begin_src emacs-lisp
 (use-package rust-mode)
 
