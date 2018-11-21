@@ -172,16 +172,19 @@ bar {
     status_command i3blocks
     position top
 
+    tray_output primary
+    tray_padding 0
+
     colors {
         statusline         $bg
         background         $fg
 
     #                      BORDER       BACKGROUND   TEXT
-        focused_workspace  $bg          $transparent $bg
-        inactive_workspace $transparent $transparent $bg
-        active_workspace   $transparent $transparent $bg
-        urgent_workspace   $fg          $fg          $transparent
-        binding_mode       $fg          $fg          $transparent
+        focused_workspace  $bg          $fg          $bg
+        inactive_workspace $fg          $fg          $bg
+        active_workspace   $fg          $fg          $bg
+        urgent_workspace   $fg          $fg          $bg
+        binding_mode       $bg          $fg          $bg
     }
 }
 
