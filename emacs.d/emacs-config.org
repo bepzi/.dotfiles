@@ -221,14 +221,6 @@ Autocompletion framework for Emacs
 #+end_src
 
 **** Bash
-You'll need the [[https://github.com/mads-hartmann/bash-language-server][Bash Language Server]] installed (AUR:
-=bash-language-server=).
-
-#+begin_src emacs-lisp
-(use-package lsp-sh
-  :init (add-hook 'sh-mode-hook #'lsp-sh-enable))
-#+end_src
-
 ***** Arch Linux PKGBUILDS
 A =PKGBUILD= should be treated like a shell script.
 
