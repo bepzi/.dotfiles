@@ -264,9 +264,9 @@ one flag per line; see: [[https://github.com/cquery-project/cquery/wiki/.cquery]
 (use-package cquery
   :commands lsp-cquery-enable
   :init (add-hook 'c-mode-hook #'cquery//enable)
-        (add-hook 'c++-mode-hook #'cquery//enable))
+        (add-hook 'c++-mode-hook #'cquery//enable)
   :config (setq cquery-executable "/usr/bin/cquery")
-          (setq cquery-sem-highlight-method 'font-lock)
+          (setq cquery-sem-highlight-method 'font-lock))
 #+end_src
 
 **** MIPS
