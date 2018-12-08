@@ -204,7 +204,7 @@ Autocompletion framework for Emacs
 
 #+begin_src emacs-lisp
 (use-package company
-  :hook prog-mode
+  :init (add-hook 'prog-mode-hook 'company-mode)
   :config (setq company-tooltip-align-annotations t)
           (setq company-minimum-prefix-length 1))
 #+end_src
@@ -214,7 +214,7 @@ Autocompletion framework for Emacs
 (use-package lsp-mode)
 
 (use-package lsp-ui
-  :hook lsp-mode)
+  :init (add-hook 'lsp-mode-hook 'lsp-ui-mode))
 
 (use-package company-lsp
   :init (push 'company-lsp company-backends))
@@ -239,6 +239,9 @@ rls-preview rust-analysis rust-src=.
 
 #+begin_src emacs-lisp
 (use-package rust-mode)
+
+(use-package flycheck-rust
+  :init (with-eval-after-load 'rust-mode (add-hook 'flycheck-mode-hook 'flycheck-rust-setup)))
 
 (use-package lsp-rust
   :config (setq lsp-rust-rls-command '("rustup" "run" "nightly" "rls"))
