@@ -196,7 +196,7 @@ fill-paragraph=. This command binds =M-Q= to be the inverse of =M-q=.
 **** Flycheck
 #+begin_src emacs-lisp
 (use-package flycheck
-  :init (add-hook 'prog-mode-hook 'flycheck-mode))
+  :hook (prog-mode . flycheck-mode))
 #+end_src
 
 **** Company
@@ -204,20 +204,23 @@ Autocompletion framework for Emacs
 
 #+begin_src emacs-lisp
 (use-package company
-  :init (add-hook 'prog-mode-hook 'company-mode)
+  :hook (prog-mode . company-mode)
   :config (setq company-tooltip-align-annotations t)
           (setq company-minimum-prefix-length 1))
 #+end_src
 
 **** Language Server Protocol (LSP)
 #+begin_src emacs-lisp
-(use-package lsp-mode)
+(use-package lsp-mode
+  :commands lsp
+  :config (require 'lsp-clients))
 
 (use-package lsp-ui
-  :init (add-hook 'lsp-mode-hook 'lsp-ui-mode))
+  :hook lsp)
 
+;; Allow Company to get info from LSP
 (use-package company-lsp
-  :init (push 'company-lsp company-backends))
+  :config (push 'company-lsp company-backends))
 #+end_src
 
 **** Bash
@@ -234,8 +237,8 @@ A =PKGBUILD= should be treated like a shell script.
 #+end_src
 
 **** Rust
-With =rustup=, run =rustup update nightly= and =rustup component add
-rls-preview rust-analysis rust-src=.
+Run =rustup update nightly= and =rustup component add rls-preview
+rust-analysis rust-src=.
 
 #+begin_src emacs-lisp
 (use-package rust-mode)
@@ -244,29 +247,22 @@ rls-preview rust-analysis rust-src=.
   :init (with-eval-after-load 'rust-mode (add-hook 'flycheck-mode-hook 'flycheck-rust-setup)))
 
 (use-package lsp-rust
-  :config (setq lsp-rust-rls-command '("rustup" "run" "nightly" "rls"))
-  :init (add-hook 'rust-mode-hook 'lsp-rust-enable))
+  :hook (rust-mode . lsp-rust-enable)
+  :config (setq lsp-rust-rls-command '("rustup" "run" "nightly" "rls")))
 #+end_src
 
 **** C/C++
-You must have =cquery= installed (AUR: =cquery= or =cquery-git=).
+You must have =ccls= installed (AUR: =ccls= or =ccls-git=).
 
-=cquery= works best with a =compile_commands.json= file at the project
-root. Alternatively, a simple =.cquery= can suffice, with
-one flag per line; see: [[https://github.com/cquery-project/cquery/wiki/.cquery][the cquery wiki]]
+=ccls= works best with a =compile_commands.json= file at the project
+root. Alternatively, a simple =.ccls= can suffice, with
+one flag per line; see: [[https://github.com/MaskRay/ccls/wiki/Getting-started][the ccls wiki]]
 
 #+begin_src emacs-lisp
-(defun cquery//enable ()
-  (condition-case nil
-      (lsp-cquery-enable)
-    (user-error nil)))
 
-(use-package cquery
-  :commands lsp-cquery-enable
-  :init (add-hook 'c-mode-hook #'cquery//enable)
-        (add-hook 'c++-mode-hook #'cquery//enable)
-  :config (setq cquery-executable "/usr/bin/cquery")
-          (setq cquery-sem-highlight-method 'font-lock))
+(use-package ccls
+  :hook ((c-mode c++-mode objc-mode) . (lambda () (require 'ccls) (lsp)))
+  :config (setq ccls-executable "/usr/bin/ccls"))
 #+end_src
 
 **** MIPS
