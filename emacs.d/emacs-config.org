@@ -243,9 +243,6 @@ rust-analysis rust-src=.
 #+begin_src emacs-lisp
 (use-package rust-mode)
 
-(use-package flycheck-rust
-  :init (with-eval-after-load 'rust-mode (add-hook 'flycheck-mode-hook 'flycheck-rust-setup)))
-
 (use-package lsp-rust
   :hook (rust-mode . lsp-rust-enable)
   :config (setq lsp-rust-rls-command '("rustup" "run" "nightly" "rls")))
