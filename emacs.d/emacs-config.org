@@ -210,17 +210,17 @@ Autocompletion framework for Emacs
 #+end_src
 
 **** Language Server Protocol (LSP)
+LSP mode will automatically configure =company-lsp= and =lsp-ui=.
+
 #+begin_src emacs-lisp
 (use-package lsp-mode
   :commands lsp
   :config (require 'lsp-clients))
 
-(use-package lsp-ui
-  :hook lsp)
+(use-package lsp-ui)
 
 ;; Allow Company to get info from LSP
-(use-package company-lsp
-  :config (push 'company-lsp company-backends))
+(use-package company-lsp)
 #+end_src
 
 **** Bash
@@ -241,11 +241,12 @@ Run =rustup update nightly= and =rustup component add rls-preview
 rust-analysis rust-src=.
 
 #+begin_src emacs-lisp
-(use-package rust-mode)
+(use-package rust-mode
+  :hook (rust-mode . lsp))
 
-(use-package lsp-rust
-  :hook (rust-mode . lsp-rust-enable)
-  :config (setq lsp-rust-rls-command '("rustup" "run" "nightly" "rls")))
+;; Add keybindings for interacting with Cargo
+(use-package cargo
+  :hook (rust-mode . cargo-minor-mode))
 #+end_src
 
 **** C/C++
@@ -257,8 +258,7 @@ one flag per line; see: [[https://github.com/MaskRay/ccls/wiki/Getting-started][
 
 #+begin_src emacs-lisp
 
-(use-package ccls
-  :hook ((c-mode c++-mode objc-mode) . (lambda () (require 'ccls) (lsp)))
+(use-package ccls  :hook ((c-mode c++-mode objc-mode) . (lambda () (require 'ccls) (lsp)))
   :config (setq ccls-executable "/usr/bin/ccls"))
 #+end_src
 
