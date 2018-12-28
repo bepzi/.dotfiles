@@ -164,6 +164,12 @@ enable this theme for the first time.
 (add-hook 'prog-mode-hook 'whitespace-mode)
 #+end_src
 
+**** Magit
+#+begin_src emacs-lisp
+(use-package magit
+  :config (bind-key "C-x g" 'magit-status))
+#+end_src
+
 *** Editing
 **** Unfilling
 It's a little strange that you can't readily undo =M-x
