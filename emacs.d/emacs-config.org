@@ -216,17 +216,18 @@ Autocompletion framework for Emacs
 #+end_src
 
 **** Language Server Protocol (LSP)
-LSP mode will automatically configure =company-lsp= and =lsp-ui=.
+LSP mode will automatically configure =company-lsp= and
+=lsp-ui=. Prefer =flycheck= to the older =flymake=.
 
 #+begin_src emacs-lisp
 (use-package lsp-mode
   :commands lsp
-  :config (require 'lsp-clients))
+  :init
+  (setq ...)
+  :config (setq lsp-prefer-flymake nil))
 
-(use-package lsp-ui)
-
-;; Allow Company to get info from LSP
-(use-package company-lsp)
+(use-package lsp-ui :commands lsp-ui-mode)
+(use-package company-lsp :commands company-lsp)
 #+end_src
 
 **** Bash
