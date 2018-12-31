@@ -170,7 +170,7 @@ enable this theme for the first time.
   :config (bind-key "C-x g" 'magit-status))
 #+end_src
 
-*** Editing
+*** Basic Editing
 **** Unfilling
 It's a little strange that you can't readily undo =M-x
 fill-paragraph=. This command binds =M-Q= to be the inverse of =M-q=.
@@ -183,6 +183,7 @@ fill-paragraph=. This command binds =M-Q= to be the inverse of =M-q=.
 (bind-key "M-Q" 'my/unfill-paragraph)
 #+end_src
 
+*** Programming Languages/Major Modes
 **** LaTeX
 #+begin_src emacs-lisp
 (use-package tex-mode
@@ -200,6 +201,8 @@ fill-paragraph=. This command binds =M-Q= to be the inverse of =M-q=.
 #+end_src
 
 **** Flycheck
+Prefer the slightly-nicer =flycheck= to =flymake=.
+
 #+begin_src emacs-lisp
 (use-package flycheck
   :hook (prog-mode . flycheck-mode))
@@ -259,20 +262,7 @@ rust-analysis rust-src=.
   :config (add-hook 'flycheck-mode-hook #'flycheck-rust-setup))
 #+end_src
 
-**** C/C++
-You must have =ccls= installed (AUR: =ccls= or =ccls-git=).
-
-=ccls= works best with a =compile_commands.json= file at the project
-root. Alternatively, a simple =.ccls= can suffice, with
-one flag per line; see: [[https://github.com/MaskRay/ccls/wiki/Getting-started][the ccls wiki]]
-
-#+begin_src emacs-lisp
-
-(use-package ccls  :hook ((c-mode c++-mode objc-mode) . (lambda () (require 'ccls) (lsp)))
-  :config (setq ccls-executable "/usr/bin/ccls"))
-#+end_src
-
-**** MIPS
+**** MIPS Assembly
 #+begin_src emacs-lisp
 (use-package mips-mode
   :mode "\\.mips$")
