@@ -183,7 +183,7 @@ fill-paragraph=. This command binds =M-Q= to be the inverse of =M-q=.
 (bind-key "M-Q" 'my/unfill-paragraph)
 #+end_src
 
-*** Programming Languages/Major Modes
+*** Programming Languages
 **** LaTeX
 #+begin_src emacs-lisp
 (use-package tex-mode
@@ -266,4 +266,49 @@ rust-analysis rust-src=.
 #+begin_src emacs-lisp
 (use-package mips-mode
   :mode "\\.mips$")
+#+end_src
+
+**** x86 Assembly
+#+begin_src emacs-lisp
+(use-package nasm-mode
+  :hook (asm-mode . nasm-mode))
+#+end_src
+
+**** LLVM IR
+#+begin_src emacs-lisp
+(setq load-path
+    (cons (expand-file-name "/usr/share/emacs/site-lisp/emacs-llvm-mode") load-path))
+(require 'llvm-mode)
+#+end_src
+
+*** Org Mode
+**** Keybindings
+#+begin_src emacs-lisp
+(bind-key "C-c a" 'org-agenda)
+(bind-key "C-c c" 'org-capture)
+#+end_src
+
+**** Settings
+#+begin_src emacs-lisp
+;; Agenda file location: my =$XDG_DOCUMENTS_DIR=
+(setq org-agenda-files '("~/documents/"))
+
+;; Include general recurring info (holidays, etc.) in Agenda
+(setq org-agenda-include-diary t)
+
+;; Show days that don't have anything scheduled on them
+(setq org-agenda-show-all-dates t)
+
+;; Don't show tasks as scheduled if they are already shown as a deadline
+(setq org-agenda-skip-scheduled-if-deadline-is-shown t)
+
+;; Always open Agenda to replace the current window
+(setq org-agenda-window-setup (quote current-window))
+
+;; Hide deadline/scheduled tasks if they're done
+(setq org-agenda-skip-deadline-if-done t)
+(setq org-agenda-skip-scheduled-if-done t)
+
+;; Begin the agenda view on the current day, not Sunday
+(setq org-agenda-start-on-weekday nil)
 #+end_src
