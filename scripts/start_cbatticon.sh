@@ -14,13 +14,14 @@ if ! command -v cbatticon >/dev/null 2>&1; then
     exit 0
 fi
 
-# Kill old instances, silently
+# Kill old instances (if any), silently
 killall -q cbatticon || true
 
 readonly low_level=25
 readonly critical_level=10
 readonly update_interval=10  # seconds
 
-if cbatticon -p | grep "Battery" || cbatticon -p | grep "AC"; then
+if cbatticon -p | grep "Battery" >/dev/null 2>&1 ||
+       cbatticon -p | grep "AC"  >/dev/null 2>&1; then
     cbatticon -l $low_level -r $critical_level -u $update_interval &
 fi
