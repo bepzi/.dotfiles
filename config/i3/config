@@ -187,8 +187,8 @@ bar {
     }
 }
 
-# Compositor
-# exec --no-startup-id "allow_rgb10_configs=false compton -b --config ~/.config/compton.conf"
+# File manager
+exec --no-startup-id "thunar --daemon"
 
 # Wall paper (set with Nitrogen, first!)
 exec --no-startup-id "nitrogen --restore"
