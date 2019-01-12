@@ -159,12 +159,6 @@ enable this theme for the first time.
 #+end_src
 
 **** Whitespace Mode
-#+begin_src emacs-lisp
-(custom-set-faces
-  '(whitespace-space ((t (:foreground "dim gray" :background nil))))
-  '(whitespace-line  ((t (:foreground nil :background nil))))
-  '(whitespace-empty ((t (:foreground nil :background nil)))))
-
 (add-hook 'prog-mode-hook 'whitespace-mode)
 #+end_src
 
