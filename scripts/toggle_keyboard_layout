@@ -1,7 +1,5 @@
 #!/usr/bin/env bash
-## Author: ben01189998819991197253
 # Script to toggle the X keyboard layout between QWERTY and Dvorak.
-##
 
 set -o errexit          # Exit on most errors (see the manual)
 set -o errtrace         # Make sure any error trap is inherited
@@ -9,13 +7,24 @@ set -o nounset          # Disallow expansion of unset variables
 set -o pipefail         # Use last non-zero exit code in a pipeline
 #set -o xtrace          # Trace the execution of the script (debug)
 
+msg_set_to_us="Keyboard Layout: EN_US"
+msg_set_to_dvorak="Keyboard Layout: EN_dvorak"
+msg_layout_unset="Keyboard Layout: Unchanged (did not recognize current layout)"
+
+alert_timeout_ms=2000
+
 case "$(setxkbmap -query | grep "layout" | cut -c 13-)" in
     "dvorak")
         setxkbmap us
+        notify-send -t $alert_timeout_ms "$msg_set_to_us"
+        echo "$msg_set_to_us"
         ;;
     "us")
         setxkbmap dvorak
+        notify-send -t $alert_timeout_ms "$msg_set_to_dvorak"
+        echo "$msg_set_to_dvorak"
         ;;
     *)
+        echo "$msg_layout_unset"
         ;;
 esac
