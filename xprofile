@@ -2,7 +2,7 @@
 # ~/.xprofile -- Intended to be sourced a single time when the computer starts
 
 # Locale
-export LC_ALL="en_US.UTF-8"
+export LANG="en_US.UTF-8"
 export LC_CTYPE="en_US.UTF-8"
 
 # PATH-related variables
@@ -25,18 +25,6 @@ if command -v java >/dev/null 2>&1; then
     [ -d "/usr/lib/jvm/default" ] && export JAVA_HOME="/usr/lib/jvm/default"
 fi
 
-# For Racer-Rust, the location of the Rust source code
-if command -v cargo >/dev/null 2>&1; then
-    if [ -d "$HOME/.rustup/toolchains/stable-x86_64-unknown-linux-gnu/lib/rustlib/src/rust/src" ]; then
-        export RUST_SRC_PATH="$HOME/.rustup/toolchains/stable-x86_64-unknown-linux-gnu/lib/rustlib/src/rust/src"
-    elif [ -d "$HOME/.rustup/toolchains/nightly-x86_64-unknown-linux-gnu/lib/rustlib/src/rust/src" ]; then
-        export RUST_SRC_PATH="$HOME/.rustup/toolchains/nightly-x86_64-unknown-linux-gnu/lib/rustlib/src/rust/src"
-    fi
-
-    # Enable incremental compilation, for faster compile times
-    export CARGO_INCREMENTAL=1
-fi
-
 # Prevent issues when using the Android Studio Android Emulator
 if command -v android-studio >/dev/null 2>&1; then
     export ANDROID_HOME=/opt/android-sdk
@@ -48,9 +36,6 @@ if command -v gnome-keyring-daemon >/dev/null 2>&1; then
     eval $(/usr/bin/gnome-keyring-daemon --start --components=pkcs11,secrets,ssh)
     export SSH_AUTH_SOCK
 fi
-
-# Start MPD if not already running
-[ ! -s "$HOME/.config/mpd/pid" ] && mpd
 
 # Set the keyboard layout
 setxkbmap dvorak

@@ -39,7 +39,7 @@ else
 fi
 
 if command -v emacs >/dev/null 2>&1; then
-    EDITOR="$(which emacsclient) -tn"
+    EDITOR="$(which emacs) -nw"
 elif command -v nvim >/dev/null 2>&1; then
     EDITOR="$(which nvim)"
 elif command -v vim >/dev/null 2>&1; then
@@ -52,7 +52,7 @@ fi
 
 # Emacs has to be treated a little differently here
 if command -v emacs >/dev/null 2>&1; then
-    export VISUAL="$(which emacsclient) -cn"
+    export VISUAL="$(which emacs)"
 else
     export VISUAL="$EDITOR"
 fi
@@ -62,11 +62,3 @@ fi
 
 PS1='[\u@\h \W]\$ '
 [ -f "$HOME/bin/bash-powerline.sh" ] && . "$HOME/bin/bash-powerline.sh"
-
-# Import colorscheme from wal, if installed
-if command -v wal >/dev/null 2>&1; then    
-    # Import colorscheme from 'wal' asynchronously
-    # ( ) # Hide shell job control messages.
-    (cat "$HOME/.cache/wal/sequences" &)
-fi
-

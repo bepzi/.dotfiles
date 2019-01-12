@@ -6,9 +6,6 @@
 
 alias ls='ls --color=auto'
 
-# Prefer exa to ls if it's installed
-command -v exa >/dev/null 2>&1 && alias ls='exa'
-
 alias diff='diff --color=auto'
 
 alias grep='grep --color=auto'
@@ -23,16 +20,10 @@ alias reboot='sync && reboot'
 
 alias xscreensaver='xscreensaver -no-splash'
 
-if command -v git >/dev/null 2>&1; then
-    alias ga='git add .'
-    alias gc='git commit -m'
-    alias gp='git push'
-    # Jump to the git repository root
-    alias groot='cd "$(git rev-parse --show-toplevel)"'
-fi
+# Jump to the git repository root
+alias groot='cd "$(git rev-parse --show-toplevel)"'
 
 alias mkdir='mkdir -p'
-
 alias cp='cp -r'
 
 # Colors for man pages in `less`

@@ -35,27 +35,5 @@ fi
 [ -f /etc/xprofile ] && . /etc/xprofile
 [ -f ~/.xprofile ] && . ~/.xprofile
 
-# Restore last colorscheme and wallpaper with wal
-if command -v wal >/dev/null 2>&1; then
-    wal -R
-fi
-
-# Start and theme dunst
-if command -v dunst >/dev/null 2>&1; then
-    . "$HOME/.cache/wal/colors.sh"
-
-    pkill dunst && \
-        dunst \
-            -lb "$color15" \
-            -lf "$color0"  \
-            -lfr "$color0" \
-            -nb "$color15" \
-            -nf "$color0"  \
-            -nfr "$color0" \
-            -cb "$color15" \
-            -cf "$color9"  \
-            -cfr "$color9" &
-fi
-
 # Start window manager
 exec i3
