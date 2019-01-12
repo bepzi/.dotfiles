@@ -223,12 +223,13 @@ LSP mode will automatically configure =company-lsp= and
 #+begin_src emacs-lisp
 (use-package lsp-mode
   :commands lsp
-  :init
-  (setq ...)
-  :config (setq lsp-prefer-flymake nil))
+  :config (setq lsp-prefer-flymake nil)
+          (setq lsp-auto-configure t))
 
-(use-package lsp-ui :commands lsp-ui-mode)
-(use-package company-lsp :commands company-lsp)
+(use-package lsp-ui
+  :commands lsp-ui-mode)
+(use-package company-lsp
+  :commands company-lsp)
 #+end_src
 
 **** Bash
@@ -273,6 +274,8 @@ rust-src rustfmt=.
 #+end_src
 
 **** LLVM IR
+Install =emacs-llvm-mode= from the AUR.
+
 #+begin_src emacs-lisp
 (setq load-path
     (cons (expand-file-name "/usr/share/emacs/site-lisp/emacs-llvm-mode") load-path))
