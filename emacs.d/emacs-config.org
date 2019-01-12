@@ -142,9 +142,12 @@ of =emacs= (i.e, /not/ =emacsclient=) in order to correctly enable the
 new mode line theme.
 
 **** Color scheme
+Don't forget to use Oomox (AUR: =oomox=, =oomox-git=) to set your
+systemwide icons and GTK+ themes to a matching color scheme.
+
 #+begin_src emacs-lisp
-(use-package zenburn-theme
-  :config (load-theme 'zenburn t))
+(use-package base16-theme
+  :config (load-theme 'base16-gruvbox-dark-hard t))
 #+end_src
 
 Again, you may have to launch an actual =emacs= instance in order to
