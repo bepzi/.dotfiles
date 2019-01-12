@@ -7,11 +7,11 @@ set -o nounset          # Disallow expansion of unset variables
 set -o pipefail         # Use last non-zero exit code in a pipeline
 #set -o xtrace          # Trace the execution of the script (debug)
 
-msg_set_to_us="Keyboard Layout: EN_US"
-msg_set_to_dvorak="Keyboard Layout: EN_dvorak"
-msg_layout_unset="Keyboard Layout: Unchanged (did not recognize current layout)"
+readonly msg_set_to_us="Keyboard Layout: EN_US"
+readonly msg_set_to_dvorak="Keyboard Layout: EN_dvorak"
+readonly msg_layout_unset="Keyboard Layout: Unchanged (did not recognize current layout)"
 
-alert_timeout_ms=2000
+readonly alert_timeout_ms=2000
 
 case "$(setxkbmap -query | grep "layout" | cut -c 13-)" in
     "dvorak")
