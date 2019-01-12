@@ -31,5 +31,5 @@ markup=none
 # Date Time
 #
 [time]
-command=date '+%b. %e, %Y  %l:%M %p'
+command=date '+%b. %e, %Y  %l:%M %p  '
 interval=5
