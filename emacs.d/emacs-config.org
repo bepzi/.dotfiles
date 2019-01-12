@@ -240,6 +240,19 @@ A =PKGBUILD= should be treated like a shell script.
 (add-to-list 'auto-mode-alist '("PKGBUILD\\'" . shell-script-mode))
 #+end_src
 
+**** JSON
+Use =json-mode= when editing Reddit Enhancement Suite backup files.
+
+#+begin_src emacs-lisp
+(use-package json-mode
+  :mode "\\.resbackup$")
+#+end_src
+
+**** YAML
+#+begin_src emacs-lisp
+(use-package yaml-mode)
+#+end_src
+
 **** TOML
 #+begin_src emacs-lisp
 (use-package toml-mode)
