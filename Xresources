@@ -1,35 +1,26 @@
-! Fallback colors (in case wal not installed)
-*color0:	#241535
-*color1:	#DD2825
-*color10:	#E15A16
-*color11:	#AB4C44
-*color12:	#1D9A47
-*color13:	#CB9B63
-*color14:	#D82092
-*color15:	#F4C587
-*color2:	#E15A16
-*color3:	#AB4C44
-*color4:	#1D9A47
-*color5:	#CB9B63
-*color6:	#D82092
-*color66:	#241535
-*color7:	#F4C587
-*color8:	#757575
-*color9:	#DD2825
-URxvt*background:	#241535
-URxvt*cursorColor:	#F4C587
-URxvt*foreground:	#F4C587
-XTerm*background:	#241535
-XTerm*cursorColor:	#241535
-XTerm*foreground:	#F4C587
-emacs*background:	#241535
-emacs*foreground:	#F4C587
+! Gruvbox Dark Hard Colorscheme
+*background:  #1d2021
+*foreground:  #d5c4a1
+*color0:  #3c3836
+*color1:  #fb4934
+*color2:  #b8bb26
+*color3:  #fe8019
+*color4:  #83a598
+*color5:  #d3869b
+*color6:  #8ec07c
+*color7:  #ebdbb2
+*color8:  #504945
+*color9:  #fb4934
+*color10:  #b8bb26
+*color11:  #fabd2f
+*color12:  #83a598
+*color13:  #d3869b
+*color14:  #8ec07c
+*color15:  #fbf1c7
 
 ! Settings for rofi
 rofi.color-enabled: true
 rofi.separator-style: none
 rofi.show-icons: true
 rofi.display-drun:
-! Dark theme.
-rofi.theme: ~/.cache/wal/colors-rofi-dark.rasi
-! rofi.theme: ~/.cache/wal/colors-rofi-light.rasi
+rofi.theme: /usr/share/rofi/themes/gruvbox-dark-hard.rasi
