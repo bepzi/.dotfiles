@@ -119,14 +119,6 @@ As of Emacs 26, =linum-mode= is deprecated, to be replaced with
   (global-linum-mode -1))
 #+end_src
 
-**** Automatically follow symlinks
-This is especially helpful when you use symlinks to manage your
-configuration files, as I do.
-
-#+begin_src emacs-lisp
-(setq vc-follow-symlinks t)
-#+end_src
-
 *** Appearance
 **** Mode line format
 Display a more compact mode line.
