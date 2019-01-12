@@ -1,39 +1,30 @@
 - defaults:
     link:
-      # Create new symlinks when they do not exist
+      # Create parent directories when they do not exist
       create: true
       # Relink old symlinks when they are changed
       relink: true
+      # Use '*' as a shell wildcard, link everything that matches
+      glob: true
 
 # Directories to be checked for broken symlinks
 - clean: ['~', '~/.config', '~/bin']
 
 # <destination>: <source (relative to root dotfiles directory)>
 - link:
-    ~/bin/bash-powerline.sh: 'bash-powerline/bash-powerline.sh'
-    ~/bin/scripts: 'scripts'
-    ~/.bashrc:
+    ~/.Xresources:
     ~/.bash_aliases:
     ~/.bash_profile:
-    ~/.config/user-dirs.dirs: 'config/user-dirs.dirs'
-    ~/.config/i3: 'config/i3'
-    ~/.config/i3blocks: 'config/i3blocks'
-    ~/.config/termite: 'config/termite'
-    ~/.config/polybar: 'config/polybar'
-    ~/.config/compton.conf: 'config/compton.conf'
-    ~/.config/contrail.toml: 'config/contrail.toml'
-    ~/.config/git-completion.bash: 'config/git-completion.bash'
-    ~/.config/dunst: 'config/dunst'
-    ~/.config/mpd: 'config/mpd'
-    ~/.ncmpcpp/config: 'config/ncmpcpp/config'
-    ~/.config/fontconfig: 'config/fontconfig'
-    ~/.emacs.d:
+    ~/.bashrc:
+    ~/.config: 'config/*'
+    ~/.emacs.d: 'emacs.d/*'
     ~/.gitignore_global:
-    ~/.xprofile:
-    ~/.Xresources:
     ~/.xinitrc:
+    ~/.xprofile:
+    ~/bin/bash-powerline.sh: 'bash-powerline/bash-powerline.sh'
+    ~/bin: 'scripts/*'
 
 - shell:
-  - [git submodule update --init --recursive, Installing submodules]
-  - [git config --global core.excludesfile ~/.gitignore_global, Updating global gitignore]
   - [git config --global --replace-all pull.rebase true, Setting misc. git settings]
+  - [git config --global core.excludesfile ~/.gitignore_global, Updating global gitignore]
+  - [git submodule update --init --recursive, Installing submodules]
