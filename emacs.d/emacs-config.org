@@ -40,17 +40,22 @@ after adding these for the first time.
 
 ;; Don't use outdated elisp bytecode
 (use-package auto-compile
-  :config (auto-compile-on-load-mode))
-(setq load-prefer-newer t)
+  :config (auto-compile-on-load-mode)
+          (setq load-prefer-newer t))
 #+end_src
 
 *** Config utility packages
+Gives me the ability to easily rebind keys and hide minor modes from
+the modeline.
+
 #+begin_src emacs-lisp
-(use-package bind-key) ;; Utility for rebinding stuff
-(use-package diminish) ;; Allows use-package to hide minor modes from the modeline
+(use-package bind-key)
+(use-package diminish)
 #+end_src
 
 ** General Configuration
+=better-defaults= takes care of the majority of Emacs' papercuts.
+
 #+begin_src emacs-lisp
 (use-package better-defaults)
 #+end_src
@@ -178,13 +183,13 @@ fill-paragraph=. This command binds =M-Q= to be the inverse of =M-q=.
 
 #+begin_src emacs-lisp
 (defun my/unfill-paragraph (&optional region)
-    "Takes a multi-line paragraph and makes it into a single line of text."
+    "Take a multi-line paragraph and make it into a single line of text."
     (interactive (progn (barf-if-buffer-read-only) (list t)))
     (let ((fill-column (point-max))) (fill-paragraph nil region)))
 (bind-key "M-Q" 'my/unfill-paragraph)
 #+end_src
 
-*** Programming Languages
+*** Programming/Markup Languages
 **** LaTeX
 #+begin_src emacs-lisp
 (use-package tex-mode
@@ -248,8 +253,8 @@ A =PKGBUILD= should be treated like a shell script.
 #+end_src
 
 **** Rust
-Run =rustup update nightly= and =rustup component add rls-preview
-rust-analysis rust-src=.
+Run =rustup update stable= and =rustup component add rls rust-analysis
+rust-src rustfmt=.
 
 #+begin_src emacs-lisp
 (use-package rust-mode
