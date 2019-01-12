@@ -304,8 +304,8 @@ Install =emacs-llvm-mode= from the AUR.
 
 **** Settings
 #+begin_src emacs-lisp
-;; Agenda file location: my =$XDG_DOCUMENTS_DIR=
-(setq org-agenda-files '("~/documents/"))
+;; Agenda file location: a subfolder in =$XDG_DOCUMENTS_DIR=
+(setq org-agenda-files '("~/documents/org_agenda"))
 
 ;; Include general recurring info (holidays, etc.) in Agenda
 (setq org-agenda-include-diary t)
@@ -325,4 +325,21 @@ Install =emacs-llvm-mode= from the AUR.
 
 ;; Begin the agenda view on the current day, not Sunday
 (setq org-agenda-start-on-weekday nil)
+#+end_src
+
+**** Capture Templates
+#+begin_src emacs-lisp
+(setq org-capture-templates
+  '(("t" "Add a task to the TODO list." entry
+     (file+headline "~/documents/org_agenda/tasks.org" "Tasks")
+     "* TODO %?")
+    ("n" "Add a note for later." entry
+     (file+headline "~/documents/org_agenda/notes.org" "Notes")
+     "* %?")
+    ("a" "Add an upcoming date to the calendar." entry
+     (file+headline "~/documents/org_agenda/calendar.org" "Calendar")
+     "* %? %t")
+    ("s" "Add an entry to the \"Some Day\" category." entry
+     (file+headline "~/documents/org_agenda/someday.org" "Some Day")
+     "* %?")))
 #+end_src
