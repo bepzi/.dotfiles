@@ -94,12 +94,6 @@ Helm makes it easy to complete various things.
 (ido-mode -1) ;; Turn off ido mode in case I enabled it accidentally
 #+end_src
 
-**** Abbrev mode
-I don't currently use Abbrev, so I disable it.
-#+begin_src emacs-lisp
-(abbrev-mode -1)
-#+end_src
-
 **** Delete trailing whitespace
 #+begin_src emacs-lisp
 (add-hook 'before-save-hook 'delete-trailing-whitespace)
