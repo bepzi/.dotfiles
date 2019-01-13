@@ -1,6 +1,6 @@
 # dotfiles
 
-![My desktop](screenshots/rice_06_01_2017.png)
+![My desktop](screenshots/rice_01_13_2019.png)
 
 My personal configuration files.
 
