@@ -266,6 +266,22 @@ rust-src rustfmt=.
   :config (add-hook 'flycheck-mode-hook #'flycheck-rust-setup))
 #+end_src
 
+**** C
+Indent with 4 spaces, and use a variant of K&R style.
+
+#+begin_src emacs-lisp
+(setq c-default-style "k&r")
+(setq c-basic-offset 4)
+#+end_src
+
+Source code formatting with =clang-format=:
+
+#+begin_src emacs-lisp
+(load "/usr/share/clang/clang-format")
+(setq-default clang-format-style "{BasedOnStyle: Google, IndentWidth: 4}")
+(bind-key "C-c C-f" 'clang-format-buffer)
+#+end_src
+
 **** MIPS Assembly
 #+begin_src emacs-lisp
 (use-package mips-mode
