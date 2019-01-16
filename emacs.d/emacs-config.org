@@ -1,3 +1,4 @@
+
 #+TITLE: My Emacs configuration
 #+STARTUP: showeverything
 #+PROPERTY: header-args:emacs-lisp :tangle yes
@@ -225,11 +226,23 @@ LSP mode will automatically configure =company-lsp= and
 #+end_src
 
 **** Bash
+For =flycheck= integration, install =shellcheck= (AUR:
+=shellcheck-git-static=)
+
 ***** Arch Linux PKGBUILDS
 A =PKGBUILD= should be treated like a shell script.
 
 #+begin_src emacs-lisp
 (add-to-list 'auto-mode-alist '("PKGBUILD\\'" . shell-script-mode))
+#+end_src
+
+**** JavaScript/ECMAScript
+For =flycheck= integration, install =eslint=. I don't really work in
+JavaScript, so I disable needing a local =.eslintrc=.
+
+#+begin_src emacs-lisp
+(setq-default flycheck-eslint-args
+  '("-c" ".eslintrc.json"))
 #+end_src
 
 **** JSON
