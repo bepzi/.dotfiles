@@ -317,13 +317,25 @@ Install =emacs-llvm-mode= from the AUR.
 #+end_src
 
 *** Org Mode
-**** Keybindings
+Export =.org= files to Markdown and Github-Flavored Markdown:
+
+#+begin_src emacs-lisp
+(eval-after-load "org"
+  '(require 'ox-md nil t))
+
+(use-package ox-gfm
+  :config (eval-after-load "org"
+            '(require 'ox-gfm nil t)))
+#+end_src
+
+**** Agenda
+***** Keybindings
 #+begin_src emacs-lisp
 (bind-key "C-c a" 'org-agenda)
 (bind-key "C-c c" 'org-capture)
 #+end_src
 
-**** Settings
+***** Settings
 #+begin_src emacs-lisp
 ;; Agenda file location: a subfolder in =$XDG_DOCUMENTS_DIR=
 (setq org-agenda-files '("~/documents/org_agenda"))
@@ -348,7 +360,7 @@ Install =emacs-llvm-mode= from the AUR.
 (setq org-agenda-start-on-weekday nil)
 #+end_src
 
-**** Capture Templates
+***** Capture Templates
 #+begin_src emacs-lisp
 (setq org-capture-templates
   '(("t" "Add a task to the TODO list." entry
