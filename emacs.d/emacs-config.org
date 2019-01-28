@@ -175,6 +175,18 @@ fill-paragraph=. This command binds =M-Q= to be the inverse of =M-q=.
 #+end_src
 
 *** Programming/Markup Languages
+**** Compilation
+Enable ANSI color interpretation in the compilation buffer.
+
+#+begin_src emacs-lisp
+;; https://stackoverflow.com/a/3072831
+(require 'ansi-color)
+(defun colorize-compilation-buffer ()
+  (let ((inhibit-read-only t))
+    (ansi-color-apply-on-region (point-min) (point-max))))
+(add-hook 'compilation-filter-hook 'colorize-compilation-buffer)
+#+end_src
+
 **** LaTeX
 #+begin_src emacs-lisp
 (use-package tex-mode
