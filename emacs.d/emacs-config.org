@@ -187,6 +187,12 @@ Enable ANSI color interpretation in the compilation buffer.
 (add-hook 'compilation-filter-hook 'colorize-compilation-buffer)
 #+end_src
 
+Scroll with the compilation output.
+
+#+begin_src emacs-lisp
+(setq compilation-scroll-output t)
+#+end_src
+
 **** LaTeX
 #+begin_src emacs-lisp
 (use-package tex-mode
