@@ -319,6 +319,33 @@ Source code formatting with =clang-format=:
 (bind-key "C-c C-f" 'clang-format-buffer)
 #+end_src
 
+For now, prefer [[https://github.com/MaskRay/ccls][ccls]] (AUR: =ccls= or =ccls-git=) to =clangd=. Once
+=clangd= is better I may go back to it.
+
+If your build tools can't generate the =compile_commands.json= file
+needed for these kinds of tools to work, install =bear= (AUR: =bear=
+or =bear-git=) and build your project:
+
+#+begin_src bash
+# bear YOUR_BUILD_COMMAND
+bear make -B -j9
+#+end_src
+
+See:
+https://sarcasm.github.io/notes/dev/compilation-database.html#build-systems-and-compilers
+for more details.
+
+#+begin_src emacs-lisp
+(use-package ccls
+  :hook ((c-mode c++-mode objc-mode) .
+         (lambda () (require 'ccls) (lsp))))
+
+(setq ccls-executable "/usr/bin/ccls")
+
+(setq-default flycheck-disabled-checkers
+  '(c/c++-clang c/c++-cppcheck c/c++-gcc))
+#+end_src
+
 **** MIPS Assembly
 #+begin_src emacs-lisp
 (use-package mips-mode
