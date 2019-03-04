@@ -8,7 +8,7 @@
       glob: true
 
 # Directories to be checked for broken symlinks
-- clean: ['~', '~/.config', '~/bin']
+- clean: ['~', '~/.config', '~/.emacs.d', '~/bin']
 
 # <destination>: <source (relative to root dotfiles directory)>
 - link:
