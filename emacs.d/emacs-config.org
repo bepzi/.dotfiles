@@ -1,4 +1,3 @@
-
 #+TITLE: My Emacs configuration
 #+STARTUP: showeverything
 #+PROPERTY: header-args:emacs-lisp :tangle yes
@@ -10,7 +9,8 @@
 #+end_src
 
 *** Customize output file
-I don't want stuff added by Customize to show up in =init.el=.
+I don't want stuff added by Customize to show up in =init.el=, so I
+redirect it to a file that is /not/ tracked by version control.
 
 #+begin_src emacs-lisp
 (setq custom-file (expand-file-name "custom.el" user-emacs-directory))
