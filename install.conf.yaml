@@ -26,6 +26,7 @@
     ~/bin: 'scripts/*'
 
 - shell:
+  - ["wget -r -t5 -O ~/.config/git-completion.bash https://raw.githubusercontent.com/git/git/master/contrib/completion/git-completion.bash", Getting the latest version of 'git-completion.bash']
   - [git config --global --replace-all pull.rebase true, Setting misc. git settings]
   - [git config --global core.excludesfile ~/.gitignore_global, Updating global gitignore]
   - [git submodule update --init --recursive, Installing submodules]
