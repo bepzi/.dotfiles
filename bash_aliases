@@ -15,8 +15,8 @@ alias egrep='egrep --color=auto'
 alias dir='dir --color=auto'
 alias vdir='vdir --color=auto'
 
-alias shutdown='sync && shutdown -h now'
-alias reboot='sync && reboot'
+alias shutdown='sync && history -a; shutdown -h now'
+alias reboot='sync && history -a; reboot'
 
 alias xscreensaver='xscreensaver -no-splash'
 
