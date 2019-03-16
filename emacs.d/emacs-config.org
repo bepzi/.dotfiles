@@ -346,6 +346,17 @@ for more details.
   '(c/c++-clang c/c++-cppcheck c/c++-gcc))
 #+end_src
 
+**** CMake
+#+begin_src emacs-lisp
+(use-package cmake-mode)
+#+end_src
+
+**** GLSL
+#+begin_src emacs-lisp
+(use-package glsl-mode
+  :mode ("\\.glsl$" "\\.vert$" "\\.frag$" "\\.geom$"))
+#+end_src
+
 **** MIPS Assembly
 #+begin_src emacs-lisp
 (use-package mips-mode
