@@ -48,7 +48,7 @@ SpaceAfterCStyleCast: false
 
 SortUsingDeclarations: true
 SortIncludes: true
-IncludeBlocks: Regroup
+IncludeBlocks: Preserve
 
 # I prefer to do this manually with Emacs
 ReflowComments: false
