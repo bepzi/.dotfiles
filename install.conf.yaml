@@ -21,6 +21,7 @@
     ~/.gitignore_global:
     ~/.xinitrc:
     ~/.xprofile:
+    ~/.clang-format:
     ~/bin/bash-powerline.sh: 'bash-powerline/bash-powerline.sh'
     ~/bin: 'scripts/*'
 

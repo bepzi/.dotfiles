@@ -301,8 +301,8 @@ rust-src rustfmt=.
 Indent with 4 spaces, and use a variant of K&R style.
 
 #+begin_src emacs-lisp
-(setq c-default-style "k&r")
-(setq c-basic-offset 4)
+(setq-default c-default-style "k&r")
+(setq-default c-basic-offset 4)
 #+end_src
 
 Use line comments rather than block comments.
@@ -311,17 +311,36 @@ Use line comments rather than block comments.
 (add-hook 'c-mode-hook (lambda () (c-toggle-comment-style -1)))
 #+end_src
 
+***** =clang-format=
 Source code formatting with =clang-format=:
 
 #+begin_src emacs-lisp
 (load "/usr/share/clang/clang-format")
-(setq-default clang-format-style "{BasedOnStyle: Google, IndentWidth: 4}")
-(bind-key "C-c C-f" 'clang-format-buffer)
+(bind-key "C-c C-f" 'clang-format-region)
 #+end_src
 
+This relies on there being a =.clang-format= file somewhere in or
+above the current directory. You can generate one based off of the
+default styles with a command like =clang-format -style=llvm
+-dump-config > .clang-format=, and then further tweak it using a
+website like [[https://www.clangformat.com/][this one]].
+
+***** LSP integration
 For now, prefer [[https://github.com/MaskRay/ccls][ccls]] (AUR: =ccls= or =ccls-git=) to =clangd=. Once
 =clangd= is better I may go back to it.
 
+#+begin_src emacs-lisp
+(use-package ccls
+  :hook ((c-mode c++-mode objc-mode) .
+         (lambda () (require 'ccls) (lsp))))
+
+(setq ccls-executable "/usr/bin/ccls")
+
+(setq-default flycheck-disabled-checkers
+  '(c/c++-clang c/c++-cppcheck c/c++-gcc))
+#+end_src
+
+***** =compile_commands.json=
 If your build tools can't generate the =compile_commands.json= file
 needed for these kinds of tools to work, install =bear= (AUR: =bear=
 or =bear-git=) and build your project:
@@ -334,17 +353,6 @@ bear make -B -j9
 See:
 https://sarcasm.github.io/notes/dev/compilation-database.html#build-systems-and-compilers
 for more details.
-
-#+begin_src emacs-lisp
-(use-package ccls
-  :hook ((c-mode c++-mode objc-mode) .
-         (lambda () (require 'ccls) (lsp))))
-
-(setq ccls-executable "/usr/bin/ccls")
-
-(setq-default flycheck-disabled-checkers
-  '(c/c++-clang c/c++-cppcheck c/c++-gcc))
-#+end_src
 
 **** CMake
 #+begin_src emacs-lisp
