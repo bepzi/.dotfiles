@@ -121,6 +121,14 @@ As of Emacs 26, =linum-mode= is deprecated, to be replaced with
 #+end_src
 
 *** Appearance
+**** Font size
+My fonts suddenly became super tiny for some reason. This resets the
+font height to 12pt.
+
+#+begin_src emacs-lisp
+(set-face-attribute 'default nil :height 112)
+#+end_src
+
 **** Mode line format
 Display a more compact mode line.
 
