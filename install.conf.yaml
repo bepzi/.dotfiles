@@ -18,7 +18,6 @@
     ~/.bashrc:
     ~/.config: 'config/*'
     ~/.emacs.d: 'emacs.d/*'
-    ~/.eslintrc.json:
     ~/.gitignore_global:
     ~/.xinitrc:
     ~/.xprofile:
