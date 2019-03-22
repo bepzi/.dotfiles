@@ -230,9 +230,24 @@ Autocompletion framework for Emacs
 
 #+begin_src emacs-lisp
 (use-package company
-  :hook (prog-mode . company-mode)
-  :config (setq company-tooltip-align-annotations t)
-          (setq company-minimum-prefix-length 1))
+  :defer t
+  :diminish
+  :custom
+  (company-begin-commands '(self-insert-command))
+  (company-idle-delay .1)
+  (company-minimum-prefix-length 2)
+  (company-show-numbers t)
+  (company-tooltip-align-annotations 't)
+  (global-company-mode t))
+#+end_src
+
+Icons for company:
+
+#+begin_src emacs-lisp
+(use-package company-box
+  :after company
+  :diminish
+  :hook (company-mode . company-box-mode))
 #+end_src
 
 **** Language Server Protocol (LSP)
@@ -247,8 +262,25 @@ LSP mode will automatically configure =company-lsp= and
 
 (use-package lsp-ui
   :commands lsp-ui-mode)
+
 (use-package company-lsp
-  :commands company-lsp)
+  :commands company-lsp
+  :init (push 'company-lsp company-backends)
+  :config (setq company-lsp-enable-recompletion t)
+          (setq company-lsp-async t)
+          (setq company-lsp-enable-snippet t)
+          (setq company-lsp-cache-candidates 'auto))
+#+end_src
+
+**** Yasnippet
+I currently only use Yasnippet for proper completion with
+=company-lsp=.
+
+#+begin_src emacs-lisp
+(use-package yasnippet
+  :diminish
+  :hook (lsp-mode . yas-minor-mode)
+  :config (yas-reload-all))
 #+end_src
 
 **** Bash
