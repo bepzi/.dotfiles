@@ -20,6 +20,8 @@ alias reboot='sync && history -a; reboot'
 
 alias xscreensaver='xscreensaver -no-splash'
 
+alias python='rlwrap python'
+
 # Jump to the git repository root
 alias groot='cd "$(git rev-parse --show-toplevel)"'
 
