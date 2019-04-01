@@ -348,7 +348,8 @@ Indent with 4 spaces, and use a variant of K&R style.
 Use line comments rather than block comments.
 
 #+begin_src emacs-lisp
-(add-hook 'c-mode-hook (lambda () (c-toggle-comment-style -1)))
+(add-hook 'c-mode-hook
+  (lambda () (setq comment-start "//" comment-end   "")))
 #+end_src
 
 ***** =clang-format=
