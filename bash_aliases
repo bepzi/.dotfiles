@@ -28,6 +28,9 @@ alias groot='cd "$(git rev-parse --show-toplevel)"'
 alias mkdir='mkdir -p'
 alias cp='cp -r'
 
+alias aoeu='setxkbmap dvorak'
+alias asdf='setxkbmap us'
+
 # Colors for man pages in `less`
 man() {
     LESS_TERMCAP_md=$'\e[01;31m' \
