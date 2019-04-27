@@ -183,6 +183,16 @@ fill-paragraph=. This command binds =M-Q= to be the inverse of =M-q=.
 #+end_src
 
 *** Programming/Markup Languages
+**** Man
+Enable colors.
+
+#+begin_src emacs-lisp
+;; https://emacs.stackexchange.com/a/28925
+(require 'man)
+(set-face-attribute 'Man-overstrike nil :inherit font-lock-type-face :bold t)
+(set-face-attribute 'Man-underline nil :inherit font-lock-keyword-face :underline t)
+#+end_src
+
 **** Compilation
 Enable ANSI color interpretation in the compilation buffer.
 
