@@ -154,6 +154,14 @@ systemwide icons and GTK+ themes to a matching color scheme.
 Again, you may have to launch an actual =emacs= instance in order to
 enable this theme for the first time.
 
+**** Icons
+
+#+begin_src emacs-lisp
+(use-package all-the-icons)
+#+end_src
+
+You may need to do =M-x all-the-icons-install-fonts=.
+
 **** Time in the modeline
 #+begin_src emacs-lisp
 (display-time-mode 1)
@@ -244,9 +252,9 @@ Autocompletion framework for Emacs
   :diminish
   :custom
   (company-begin-commands '(self-insert-command))
-  (company-idle-delay .1)
+  (company-idle-delay .2)
   (company-minimum-prefix-length 2)
-  (company-show-numbers t)
+  (company-show-numbers nil)
   (company-tooltip-align-annotations 't)
   (global-company-mode t))
 #+end_src
@@ -289,8 +297,7 @@ I currently only use Yasnippet for proper completion with
 #+begin_src emacs-lisp
 (use-package yasnippet
   :diminish
-  :hook (lsp-mode . yas-minor-mode)
-  :config (yas-reload-all))
+  :config (yas-global-mode))
 #+end_src
 
 **** Bash
