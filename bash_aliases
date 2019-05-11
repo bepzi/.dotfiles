@@ -1,8 +1,8 @@
 #!/bin/bash
 
-#
 # ~/.bash_aliases
 #
+# Provides aliases for shell commands
 
 alias ls='ls --color=auto'
 
@@ -28,6 +28,7 @@ alias groot='cd "$(git rev-parse --show-toplevel)"'
 alias mkdir='mkdir -p'
 alias cp='cp -r'
 
+# Change keyboard layout
 alias aoeu='setxkbmap dvorak'
 alias asdf='setxkbmap us'
 

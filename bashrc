@@ -31,31 +31,31 @@ HISTCONTROL=ignoreboth
 [ -f "$HOME/.bash_aliases" ] && . "$HOME/.bash_aliases"
 
 if command -v firefox >/dev/null 2>&1; then
-    BROWSER="$(which firefox)"
+    BROWSER="$(command -v firefox)"
 elif command -v chromium >/dev/null 2>&1; then
-    BROWSER="$(which chromium)"
+    BROWSER="$(command -v chromium)"
 else
-    echo "Neither Firefox nor Chromium are installed on this system! BROWSER will not be explicitly set!"
+    BROWSER=""
 fi
+export BROWSER
 
 if command -v emacs >/dev/null 2>&1; then
-    EDITOR="$(which emacs) -nw"
+    EDITOR="$(command -v emacs) -nw"
 elif command -v nvim >/dev/null 2>&1; then
-    EDITOR="$(which nvim)"
+    EDITOR="$(command -v nvim)"
 elif command -v vim >/dev/null 2>&1; then
-    EDITOR="$(which vim)"
-elif command -v nano >/dev/null 2>&1; then
-    EDITOR="$(which nano)"
+    EDITOR="$(command -v vim)"
 else
-    echo "No reasonable text editor is installed on this system! EDITOR will not be explicitly set!"
+    EDITOR="$(command -v nano)"
 fi
 
 # Emacs has to be treated a little differently here
 if command -v emacs >/dev/null 2>&1; then
-    export VISUAL="$(which emacs)"
+    VISUAL="$(command -v emacs)"
 else
-    export VISUAL="$EDITOR"
+    VISUAL="$EDITOR"
 fi
+export VISUAL
 
 # Enable bash completions with git
 [ -f "$HOME/.config/git-completion.bash" ] && . "$HOME/.config/git-completion.bash"

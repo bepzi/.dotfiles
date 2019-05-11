@@ -1,24 +1,16 @@
 #!/bin/sh
-# ~/.xprofile -- Intended to be sourced a single time when the computer starts
 
-# Locale
-export LANG="en_US.UTF-8"
-export LC_CTYPE="en_US.UTF-8"
-
-# PATH-related variables
-export PATH="$PATH:$HOME/bin:$HOME/.bin:$HOME/bin/scripts:$HOME/.cargo/bin:$HOME/.cabal/bin:$HOME/.scripts"
-
-# For Ruby stuff:
-if command -v ruby >/dev/null 2>&1; then
-    export GEM_HOME=$(ls | ruby -e 'puts Gem.user_dir')
-    export GEM_PATH=$GEM_HOME
-    [ -d "$GEM_PATH" ] && export PATH="$PATH:$GEM_HOME/bin"
-fi
+# ~/.xprofile
+#
+# Intended to be sourced a single time when the X session starts.
+# Will be sourced by `xinitrc` when `startx` is run.
 
 if command -v java >/dev/null 2>&1; then
     # Fix font rendering in Java applications, but make it so that
     # "Picked up _JAVA_OPTIONS" isn't shown
-    _SILENT_JAVA_OPTIONS='-Dawt.useSystemAAFontSettings=on -Dswing.aatext=true'
+    export _JAVA_OPTIONS='-Dawt.useSystemAAFontSettings=on -Dswing.aatext=true' \
+                         '-Dswing.defaultlaf=com.sun.java.swing.plaf.gtk.GTKLookAndFeel'
+    _SILENT_JAVA_OPTIONS="$_JAVA_OPTIONS"
     unset _JAVA_OPTIONS
     alias java='java "$_SILENT_JAVA_OPTIONS"'
 
@@ -33,7 +25,7 @@ fi
 
 # Start the gnome-keyring-daemon, if installed
 if command -v gnome-keyring-daemon >/dev/null 2>&1; then
-    eval $(/usr/bin/gnome-keyring-daemon --start --components=pkcs11,secrets,ssh)
+    eval "$(/usr/bin/gnome-keyring-daemon --start --components=pkcs11,secrets,ssh)"
     export SSH_AUTH_SOCK
 fi
 
