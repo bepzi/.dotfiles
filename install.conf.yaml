@@ -16,6 +16,9 @@
     ~/.bash_aliases:
     ~/.bash_profile:
     ~/.bashrc:
+    ~/.zshenv:
+    ~/.zprofile:
+    ~/.zshrc:
     ~/.config: 'config/*'
     ~/.emacs.d: 'emacs.d/*'
     ~/.gitignore_global:
