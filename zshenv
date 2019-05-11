@@ -19,3 +19,6 @@ unset MAIL
 
 # Ignore duplicates or lines starting with a space in the history
 export HISTCONTROL=ignoreboth
+
+# Aliases
+source ~/.bash_aliases
