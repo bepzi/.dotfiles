@@ -300,6 +300,12 @@ I currently only use Yasnippet for proper completion with
   :config (yas-global-mode))
 #+end_src
 
+**** OCaml
+
+#+begin_src emacs-lisp
+(use-package tuareg)
+#+end_src
+
 **** Bash
 For =flycheck= integration, install =shellcheck= (AUR:
 =shellcheck-git-static=)
