@@ -426,7 +426,7 @@ for more details.
 **** GLSL
 #+begin_src emacs-lisp
 (use-package glsl-mode
-  :mode ("\\.glsl$" "\\.vert$" "\\.frag$" "\\.geom$"))
+  :mode ("\\.glsl$" "\\.glslv$" "\\.glslf$" "\\.vert$" "\\.frag$" "\\.geom$"))
 #+end_src
 
 **** MIPS Assembly
