@@ -276,7 +276,8 @@ LSP mode will automatically configure =company-lsp= and
 (use-package lsp-mode
   :commands lsp
   :config (setq lsp-prefer-flymake nil)
-          (setq lsp-auto-configure t))
+          (setq lsp-auto-configure t)
+          (setq lsp-auto-guess-root t))
 
 (use-package lsp-ui
   :commands lsp-ui-mode)
