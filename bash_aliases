@@ -35,7 +35,7 @@ alias asdf='setxkbmap us'
 # Rather than learn tmux, this command starts a new instance of
 # `alacritty` in the current working directory
 # See: https://superuser.com/a/705448
-alias alaclone='alacritty --working-directory "$(pwd)" &>/dev/null &; disown'
+alias alacpy='alacritty --working-directory "$(pwd)" &>/dev/null &; disown'
 
 # Colors for man pages in `less`
 man() {
