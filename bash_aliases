@@ -32,6 +32,11 @@ alias cp='cp -r'
 alias aoeu='setxkbmap dvorak'
 alias asdf='setxkbmap us'
 
+# Rather than learn tmux, this command starts a new instance of
+# `alacritty` in the current working directory
+# See: https://superuser.com/a/705448
+alias alaclone='alacritty --working-directory "$(pwd)" &>/dev/null &; disown'
+
 # Colors for man pages in `less`
 man() {
     LESS_TERMCAP_md=$'\e[01;31m' \
