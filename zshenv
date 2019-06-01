@@ -8,7 +8,7 @@
 
 # Avoid duplicates in $PATH
 typeset -U path
-path=($path ~/bin ~/.bin ~/.cargo/bin)
+path=($path ~/bin ~/.bin ~/.cargo/bin ~/documents/bin)
 
 export BROWSER="$(command -v firefox)"
 export EDITOR="$(command -v emacs) -nw"
