@@ -327,6 +327,12 @@ JavaScript, so I disable needing a local =.eslintrc=.
   '("-c" ".eslintrc.json"))
 #+end_src
 
+**** TypeScript
+
+#+begin_src emacs-lisp
+(use-package typescript-mode)
+#+end_src
+
 **** JSON
 Use =json-mode= when editing Reddit Enhancement Suite backup files.
 
