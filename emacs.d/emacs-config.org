@@ -190,6 +190,15 @@ fill-paragraph=. This command binds =M-Q= to be the inverse of =M-q=.
 (bind-key "M-Q" 'my/unfill-paragraph)
 #+end_src
 
+**** Multiple Cursors
+#+begin_src emacs-lisp
+(use-package multiple-cursors
+  :config (global-set-key (kbd "C-S-c C-S-c") 'mc/edit-lines)
+          (global-set-key (kbd "C->") 'mc/mark-next-like-this)
+          (global-set-key (kbd "C-<") 'mc/mark-previous-like-this)
+          (global-set-key (kbd "C-c C-<") 'mc/mark-all-like-this))
+#+end_src
+
 *** Programming/Markup Languages
 **** Man
 Enable colors.
