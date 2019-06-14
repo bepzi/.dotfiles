@@ -17,8 +17,13 @@ export VISUAL="$(command -v emacs)"
 unset MAILCHECK
 unset MAIL
 
-# Ignore duplicates or lines starting with a space in the history
-export HISTCONTROL=ignoreboth
+export HISTFILE="$HOME/.zsh_history"
+export HISTSIZE=10000
+export SAVEHIST=10000
+
+setopt SHARE_HISTORY
+setopt HIST_IGNORE_ALL_DUPS
+setopt HIST_REDUCE_BLANKS
 
 # Aliases
 source ~/.bash_aliases
