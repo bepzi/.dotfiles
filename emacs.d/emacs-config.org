@@ -285,18 +285,12 @@ LSP mode will automatically configure =company-lsp= and
   :commands lsp
   :config (setq lsp-prefer-flymake nil)
           (setq lsp-auto-configure t)
-          (setq lsp-auto-guess-root t))
+          (setq lsp-enable-completion-at-point t)
+          (setq lsp-enable-snippet t))
 
-(use-package lsp-ui
-  :commands lsp-ui-mode)
-
-(use-package company-lsp
-  :commands company-lsp
-  :init (push 'company-lsp company-backends)
-  :config (setq company-lsp-enable-recompletion t)
-          (setq company-lsp-async t)
-          (setq company-lsp-enable-snippet t)
-          (setq company-lsp-cache-candidates 'auto))
+(use-package lsp-ui :commands lsp-ui-mode)
+(use-package company-lsp :commands company-lsp)
+(use-package helm-lsp :commands helm-lsp)
 #+end_src
 
 **** Yasnippet
@@ -366,13 +360,6 @@ rust-src rustfmt=.
 #+begin_src emacs-lisp
 (use-package rust-mode
   :hook (rust-mode . lsp))
-
-;; Add keybindings for interacting with Cargo
-(use-package cargo
-  :hook (rust-mode . cargo-minor-mode))
-
-(use-package flycheck-rust
-  :config (add-hook 'flycheck-mode-hook #'flycheck-rust-setup))
 #+end_src
 
 **** C
