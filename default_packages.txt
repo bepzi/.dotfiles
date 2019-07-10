@@ -17,6 +17,7 @@ automake
 bash
 bash-completion
 bear
+betterlockscreen
 binutils
 bison
 blender
@@ -88,7 +89,7 @@ htop
 hunspell-en_US
 i3-gaps
 i3blocks
-i3lock
+i3lock-color
 imagemagick
 inetutils
 inotify-tools

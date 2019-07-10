@@ -53,7 +53,7 @@ bindsym $mod+Shift+q kill
 bindsym $mod+d exec --no-startup-id "rofi -show drun"
 
 # lock the screen
-bindsym $mod+l exec --no-startup-id "i3lock -t"
+bindsym $mod+l exec --no-startup-id "betterlockscreen -l blur"
 
 # toggle the keyboard layout Windows-style
 bindsym $mod+Shift+l exec "~/bin/scripts/toggle_keyboard_layout"
