@@ -7,3 +7,6 @@
 [submodule "emacs.d/xresources-theme"]
 	path = emacs.d/xresources-theme
 	url = https://github.com/cqql/xresources-theme
+[submodule "emacs.d"]
+	path = emacs.d
+	url = git@github.com:bepzi/emacs.d.git
