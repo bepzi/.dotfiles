@@ -25,5 +25,7 @@ setopt SHARE_HISTORY
 setopt HIST_IGNORE_ALL_DUPS
 setopt HIST_REDUCE_BLANKS
 
+setopt NULL_GLOB  # Don't complain if a glob doesn't expand to anything
+
 # Aliases
 source ~/.bash_aliases
