@@ -205,5 +205,3 @@ exec --no-startup-id "volumeicon"
 exec --no-startup-id "start_cbatticon.sh || \
       notify-send 'Could not execute cbatticon script!'"
 
-# Open Org-Agenda on startup
-exec --no-startup-id i3-msg 'workspace $ws1; exec emacs --eval "(org-agenda-list)"'
