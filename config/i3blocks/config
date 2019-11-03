@@ -29,7 +29,7 @@ separator_block_width=15
 markup=none
 
 [weather]
-command=sleep 300 & echo "WEATHER: $(curl -Ss 'https://wttr.in?0AQT' | head -n1 | grep -Po '\w+'), $(curl -Ss 'https://wttr.in?0AQT' | grep -Po '(-)?[0-9]+\.\.(-)?[0-9]+')°F"
+command=sleep 120 & echo "WEATHER: $(curl -Ss 'https://wttr.in?0AQT' | head -n1 | grep -Po '\w+'), $(curl -Ss 'https://wttr.in?0AQT' | grep -Po '(-)?[0-9]+\.\.(-)?[0-9]+')°F"
 interval=3600
 
 [rootmount]
