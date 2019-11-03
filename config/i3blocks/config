@@ -45,7 +45,7 @@ interval=120
 # interval=10
 
 [temps]
-command=echo "CPU TEMP: $(acpi -t | grep -Po '[0-9]+\.[0-9]+' | head -n1)°C"
+command=echo "CPU TEMP: $(sensors | grep -P 'Package id' | grep -Po '[0-9]+\.[0-9]+°C' | head -n1)"
 interval=10
 
 [time]
