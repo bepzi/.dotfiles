@@ -29,7 +29,7 @@ separator_block_width=15
 markup=none
 
 [weather]
-command=echo "WEATHER: $(curl -Ss 'https://wttr.in?0AQT' | head -n1 | xargs), $(curl -Ss 'https://wttr.in?0AQT' | grep -Po '(-)?[0-9]+\.\.(-)?[0-9]+')°F"
+command=echo "WEATHER: $(curl -Ss 'https://wttr.in?0AQT' | head -n1 | grep -Po '\w+'), $(curl -Ss 'https://wttr.in?0AQT' | grep -Po '(-)?[0-9]+\.\.(-)?[0-9]+')°F"
 interval=3600
 
 [rootmount]
@@ -45,7 +45,7 @@ interval=120
 # interval=10
 
 [temps]
-command=echo "CPU TEMP: $(sensors | grep -P 'Package id' | grep -Po '[0-9]+\.[0-9]+°C' | head -n1)"
+command=echo "CPU TEMP: $(sensors | grep -P 'Core 0:' | grep -Po '[0-9]+\.[0-9]+°C' | head -n1)"
 interval=10
 
 [time]
