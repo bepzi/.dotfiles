@@ -6,18 +6,19 @@
 # shell.
 
 # Enable completion
-autoload -Uz compinit promptinit
-compinit
+autoload -Uz compinit
 
 case "$TERM" in
     "dumb")
         # Prevents Emacs TRAMP from choking
         # https://stackoverflow.com/a/8363532
-        export PS1="> "
+        PS1="> "
+        ;;
+    xterm*|rxvt*|eterm*|screen*|alacritty)
+        PS1="[%n@%M %~]%# "
         ;;
     *)
-        promptinit
-        prompt redhat
+        PS1="> "
         ;;
 esac
 
