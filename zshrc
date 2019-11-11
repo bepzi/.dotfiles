@@ -6,8 +6,20 @@
 # shell.
 
 # Enable completion
-autoload -Uz compinit
+autoload -Uz compinit promptinit
 compinit
+
+case "$TERM" in
+    "dumb")
+        # Prevents Emacs TRAMP from choking
+        # https://stackoverflow.com/a/8363532
+        export PS1="> "
+        ;;
+    *)
+        promptinit
+        prompt redhat
+        ;;
+esac
 
 # `fish`-like syntax highlighting
 source /usr/share/zsh/plugins/zsh-syntax-highlighting/zsh-syntax-highlighting.zsh
