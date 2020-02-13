@@ -196,6 +196,9 @@ exec --no-startup-id "nitrogen --restore"
 # Backlight and screen tint
 exec --no-startup-id "redshift"
 
+# Compositor
+exec --no-startup-id "picom -b"
+
 # Start the polkit authenticator
 exec --no-startup-id "/usr/lib/polkit-gnome/polkit-gnome-authentication-agent-1"
 
