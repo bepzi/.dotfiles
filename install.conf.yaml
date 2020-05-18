@@ -30,5 +30,6 @@
 
 - shell:
   - ["wget -r -t5 -O ~/.config/git-completion.bash https://raw.githubusercontent.com/git/git/master/contrib/completion/git-completion.bash", Getting the latest version of 'git-completion.bash']
+  - ["wget -r -t5 -O ~/.config/git-completion.zsh https://raw.githubusercontent.com/git/git/master/contrib/completion/git-completion.zsh", Getting the latest version of 'git-completion.zsh']
   - [git config --global core.excludesfile ~/.gitignore_global, Updating global gitignore]
   - [git submodule update --init --recursive, Installing submodules]
