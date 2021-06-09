@@ -20,7 +20,6 @@
     ~/.zprofile:
     ~/.zshrc:
     ~/.config: 'config/*'
-    ~/.emacs.d: 'emacs.d/*'
     ~/.gitignore_global:
     ~/.xinitrc:
     ~/.xprofile:
