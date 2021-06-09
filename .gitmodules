@@ -1,6 +1,7 @@
 [submodule "dotbot"]
 	path = dotbot
 	url = https://github.com/anishathalye/dotbot
+	ignore = dirty
 [submodule "bash-powerline"]
 	path = bash-powerline
 	url = https://github.com/riobard/bash-powerline
