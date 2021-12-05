@@ -28,10 +28,6 @@ command=/usr/lib/i3blocks/$BLOCK_NAME
 separator_block_width=15
 markup=none
 
-[weather]
-command=sleep 120 & echo "WEATHER: $(curl -Ss 'https://wttr.in?0AQT' | head -n1 | grep -Po '[\w ]+' | xargs), $(curl -Ss 'https://wttr.in?0AQT' | grep -Po '(-)?[0-9]+\.\.(-)?[0-9]+')°F"
-interval=3600
-
 [rootmount]
 command=echo "DISK: $(df -l --output=pcent,target | grep -Po '[0-9]{1,3}% /$' | grep -Po '[0-9]{1,3}%') full"
 interval=120
