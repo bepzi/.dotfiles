@@ -32,6 +32,8 @@ alias cp='cp -r'
 alias aoeu='setxkbmap dvorak'
 alias asdf='setxkbmap us'
 
+alias scrot='maim'
+
 # Rather than learn tmux, this command starts a new instance of
 # `alacritty` in the current working directory
 # See: https://superuser.com/a/705448

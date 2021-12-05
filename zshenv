@@ -27,5 +27,7 @@ setopt HIST_REDUCE_BLANKS
 
 setopt NULL_GLOB  # Don't complain if a glob doesn't expand to anything
 
+export DOTNET_CLI_TELEMETRY_OPTOUT=1
+
 # Aliases
 source ~/.bash_aliases
