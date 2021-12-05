@@ -187,6 +187,8 @@ bar {
     }
 }
 
+exec_always --no-startup-id sleep 1 && "~/.screenlayout/monitors.sh" && . ~/tablet.sh
+
 # File manager
 exec --no-startup-id "thunar --daemon"
 
@@ -198,6 +200,8 @@ exec --no-startup-id "redshift"
 
 # Compositor
 exec --no-startup-id "picom -b"
+
+exec_always --no-startup-id "xrandr --output DisplayPort-2 --mode 2560x1440 --rate 165 --pos 1920x0 --rotate normal --output HDMI-A-0 --mode 1920x1080 --rate 60 --pos 0x351 --rotate normal"
 
 # Start the polkit authenticator
 exec --no-startup-id "/usr/lib/polkit-gnome/polkit-gnome-authentication-agent-1"
